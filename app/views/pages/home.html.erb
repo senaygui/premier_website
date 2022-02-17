@@ -46,43 +46,27 @@
 </section>
 <main id="main">
   <!-- banner-feature -->
-  <section class="bg-gray overflow-md-hidden">
-    <div class="container-fluid p-0">
-      <div class="row no-gutters">
-        <div class="col-xl-4 col-lg-5 align-self-end">
-          <%= image_tag 'banner-feature.png', class:"img-fluid w-100" %>
-        </div>
-        <div class="col-xl-8 col-lg-7">
-          <div class="row feature-blocks bg-gray justify-content-between">
-            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-              <i class="bx-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-              <h3 class="mb-xl-4 mb-lg-3 mb-4">Scholorship News</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad</p>
-            </div>
-            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-              <i class="bx-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-              <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Notice Board</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad</p>
-            </div>
-            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-              <i class="bx-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-              <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Achievements</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad</p>
-            </div>
-            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
-              <i class="bx bx-write mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
-              <h3 class="mb-xl-4 mb-lg-3 mb-4">Admission Now</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et dolore magna aliqua. Ut enim ad</p>
-            </div>
+
+  <section id="featured-services" class="featured-services">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Check our Services</h2>
+    </div>
+    <div class="row">
+      <% @admissions.each do |admission|%>
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+            <h4 class="title"><a href=""><%= admission.modality %> <%= admission.study_level%></a></h4>
+            <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              et dolore magna aliqua. Ut enim ad</p>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  </section>
+  </div>
+</section>
+
   <!-- /banner-feature -->
   <!-- about us -->
   <section class="section">
@@ -115,22 +99,21 @@
         </div>
       </div>
       <!-- course list -->
-      <div class="row justify-content-center">
+      <div class="row">
         <!-- course item -->
         <% @programs.each do |program|%>
-          <div class="col-lg-4 col-sm-6 mb-5">
+          <div class="col-lg-4 col-sm-6 mb-5 d-flex align-self-stretch">
             <div class="card p-0 border-primary rounded-0 hover-shadow">
               <%= image_tag program.photo, class:"card-img-top rounded-0"%>
-              <div class="card-body">
+              <div class="card-body d-flex flex-column">
                 <ul class="list-inline mb-2">
-                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-                  <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
+                  <li class="list-inline-item"><a class="text-color" href="#"><%= program.modality%></a></li>
                 </ul>
                 <%= link_to program_path(program) do%>
                   <h4 class="card-title"><%= program.program_name.html_safe%></h4>
                 <% end%>
                 <p class="card-text mb-4"><%= program.overview.truncate(256).html_safe%> </p>
-                <%= link_to "Read More", program_path(program), class: "btn btn-primary btn-sm"%>
+                <%= link_to "Read More", program_path(program), class: "mt-auto align-self-start btn btn-primary btn-sm"%>
               </div>
             </div>
           </div>
@@ -178,10 +161,10 @@
     <div class="row justify-content-center">
       <!-- event -->
       <%@news.each do |news|%>
-        <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+        <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0  d-flex align-self-stretch">
           <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
             <%= image_tag news.photo, class:"card-img-top rounded-0" %>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
               <!-- post meta -->
               <ul class="list-inline mb-3">
                 <!-- post date -->
