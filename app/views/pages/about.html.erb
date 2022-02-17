@@ -1,4 +1,12 @@
 <main>
+<section class="section">
+<div class="container">
+  <div class="col-12">
+    <h2 class="section-title">ABOUT OUR JOURNY</h2>
+    <p> <%=@college.background.html_safe%></p>
+  </div>
+</div>
+</section>
   <!-- funfacts -->
   <section class="section-sm bg-primary">
     <div class="container">
@@ -36,32 +44,8 @@
   </section>
   <!-- /funfacts -->
   <!-- about -->
-  <section class="section">
-    <div class="container">
-      <div class="col-12">
-        <h2 class="section-title">ABOUT OUR JOURNY</h2>
-        <p> <%=@college.background.html_safe%></p>
-      </div>
-    </div>
-    
-                      <!--marketing-->
-  <section class=" bg-primary">
-    <div class="container">
-    <div class="section-title">
-      <% @marketing.where(page_to_display: 'about').each do |m|%>
-        <div class="text-center">
-          <h2><%= m.headline_title.html_safe%></h2>
-          <p><%= m.description.html_safe%></p>
-          <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
-        </div>
-      <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- /marketing -->
-<!-- ======= Departments Section ======= -->
-<section id="departments" class="departments">
+
+  <section id="departments" class="departments">
   <div class="container">
 
     <div class="section-title">
@@ -121,7 +105,26 @@
     </div>
 
   </div>
-</section><!-- End Departments Section -->
+</section>
+<!--marketing-->
+<section class=" bg-primary">
+  <div class="container">
+    <div class="section-title">
+    <% @marketing.where(page_to_display: 'about').each do |m|%>
+    <div class="text-center">
+      <h2><%= m.headline_title.html_safe%></h2>
+      <p><%= m.description.html_safe%></p>
+      <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
+    </div>
+  <% end %>
+  </div>
+</div>
+</div>
+</section>
+<!-- /marketing -->
+<!-- ======= Departments Section ======= -->
+
+<!-- End Departments Section -->
     <div class="row mt-5">
       <div class="col-5 card p-3 border-primary rounded-0 hover-shadow ml-5">
         <h2 class="section-title">OUR MISSION</h2>
@@ -135,16 +138,25 @@
   </div>
 </section>
 <!-- /about -->
-<section class="section bg-primary">
-  <div class="container">
-    <div class="section-title">
-      <h2>Dean Message</h2>
-      <p>The inspiration of Grand international College founders is embedded in providing</p>
-      <p> quality education, research, and community and training service. I believe quality education is a master key of all our problems</p>
-      <p> as a country in Ethiopia as a content Africa Now it is a time to provide quality education. Therefore to achieve this, dear visitor</p>
-      <p> our college are highly well organized by human (Qualified professionals) and non-human resource/infrastructures </p>
-    </div>
-  </div>
+<section id="about" class="about section-bg">
+<div class="container" data-aos="fade-up">
+  <div class="row no-gutters">
+    <% @staff.where(job_title: 'PRESIDENT').each do |s|%>
+      <div class="content col-xl-6 d-flex align-items-stretch">
+        <div class="content">
+          <h3 class="text-light">PRESIDENTS MESSAGE</h3>
+          <p>
+            <%= s.message.html_safe %>
+          </p>
+          <p>
+            <strong class="text-right"></strong> Congratulations once again!
+          </p>
+        </div>
+      </div>
+      <div class="col-xl-6 d-flex align-items-stretch mt-5" >
+        <%= image_tag s.photo, size: "466x350", style: "margin-top: 100px;" %>
+      </div>
+    <%end%>
 </div>
 </div>
 </section>
@@ -152,16 +164,16 @@
 <!-- teachers -->
 <section class="section">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-12">
         <h2 class="section-title">Our Staff</h2>
       </div>
       <!-- staffs -->
-      <%=@staff.each do |staff|%>
-        <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+      <% @staff.each do |staff|%>
+        <div class="col-lg-3 col-sm-6 mb-5 mb-lg-0 d-flex align-self-stretch">
           <div class="card border-0 rounded-0 hover-shadow">
             <%= image_tag staff.photo, class:"card-img-top rounded-0" %>
-            <div class="card-body">
+            <div class="card-body  d-flex flex-column">
               <%= link_to staff_path(staff) do %>
                 <h4 class="card-title"><%=staff.fullname%></h4>
               <%end%>

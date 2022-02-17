@@ -14,7 +14,7 @@
           </p>
         </div>
         <div class="col-lg-2 col-md-6 footer-links">
-          <h4 class="primary">Useful Links</h4>
+          <h4 class="text-light">Useful Links</h4>
           <ul>
             <li><%= link_to "#" do %>
                 <i class="bx bx-chevron-right"></i><span>Home</span>
@@ -37,7 +37,7 @@
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Our Admission</h4>
+          <h4 class="text-light">Our Admission</h4>
           <ul>
             <% Admission.all.each do |admission| %>
               <li><i class="bx bx-chevron-right"></i>
@@ -46,7 +46,7 @@
           </ul>
         </div>
         <div class="col-lg-3 col-md-12 footer-links">
-          <h4>Our Social Networks</h4>
+          <h4 class="text-light">Our Social Networks</h4>
           <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
           <div class="social-links mt-3">
             <%= link_to "#{College.last.twitter_handle}", class:"twitter" do %>
