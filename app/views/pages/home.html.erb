@@ -150,24 +150,13 @@
   <!--marketing-->
   <section class="section bg-primary">
     <div class="container">
-      <div class="row justify-content-center">
-        <!-- course item -->
-        <% @marketing.each do |marketing|%>
-          <div class="col-lg-4 col-sm-6 mb-5">
-            <div class="card p-0 border-primary rounded-0 hover-shadow">
-              <div class="card-body">
-                <ul class="list-inline mb-2">
-                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
-                  <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
-                </ul>
-                <h4 class="card-title"><%= marketing.headline_title.html_safe%></h4>
-                <p class="card-text mb-4"><%= marketing.description.truncate(256).html_safe%> </p>
-                <%= link_to "Read More","#", class: "btn btn-primary btn-sm"%>
-              </div>
-            </div>
-          </div>
-        <%end%>
-      </div>
+      <% @marketing.where(page_to_display: 'home').each do |m|%>
+        <div class="text-center">
+          <h3><%= m.headline_title.html_safe%></h3>
+          <p><%= m.description.html_safe%></p>
+          <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>
@@ -220,145 +209,104 @@
   </section>
   <!-- /events -->
   <!--Testimonials Section-->
-  <section class="section bg-primary">
-    <div class="container">
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials">
+    <div class="container" data-aos="fade-up">
       <div class="section-title">
-        <h2>President Message</h2>
-        <p>The inspiration of Grand international College founders is embedded in providing</p>
-        <p> quality education, research, and community and training service. I believe quality education is a master key of all our problems</p>
-        <p> as a country in Ethiopia as a content Africa Now it is a time to provide quality education. Therefore to achieve this, dear visitor</p>
-        <p> our college are highly well organized by human (Qualified professionals) and non-human resource/infrastructures </p>
+        <h2>Testimonials</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
       </div>
     </div>
-  </div>
-</div>
-</section>
-<!-- /Testimonials Section -->
-<!-- ======= Testimonials Section ======= -->
-<section id="testimonials" class="testimonials">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Testimonials</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-    </div>
-  </div>
-  <div class="container mt-5 mb-4">
-    <div class="row">
-      <div class="col-lg-12 ml-5">
-        <div id="commenMain ">
-          <% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: true).each do |s|%>
-            <div class="row ml-5">
-              <div class="col-lg-6">
-                <div class="container">
-                  <h3><%= s.fullname%></h3>
+    <div class="container-fluid">
+      <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-xl-10">
+          <div class="owl-carousel testimonials-carousel">
+            <% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: false).each do |c|%>
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <%= image_tag(c.photo, class: "testimonial-img") if c.photo.attached?%>
+                  <h3><%= c.fullname%></h3>
+                  <h4><%= c.subject.html_safe%></h4>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    <%= s.message.html_safe%>
+                    <%= c.message.html_safe%>
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
               </div>
-              <div class="col-lg-5">
-                <div class="img">
-                  <%= image_tag(s.photo, class: "img-fluid") if s.photo.attached?%>
-                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Testimonials Section -->
+  <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
+      </div>
+      <div class="text-center"><%= link_to "Check Our Branches", "/contact",class: "btn btn-primary mb-4"%></div>
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <i class="bx bx-map"></i>
+                <h3>Our Address</h3>
+                <p>Ethiopia Addis Ababa, Asmara Road</p>
               </div>
             </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@gic@edu.et<br>
+                  contact@gic@edu.et</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-phone-call"></i>
+                <h3>Call Us</h3>
+                <p>+251-11-6-460954<br>
+                  +251-11-6-478965</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'php-email-form'}) do |f| %>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= f.input :fullname, class: "form-control"%>
+                <div class="validate"></div>
+              </div>
+              <div class="col form-group">
+                <%= f.input :category, collection: ["testimonial", "comment", "review"], class: "form-control"%>
+                <div class="validate"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.input :subject, class: "form-control"%>
+              <div class="validate"></div>
+            </div>
+            <div class="form-group">
+              <%= f.input :message, class: "form-control", type: 'text'%>
+              <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <%= f.submit 'Send Message', class: 'btn btn-primary'%>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-xl-10">
-        <div class="owl-carousel testimonials-carousel">
-          <% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: false).each do |c|%>
-            <div class="testimonial-wrap">
-              <div class="testimonial-item">
-                <%= image_tag(c.photo, class: "testimonial-img") if c.photo.attached?%>
-                <h3><%= c.fullname%></h3>
-                <h4><%= c.subject.html_safe%></h4>
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  <%= c.message.html_safe%>
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Testimonials Section -->
-<!-- ======= Contact Section ======= -->
-<section id="contact" class="contact">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Contact</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-    </div>
-    <div class="text-center"><%= link_to "Check Our Branches", "/contact",class: "btn btn-primary mb-4"%></div>
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-6">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="info-box">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p>Ethiopia Addis Ababa, Asmara Road</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="info-box mt-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
-              <p>info@gic@edu.et<br>
-                contact@gic@edu.et</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="info-box mt-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
-              <p>+251-11-6-460954<br>
-                +251-11-6-478965</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'php-email-form'}) do |f| %>
-          <div class="form-row">
-            <div class="col form-group">
-              <%= f.input :fullname, class: "form-control"%>
-              <div class="validate"></div>
-            </div>
-            <div class="col form-group">
-              <%= f.input :category, collection: ["testimonial", "comment", "review"], class: "form-control"%>
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <%= f.input :subject, class: "form-control"%>
-            <div class="validate"></div>
-          </div>
-          <div class="form-group">
-            <%= f.input :message, class: "form-control", type: 'text'%>
-            <div class="validate"></div>
-          </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your message has been sent. Thank you!</div>
-          </div>
-          <%= f.submit 'Send Message', class: 'btn btn-primary'%>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Contact Section -->
+  </section>
+  <!-- End Contact Section -->
 </main><!-- End #main -->

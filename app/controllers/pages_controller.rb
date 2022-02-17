@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   def contact
     @branches=Branch.all
     @faq= FrequentlyAskedQuestion.all
+    @marketing = MarketingSection.all
   end
 
   def about

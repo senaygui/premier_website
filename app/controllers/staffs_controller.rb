@@ -9,6 +9,7 @@ class StaffsController < ApplicationController
 
   # GET /staffs/1 or /staffs/1.json
   def show
+    @staffs = Staff.order('created_at DESC').page params[:page]
   end
 
   # GET /staffs/new

@@ -89,19 +89,20 @@
     </div>
   </section>
   <!-- /courses -->
-    <!-- ======= Marketing Headline ======= -->
-  <section id="cta" class="cta">
-    <div class="container aos-init aos-animate " data-aos="zoom-in">
+  <!--marketing-->
+  <section class="section bg-primary">
+    <div class="container">
       <% @marketing.where(page_to_display: 'programs').each do |m|%>
         <div class="text-center">
           <h3><%= m.headline_title.html_safe%></h3>
           <p><%= m.description.html_safe%></p>
-          <%= link_to "Learn more", "#{m.action}", class:"cta-btn"%>
+          <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
         </div>
       <% end %>
     </div>
-  </section>
-  <!-- End Marketing -->
+  </div>
+</section>
+<!-- /marketing -->
     <!-- ======= Contact Section ======= -->
   <section id="contact" class="contact">
     <div class="container" data-aos="fade-up">

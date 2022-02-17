@@ -143,16 +143,20 @@
     	</div>
     </section>
   	
-  	<!-- ======= Marketing Headline ======= -->
-  	<section id="cta" class="cta">
-  		<div class="container aos-init aos-animate " data-aos="zoom-in">
-  			<div class="text-center">
-  				<h3>Marketing Headline</h3>
-  				<p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  				<%=link_to "Learn more", "#", class:"cta-btn" %>
-  			</div>
-  		</div>
-  	</section> <!-- End Marketing -->
+  <!--marketing-->
+  <section class="section bg-primary">
+    <div class="container">
+      <% @marketing.where(page_to_display: 'contact').each do |m|%>
+        <div class="text-center">
+          <h3><%= m.headline_title.html_safe%></h3>
+          <p><%= m.description.html_safe%></p>
+          <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<!-- /marketing -->
   	
 <!-- ======= Frequently Asked Questions Section ======= -->
 <section id="faq" class="faq">
