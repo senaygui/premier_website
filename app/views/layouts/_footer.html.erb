@@ -1,112 +1,101 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
-
-  <div class="footer-top">
-    <div class="container">
+  <div class="footer-top bg-footer">
+    <div class="container bg-footer">
       <div class="row">
-
         <div class="col-lg-3 col-md-6 footer-contact">
-          <h3><%= image_tag "logo2.png", size: "150x57"%></h3>
-
+          <h3><%= image_tag "logo.png", size: "150x80"%></h3>
           <p>
             Asmara Street <br>
-            Addis Ababa, Ethiopia<br><br>
+            Addis Ababa, Ethiopia<br>
+            <br>
             <strong>Phone:</strong> +251-906505050<br>
             <strong>Email:</strong> info@heuc@edu.et<br>
           </p>
         </div>
-
         <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Useful Links</h4>
+          <h4 class="primary">Useful Links</h4>
           <ul>
             <li><%= link_to "#" do %>
-            <i class="bx bx-chevron-right"></i><span>Home</span>
-            <% end%></li>
+                <i class="bx bx-chevron-right"></i><span>Home</span>
+              <% end%></li>
             <li><%= link_to "about" do %>
-            <i class="bx bx-chevron-right"></i><span>About us</span>
-            <% end%></li>
+                <i class="bx bx-chevron-right"></i><span>About us</span>
+              <% end%></li>
             <li><%= link_to "#" do %>
-            <i class="bx bx-chevron-right"></i><span>Services</span>
-            <% end%></li>
+                <i class="bx bx-chevron-right"></i><span>Services</span>
+              <% end%></li>
             <li><%= link_to "accreditation" do %>
-            <i class="bx bx-chevron-right"></i><span>Accreditation</span>
-            <% end%></li>
+                <i class="bx bx-chevron-right"></i><span>Accreditation</span>
+              <% end%></li>
             <li><%= link_to "#" do %>
-            <i class="bx bx-chevron-right"></i><span>Office</span>
-            <% end%></li>
+                <i class="bx bx-chevron-right"></i><span>Office</span>
+              <% end%></li>
             <li><%= link_to "programs" do %>
-            <i class="bx bx-chevron-right"></i><span>Programs</span>
-            <% end%></li>
+                <i class="bx bx-chevron-right"></i><span>Programs</span>
+              <% end%></li>
           </ul>
         </div>
-
         <div class="col-lg-3 col-md-6 footer-links">
           <h4>Our Admission</h4>
           <ul>
             <% Admission.all.each do |admission| %>
-              <li><i class="bx bx-chevron-right"></i> 
-              <%=link_to "#{admission.modality}", "admissions/#{admission.id}"%></li>
+              <li><i class="bx bx-chevron-right"></i>
+                <%=link_to "#{admission.modality}", "admissions/#{admission.id}"%></li>
             <% end %>
           </ul>
         </div>
-
         <div class="col-lg-3 col-md-12 footer-links">
           <h4>Our Social Networks</h4>
           <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
           <div class="social-links mt-3">
             <%= link_to "#{College.last.twitter_handle}", class:"twitter" do %>
-            <i class="bx bxl-twitter"></i>
+              <i class="bx bxl-twitter"></i>
             <% end%>
             <%= link_to "#{College.last.facebook_handle}", class:"facebook" do %>
-            <i class="bx bxl-facebook"></i>
+              <i class="bx bxl-facebook"></i>
             <% end%>
             <%= link_to "#{College.last.instagram_handle}", class:"instagram" do %>
-            <i class="bx bxl-instagram"></i>
+              <i class="bx bxl-instagram"></i>
             <% end%>
             <%= link_to "#", class:"skype" do %>
-            <i class="bx bxl-skype"></i>
+              <i class="bx bxl-skype"></i>
             <% end%>
             <%= link_to "#{College.last.linkedin_handle}", class:"linkedin" do %>
-            <i class="bx bxl-linkedin"></i>
+              <i class="bx bxl-linkedin"></i>
             <% end%>
-
-
           </div>
         </div>
-
       </div>
     </div>
   </div>
-
-
-  <div class="container d-md-flex py-4">
-
+  <div class="container w-100 d-md-flepx py-4">
     <div class="mr-md-auto text-center text-md-left">
       <div class="copyright">
-        &copy; Copyright <span>Yardstick International College</span>. <br> All Rights Reserved.
+        &copy; Copyright <span>Yardstick International College</span>. <br>
+        All Rights Reserved.
       </div>
       <div class="credits">
-       <strong> DESIGNED BY : </strong>  <%= link_to "Yesu IT Solution PLC", "https://yesuitsolution.com/"%>
-     </div>
-   </div>
-   <div class="social-links text-center text-md-right pt-3 pt-md-0">
-   <%= link_to "#", class:"twitter" do%>
-   <i class="bx bxl-twitter"></i>
-   <%end%>
-   <%= link_to "#", class:"facebook" do%>
-   <i class="bx bxl-facebook"></i>
-   <%end%>
-   <%= link_to "#", class:"instagram" do%>
-   <i class="bx bxl-instagram"></i>
-   <%end%>
-   <%= link_to "#", class:"skype" do%>
-   <i class="bx bxl-skype"></i>
-   <%end%>
-   <%= link_to "#", class:"linkedin" do%>
-   <i class="bx bxl-linkedin"></i>
-   <%end%>
-
-  </div>
-
-</footer><!-- End Footer -->
-<%= link_to `<i class="icofont-simple-up"></i>`, `"#"  class="back-to-top"`%>
+        <strong> DESIGNED BY : </strong>  <%= link_to "Yesu IT Solution PLC", "https://yesuitsolution.com/"%>
+      </div>
+    </div>
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <%= link_to "#", class:"twitter" do%>
+        <i class="bx bxl-twitter"></i>
+      <%end%>
+      <%= link_to "#", class:"facebook" do%>
+        <i class="bx bxl-facebook"></i>
+      <%end%>
+      <%= link_to "#", class:"instagram" do%>
+        <i class="bx bxl-instagram"></i>
+      <%end%>
+      <%= link_to "#", class:"skype" do%>
+        <i class="bx bxl-skype"></i>
+      <%end%>
+      <%= link_to "#", class:"linkedin" do%>
+        <i class="bx bxl-linkedin"></i>
+      <%end%>
+    </div>
+  </footer>
+  <!-- End Footer -->
+  <%= link_to `<i class="icofont-simple-up"></i>`, `"#"  class="back-to-top"`%>

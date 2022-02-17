@@ -1,88 +1,34 @@
   <main id="main">
-    <section class="breadcrumbs">
-  		<div class="container">
 
-        <ol>
-          <li><%=link_to "Home","/"%></li>
-          <li>News & Events</li>
-        </ol>
-        <h2>News & Events</h2>
-
-  		</div>
-  	</section>
-
-    <section id="blog" class="blog">
-    <section id="recent-blog-posts" class="recent-blog-posts mt-3"> 
-      <div class="container" data-aos="fade-up">
-          <div class="entries">
-          <%= paginate @news %>
-          <div class="row">
-            <% @news.each do |n|%>
-                <div class="col-lg-4 mt-5" >
-                    <div class="post-box">
-                      <div class="post-img"><%= image_tag n.photo %></div>
-                      <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html"><%= n.published_by.html_safe%></a></li>
-                        <span class="post-date"><%= Date.parse(n.created_at.to_s).strftime('%A')%>, <%= Date.parse(n.created_at.to_s).to_formatted_s(:long)%></span>
-                        <h3 class="post-title"><%= n.news_title.html_safe %></h3>
-                        <p style="text-align: justify;"><%=n.overview.truncate(256).html_safe%></p>
-                        <%=link_to news_path(n), class:"readmore stretched-link mt-auto" do%>
-                          <span>Read More</span><i class="bi bi-arrow-right"></i>
-                        <%end%>
-                    </div>
-                </div>
-            <% end %>
-    		</div>
-        <%= paginate @news %>
-            <%# <div class="blog-pagination mt-3">
-              <ul class="justify-content-center">
-                <li class="disabled"><i class="icofont-rounded-left"></i></li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#"><i class="icofont-rounded-right"></i></a></li>
+<!-- blogs -->
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <!-- blog post -->
+      <%@news.each do |news|%>
+        <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+          <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+            <%= image_tag news.photo, class:"card-img-top rounded-0" %>
+            <div class="card-body">
+              <!-- post meta -->
+              <ul class="list-inline mb-3">
+                <!-- post date -->
+                <li class="list-inline-item mr-3 ml-0"><%= Date.parse(news.created_at.to_s).strftime('%A')%>, <%= Date.parse(news.created_at.to_s).to_formatted_s(:long)%></li>
+                <!-- author -->
+                <li class="list-inline-item mr-3 ml-0">By <%= news.published_by%></li>
               </ul>
-            </div> %>
-          </div>
-</section>
-          <%# <div class="col-lg-4">
-            <div class="sidebar">
-              <h3 class="sidebar-title">Recent Events</h3>
-              <div class="sidebar-item recent-posts">
-                <div class="post-item clearfix">
-                  <h4><a href="#" style="pointer-events: none">Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem .Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <h4><a href="#" style="pointer-events: none">Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem .Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                  <h4><a href="#" style="pointer-events: none">Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem .Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                   <h4><a href="#" style="pointer-events: none">Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem .Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-                <div class="post-item clearfix">
-                   <h4><a href="#" style="pointer-events: none">Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem. Nihil blanditiis at in nihil autem .Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-
-              </div>
-
+              <%= link_to news_path(news) do%>
+                <h4 class="card-title"><%= news.news_title.html_safe%></h4>
+              <% end%>
+              <p class="card-text"><%= news.overview.truncate(256).html_safe%></p>
+              <%= link_to 'Read More', news_path(news), class: "btn btn-primary btn-sm" %>
             </div>
-
-          </div> %>
-
-
-        </div>
-
-      </div>
-    </section>
-    </main>
-
+          </div>
+        </article>
+      <%end%>
+    </div>
+    <%= paginate @news %>
+  </div>
+</section>
+<!-- /blogs -->
+</main>

@@ -1,378 +1,364 @@
-   <!-- ======= Hero Section ======= -->
-   <section id="hero" class="align-items-center">
-
-   	<div class="container-fluid" data-aos="zoom-out" data-aos-delay="100">
-   		<div class="row justify-content-center">
-   			<div class="col-xl-10">
-   				<div class="row">
-   					<div class="col-xl-6 mt-2">
-
-   						<%= image_tag "logo223.png", size: "250x75"%>
-   						<h1>YIC Started online masters Registration </h1>
-   						<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-   						<%= link_to 'Apply now',"https://sis.yic.edu.et/students/sign_up", class:"btn-get-started scrollto"%>
-   					</div>
-   					<div class="col-6 col-xl-6 mt-3 mb-2">
-   						<div class="embed-responsive embed-responsive-16by9">
-						   <%=embed(@college.video_link)%>
-   						</div>
-   					</div>
-   				</div>
-   			</div>
-   		</div>
-   	</div>
-
-   </section><!-- End Hero -->
-
-   <main id="main">
-   	<section id="services" class="services" >
-   		<div class="container" data-aos="zoom-out" data-aos-delay="100">
-
-   			<div class="section-title">
-   				<h2>I want to be the future of</h2>
-   			</div>
-
-   			<div class="row justify-content-center">
-				
-				<% @admissions.each do |admission| %>
-					<div class="col-lg-3 col-md-6">
-						<%= link_to ("admissions/#{admission.id}") do %>
-							<div class="icon-box d-flex justify-content-center">
-								<h4 class="d-flex align-items-center">
-								<%= link_to "#{admission.modality} #{ admission.study_level}","admissions/#{admission.id}"%>
-								</h4>
-							</div>
-							
-						<%end%>
-					</div>
-				<% end %>
-   			</div>
-
-   		</div>
-   	</section>
-
-   	<section id="cta" class="cta" data-aos="zoom-in" data-aos-delay="100">
-   		<div class="container aos-init aos-animate " data-aos="zoom-in">
-			<% @marketing.where(page_to_display: 'home').each do |m|%>
-				<div class="text-center">
-					<h3><%= m.headline_title%></h3>
-					<p><%= m.description%></p>
-					<%link_to "Learn more","#{m.action}", class:"cta-btn"%>
-				</div>
-			<% end %>
-   		</div>
-   	</section>
-
-   	<section id="recent-blog-posts" class="recent-blog-posts">
-
-   		<div class="container aos-init aos-animate" data-aos="fade-up">
-
-   			<header class="section-header" data-aos="zoom-in">
-   				<h2>Programs</h2>
-   				<p>Our Degree Program</p>
-   			</header>
-
-   			<div class="row">
-
-   				<%Program.where(study_level: 'undergraduate').each do |pro|%>
-				    <div class="col-lg-3 mt-3" style="padding-right: 5px;">
-						<div class="post-box">
-							<div class="post-img"><%= image_tag pro.photo, class:"img-fluid"%></div>
-							<h3 class="post-title"><%= pro.program_name.html_safe%></h3>
-							<span class="post-date"><strong>modality:-</strong><%=  pro.modality.html_safe%></span>
-							<p class="post-date mb-4" style="text-align: justify;"><%=pro.overview.truncate(256).html_safe%></span>
-							<%= link_to "Read More", program_path(pro.id), class: "readmore stretched-link mt-auto"%>
-						</div>
-   					</div>
-				<% end %>
-
-   			</div>
-
-   		</div>
-
-   	</section>
-   	<section id="recent-blog-posts" class="recent-blog-posts">
-
-   		<div class="container aos-init aos-animate" data-aos="fade-up">
-
-   			<header class="section-header" data-aos="zoom-in">
-   				<h2>Programs</h2>
-   				<p>Our Masters Program</p>
-   			</header>
-
-   			<div class="row">
-				<%Program.where(study_level: 'graduate').each do |pro|%>
-					<div class="col-lg-3 mt-3" style="padding-right: 5px;">
-						<div class="post-box">
-							<div class="post-img"><%= image_tag pro.photo, class:"img-fluid"%></div>
-							<h3 class="post-title"><%= pro.program_name.html_safe%></h3>
-							<span class="post-date"><strong>modality:-</strong><%=  pro.modality.html_safe%></span>
-							<span class="post-date mb-4" style="text-align: justify;"><%= pro.overview.truncate(256).html_safe%></span>
-							<%= link_to "Read More", program_path(pro.id), class: "readmore stretched-link mt-auto"%>
-						</div>
-   					</div>
-				<% end %>
-   				
-   			</div>
-			   
-
-   		</div>
-
-   	</section>
-
-   	<section id="recent-blog-posts" class="recent-blog-posts">
-
-   		<div class="container aos-init aos-animate" data-aos="fade-up">
-
-   			<header class="section-header" data-aos="zoom-in">
-   				<h2>Programs</h2>
-   				<p>Our TVET Pogram</p>
-   			</header>
-
-   			<div class="row">
-
-   				<%Program.where(study_level: 'TVET').each do |pro|%>
-				    <div class="col-lg-3 mt-3" style="padding-right: 5px;">
-						<div class="post-box">
-							<div class="post-img"><%= image_tag pro.photo, class:"img-fluid"%></div>
-							<h3 class="post-title"><%= pro.program_name.html_safe%></h3>
-							<span class="post-date"><strong>modality:-</strong><%=  pro.modality.html_safe%></span>
-							<p class="post-date mb-4" style="text-align: justify;"><%=pro.overview.truncate(256).html_safe%></span>
-							<%= link_to "Read More", program_path(pro.id), class: "readmore stretched-link mt-auto"%>
-						</div>
-   					</div>
-				<% end %>
-
-   			</div>
-
-   		</div>
-
-   	</section>
-
-   	<!-- ======= About Section ======= -->
-   	<section id="about" class="about section-bg">
-   		<div class="container" data-aos="fade-up">
-
-   			<div class="row no-gutters">
-   				<div class="content col-xl-5 d-flex align-items-stretch">
-   					<div class="content">
-   						<h3><%= Time.now.year - @college.establishment_date.year %> Years Of Academic Services</h3>
-   						<p>
-   							<%= @college.overview.html_safe %>
-   						</p>
-						<%=link_to  "about", class:"about-btn" do%>
-							<span>About us</span><i class="bx bx-chevron-right"></i>
-						<%end%>
-   						<%# <%= icon("chevron-right", class: "text-success") %> 
-   					</div>
-   				</div>
-   				<div class="col-xl-7 d-flex align-items-stretch">
-   					<div class="icon-boxes d-flex flex-column justify-content-center">
-   						<div class="row">
-   							<div class="col-md-6 icon-box mt-0" data-aos="fade-up" data-aos-delay="100">
-   								<i class="bx bx-receipt"></i>
-   								<h4>Vision</h4>
-   								<p><%= @college.vision.html_safe%></p>
-   							</div>
-   							<div class="col-md-6 icon-box mt-0" data-aos="fade-up" data-aos-delay="200">
-   								<i class="bx bx-cube-alt"></i>
-   								<h4>Mission </h4>
-   								<p><%= @college.mission.html_safe%></p>
-   							</div>
-                <!-- <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <i class="bx bx-images"></i>
-                  <h4>Labore consequatur</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                </div>
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-                  <i class="bx bx-shield"></i>
-                  <h4>Beatae veritatis</h4>
-                  <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-                </div> -->
-              </div>
-            </div><!-- End .content-->
+   <!-- hero slider -->
+<section class=" hero-section overlay bg-cover" data-background="../../assets/images/banner-1.jpg">
+  <div class="container">
+    <div class="hero-slider">
+      <!-- slider item -->
+      <div class="hero-slider-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="text-white" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".1">Your bright future is our mission</h1>
+            <p class="text-muted mb-4" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor
+              incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
+            <a href="/contact" class="btn btn-primary" data-animation-out="fadeOutRight" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInLeft" data-delay-in=".7">Apply now</a>
           </div>
         </div>
-
       </div>
-    </section>
-    <section id="recent-blog-posts" class="recent-blog-posts">
-
-    	<div class="container aos-init aos-animate" data-aos="fade-up">
-
-    		<header class="section-header">
-    			<h2>News</h2>
-    			<p>Latest News & Events</p>
-    		</header>
-    		<div class="row mt-3">
-    			<% @news.each do |n|%>
-					<div class="col-lg-4 mt-5">
-					<div class="post-box">
-						<div class="post-img"><%= image_tag n.photo %></div>
-						<span class="post-date"><%= Date.parse(n.created_at.to_s).strftime('%A')%>, <%= Date.parse(n.created_at.to_s).to_formatted_s(:long)%></span>
-						<h3 class="post-title"><%= n.news_title.html_safe %></h3>
-						<p style="text-align: justify;"><%=n.overview.truncate(256).html_safe%></p>
-						<%=link_to news_path(n), class:"readmore stretched-link mt-auto" do%>
-							<span>Read More</span><i class="bi bi-arrow-right"></i>
-						<%end%></div>
-					</div>
-				<% end %>
-    		</div>
-
-    	</div>
-
-    </section>
-
-    <section id="cta" class="cta">
-    	<div class="container aos-init aos-animate " data-aos="zoom-in">
-			<% @marketing.where(page_to_display: 'home').each do |m|%>
-				<div class="text-center">
-					<h3><%= m.headline_title.html_safe%></h3>
-					<p><%= m.description.html_safe%></p>	
-					<%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
-				</div>
-			<% end %>
-    	</div>
-    </section>
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-    	<div class="container" data-aos="fade-up">
-    		<div class="section-title">
-    			<h2>Testimonials</h2>
-    			<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-    		</div>
-    	</div>
-
-		<div class="container mt-5 mb-4">
-			<div class="row">
-				<div class="col-lg-12 ml-5">
-					<div id="commenMain ">
-					<% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: true).each do |s|%>
-						<div class="row ml-5">
-							<div class="col-lg-6">
-								<div class="container">
-									<h3><%= s.fullname%></h3>
-									<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-										<%= s.message.html_safe%>
-									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-									</p>
-								</div>
-								
-							</div>
-							<div class="col-lg-5">
-								<div class="img">
-									<%= image_tag(s.photo, class: "img-fluid") if s.photo.attached?%>
-								</div>
-							</div> 
-							
-						</div>
-					
-				<% end %>
-			</div>
-				</div>
-			</div>
-		</div>
-
-    	<div class="container-fluid">
-
-    		<div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-    			<div class="col-xl-10">
-    				<div class="owl-carousel testimonials-carousel">
-						<% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: false).each do |c|%>
-							<div class="testimonial-wrap">
-								<div class="testimonial-item">
-								<%= image_tag(c.photo, class: "testimonial-img") if c.photo.attached?%>
-								<h3><%= c.fullname%></h3>
-								<h4><%= c.subject.html_safe%></h4>
-								<p>
-								<i class="bx bxs-quote-alt-left quote-icon-left"></i>
-								<%= c.message.html_safe%>
-								<i class="bx bxs-quote-alt-right quote-icon-right"></i>
-								</p>
-								</div>
-							</div>
-						<% end %>
-    				</div>
-    			</div>
-    		</div>
-
-    	</div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-    	<div class="container" data-aos="fade-up">
-
-    		<div class="section-title">
-    			<h2>Contact</h2>
-    			<p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-    		</div>
-			<div class="text-center"><%= link_to "Check Our Branches", "/contact",class: "btn btn-primary mb-4"%></div>
-
-    		<div class="row" data-aos="fade-up" data-aos-delay="100">
-
-    			<div class="col-lg-6">
-
-    				<div class="row">
-    					<div class="col-md-12">
-    						<div class="info-box">
-    							<i class="bx bx-map"></i>
-    							<h3>Our Address</h3>
-    							<p>Ethiopia Addis Ababa, Asmara Road</p>
-    						</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="info-box mt-4">
-    							<i class="bx bx-envelope"></i>
-    							<h3>Email Us</h3>
-    							<p>info@yic@edu.et<br>contact@yic@edu.et</p>
-    						</div>
-    					</div>
-    					<div class="col-md-6">
-    						<div class="info-box mt-4">
-    							<i class="bx bx-phone-call"></i>
-    							<h3>Call Us</h3>
-    							<p>+251-11-6-460954<br>+251-11-6-478965</p>
-    						</div>
-    					</div>
-    				</div>
-
-    			</div>
-
-    			<div class="col-lg-6">
-					<%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'php-email-form'}) do |f| %>
-						<div class="form-row">
-    						<div class="col form-group">
-								<%= f.input :fullname, class: "form-control"%>
-    							<div class="validate"></div>
-    						</div>
-    						<div class="col form-group">
-								<%= f.input :category, collection: ["testimonial", "comment", "review"], class: "form-control"%>
-    							<div class="validate"></div>
-    						</div>
-    					</div>
-    					<div class="form-group">
-							<%= f.input :subject, class: "form-control"%>
-    						<div class="validate"></div>
-    					</div>
-    					<div class="form-group">
-							<%= f.input :message, class: "form-control", type: 'text'%>
-    						<div class="validate"></div>
-    					</div>
-    					<div class="mb-3">
-    						<div class="loading">Loading</div>
-    						<div class="error-message"></div>
-    						<div class="sent-message">Your message has been sent. Thank you!</div>
-    					</div>
-						<%= f.submit 'Send Message', class: 'btn btn-primary'%>
-    					<% end %>
-    			</div>
-    		</div>
-
-    	</div>
-    </section><!-- End Contact Section -->
-  </main><!-- End #main -->
-
-
+      <!-- slider item -->
+      <div class="hero-slider-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="text-white" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".1">Your bright future is our mission</h1>
+            <p class="text-muted mb-4" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor
+              incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
+            <a href="/contact" class="btn btn-primary" data-animation-out="fadeOutUp" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInDown" data-delay-in=".7">Apply now</a>
+          </div>
+        </div>
+      </div>
+      <!-- slider item -->
+      <div class="hero-slider-item">
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="text-white" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1">Your bright future is our mission</h1>
+            <p class="text-muted mb-4" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor
+              incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</p>
+            <a href="/contact" class="btn btn-primary" data-animation-out="fadeOutDown" data-delay-out="5" data-duration-in=".3" data-animation-in="zoomIn" data-delay-in=".7">Apply now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<main id="main">
+  <!-- banner-feature -->
+  <section class="bg-gray overflow-md-hidden">
+    <div class="container-fluid p-0">
+      <div class="row no-gutters">
+        <div class="col-xl-4 col-lg-5 align-self-end">
+          <%= image_tag 'banner-feature.png', class:"img-fluid w-100" %>
+        </div>
+        <div class="col-xl-8 col-lg-7">
+          <div class="row feature-blocks bg-gray justify-content-between">
+            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+              <i class="bx-book mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+              <h3 class="mb-xl-4 mb-lg-3 mb-4">Scholorship News</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad</p>
+            </div>
+            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+              <i class="bx-blackboard mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+              <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Notice Board</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad</p>
+            </div>
+            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+              <i class="bx-agenda mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+              <h3 class="mb-xl-4 mb-lg-3 mb-4">Our Achievements</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad</p>
+            </div>
+            <div class="col-sm-6 col-xl-5 mb-xl-5 mb-lg-3 mb-4 text-center text-sm-left">
+              <i class="bx bx-write mb-xl-4 mb-lg-3 mb-4 feature-icon"></i>
+              <h3 class="mb-xl-4 mb-lg-3 mb-4">Admission Now</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et dolore magna aliqua. Ut enim ad</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /banner-feature -->
+  <!-- about us -->
+  <section class="section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-2 order-md-1">
+          <h2 class="section-title">About Us</h2>
+          <p>	<%= @college.overview.html_safe %> </p>
+          <%= link_to 'Learn more', about_path, class:"btn btn-primary-outline" %>
+        </div>
+        <div class="col-md-6 order-1 order-md-2 mb-4 mb-md-0">
+          <%= image_tag 'about-us.jpg',class:"img-fluid w-100" %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /about us -->
+  <!-- courses -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex align-items-center section-title justify-content-between">
+            <h2 class="mb-0 text-nowrap mr-3">Our Course</h2>
+            <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+            <div>
+              <%= link_to 'see all', programs_path, class:"btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- course list -->
+      <div class="row justify-content-center">
+        <!-- course item -->
+        <% @programs.each do |program|%>
+          <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+              <%= image_tag program.photo, class:"card-img-top rounded-0"%>
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
+                  <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
+                </ul>
+                <%= link_to program_path(program) do%>
+                  <h4 class="card-title"><%= program.program_name.html_safe%></h4>
+                <% end%>
+                <p class="card-text mb-4"><%= program.overview.truncate(256).html_safe%> </p>
+                <%= link_to "Read More", program_path(program), class: "btn btn-primary btn-sm"%>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+      <!-- course item -->
+      <!-- /course list -->
+      <!-- mobile see all button -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <a href="courses.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /courses -->
+  <!--marketing-->
+  <section class="section bg-primary">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- course item -->
+        <% @marketing.each do |marketing|%>
+          <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i>02-14-2018</li>
+                  <li class="list-inline-item"><a class="text-color" href="#">Humanities</a></li>
+                </ul>
+                <h4 class="card-title"><%= marketing.headline_title.html_safe%></h4>
+                <p class="card-text mb-4"><%= marketing.description.truncate(256).html_safe%> </p>
+                <%= link_to "Read More","#", class: "btn btn-primary btn-sm"%>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /marketing -->
+<!-- events -->
+<section class="section bg-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="d-flex align-items-center section-title justify-content-between">
+          <h2 class="mb-0 text-nowrap mr-3">Latest News and Events</h2>
+          <div class="border-top w-100 border-primary d-none d-sm-block"></div>
+          <div>
+            <%= link_to 'see all', news_index_path, class:"btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <!-- event -->
+      <%@news.each do |news|%>
+        <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+          <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+            <%= image_tag news.photo, class:"card-img-top rounded-0" %>
+            <div class="card-body">
+              <!-- post meta -->
+              <ul class="list-inline mb-3">
+                <!-- post date -->
+                <li class="list-inline-item mr-3 ml-0"><%= Date.parse(news.created_at.to_s).strftime('%A')%>, <%= Date.parse(news.created_at.to_s).to_formatted_s(:long)%></li>
+                <!-- author -->
+                <li class="list-inline-item mr-3 ml-0">By <%= news.published_by%></li>
+              </ul>
+              <%= link_to news_path(news) do%>
+                <h4 class="card-title"><%= news.news_title.html_safe%></h4>
+              <% end%>
+              <p class="card-text"><%= news.overview.truncate(256).html_safe%></p>
+              <%= link_to 'Read More', news_path(news), class: "btn btn-primary btn-sm" %>
+            </div>
+          </div>
+        </article>
+      <%end%>
+      <!-- event -->
+      <!-- mobile see all button -->
+      <div class="row">
+        <div class="col-12 text-center">
+          <a href="course.html" class="btn btn-sm btn-primary-outline d-sm-none d-inline-block">sell all</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /events -->
+  <!--Testimonials Section-->
+  <section class="section bg-primary">
+    <div class="container">
+      <div class="section-title">
+        <h2>President Message</h2>
+        <p>The inspiration of Grand international College founders is embedded in providing</p>
+        <p> quality education, research, and community and training service. I believe quality education is a master key of all our problems</p>
+        <p> as a country in Ethiopia as a content Africa Now it is a time to provide quality education. Therefore to achieve this, dear visitor</p>
+        <p> our college are highly well organized by human (Qualified professionals) and non-human resource/infrastructures </p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- /Testimonials Section -->
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Testimonials</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
+    </div>
+  </div>
+  <div class="container mt-5 mb-4">
+    <div class="row">
+      <div class="col-lg-12 ml-5">
+        <div id="commenMain ">
+          <% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: true).each do |s|%>
+            <div class="row ml-5">
+              <div class="col-lg-6">
+                <div class="container">
+                  <h3><%= s.fullname%></h3>
+                  <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    <%= s.message.html_safe%>
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-5">
+                <div class="img">
+                  <%= image_tag(s.photo, class: "img-fluid") if s.photo.attached?%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-xl-10">
+        <div class="owl-carousel testimonials-carousel">
+          <% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: false).each do |c|%>
+            <div class="testimonial-wrap">
+              <div class="testimonial-item">
+                <%= image_tag(c.photo, class: "testimonial-img") if c.photo.attached?%>
+                <h3><%= c.fullname%></h3>
+                <h4><%= c.subject.html_safe%></h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  <%= c.message.html_safe%>
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Testimonials Section -->
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
+    </div>
+    <div class="text-center"><%= link_to "Check Our Branches", "/contact",class: "btn btn-primary mb-4"%></div>
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="info-box">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <p>Ethiopia Addis Ababa, Asmara Road</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box mt-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Us</h3>
+              <p>info@gic@edu.et<br>
+                contact@gic@edu.et</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="info-box mt-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Us</h3>
+              <p>+251-11-6-460954<br>
+                +251-11-6-478965</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'php-email-form'}) do |f| %>
+          <div class="form-row">
+            <div class="col form-group">
+              <%= f.input :fullname, class: "form-control"%>
+              <div class="validate"></div>
+            </div>
+            <div class="col form-group">
+              <%= f.input :category, collection: ["testimonial", "comment", "review"], class: "form-control"%>
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.input :subject, class: "form-control"%>
+            <div class="validate"></div>
+          </div>
+          <div class="form-group">
+            <%= f.input :message, class: "form-control", type: 'text'%>
+            <div class="validate"></div>
+          </div>
+          <div class="mb-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <%= f.submit 'Send Message', class: 'btn btn-primary'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contact Section -->
+</main><!-- End #main -->

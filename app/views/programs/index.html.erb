@@ -1,156 +1,172 @@
   <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
+  <!-- courses -->
+  <section class="section">
+    <div class="container">
+      <!-- course list -->
+      <div>
+      <h2>Our UnderGraduate Programs</h2>
+      <div class="row justify-content-center">
+      
+        <%Program.where(study_level: 'undergraduate').each do |pro|%>
+          <!-- course item -->
+          <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+            <%= image_tag pro.photo, class:"card-img-top rounded-0" %>
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><%= Date.parse(pro.created_at.to_s).strftime('%A')%>, <%= Date.parse(pro.created_at.to_s).to_formatted_s(:long)%></li>
+                 <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><%= pro.modality%></li>
 
-        <ol>
-          <li><%=link_to "Home","/"%></li>
-          <li>Programs</li>
-        </ol>
-        <h2>Programs</h2>
-
-      </div>
-    </section>
-    
-    <section id="recent-blog-posts" class="recent-blog-posts">
-
-      <div class="container aos-init aos-animate" data-aos="fade-up">
-
-        <header class="section-header">
-          <!-- <h2>Programs</h2> -->
-          <p>Our Degree Programs</p>
-        </header>
-
-        <div class="row">
-          <%Program.where(study_level: 'undergraduate').each do |pro|%>
-	    			<div class="col-lg-3 mt-3" style="padding-right: 5px;">
-	   					<div class="post-box bg-white">
-	   						<div class="post-img"><%= image_tag pro.photo, class: "img-fluid"%></div>
-
-	   						<h3 class="post-title"><%= pro.program_name.html_safe%></h3>
-	   						<span class="post-date"><strong>modality:- <%= pro.modality.html_safe%> </strong></span>
-	   						<span class="post-date mb-4" style="text-align: justify;"><%= pro.overview.truncate(256).html_safe%> .</span>
-	   						<%= link_to "Read More", program_path(pro), class: "readmore stretched-link mt-auto"%>
-	   					</div>
-	   				</div>
-	    		<%end%>
-        </div>
-
-      </div>
-
-    </section>
-    
-    <!-- ======= Marketing Headline ======= -->
-    <section id="cta" class="cta">
-      <div class="container aos-init aos-animate " data-aos="zoom-in">
-        <% @marketing.where(page_to_display: 'programs').each do |m|%>
-          <div class="text-center">
-            <h3><%= m.headline_title.html_safe%></h3>
-            <p><%= m.description.html_safe%></p>
-            <%= link_to "Learn more", "#{m.action}", class:"cta-btn"%>
-          </div>
-        <% end %>
-      </div>
-    </section> <!-- End Marketing -->
-    
-    <section id="recent-blog-posts" class="recent-blog-posts">
-
-    <div class="container aos-init aos-animate" data-aos="fade-up">
-
-      <header class="section-header">
-        <!-- <h2>Programs</h2> -->
-        <p>Our Masters Programs</p>
-      </header>
-
-      <div class="row">
-        <%Program.where(study_level: 'graduate').each do |pro|%>
-          <div class="col-lg-3 mt-3" style="padding-right: 5px;">
-             <div class="post-box bg-white">
-               <div class="post-img"><%= image_tag pro.photo, class: "img-fluid"%></div>
-
-               <h3 class="post-title"><%= pro.program_name.html_safe%></h3>
-               <span class="post-date"><strong>modality:- <%= pro.modality.html_safe%> </strong></span>
-               <span class="post-date mb-4" style="text-align: justify;"><%= pro.overview.truncate(256).html_safe%> .</span>
-               <%= link_to "Read More", program_path(pro), class: "readmore stretched-link mt-auto"%>
-             </div>
-           </div>
-        <%end%>
-      </div>
-
-    </div>
-
-  </section>
-  
-    
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-6">
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="info-box">
-                  <i class="bx bx-map"></i>
-                  <h3>Our Address</h3>
-                  <p>Ethiopia Addis Ababa, Asmara Road</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box mt-4">
-                  <i class="bx bx-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@yic@edu.et<br>contact@yic@edu.et</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box mt-4">
-                  <i class="bx bx-phone-call"></i>
-                  <h3>Call Us</h3>
-                  <p>+251-11-6-460954<br>+251-11-6-478965</p>
-                </div>
+                </ul>
+                <a href="course-single.html">
+                  <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
+                </a>
+                <p class="card-text mb-4"><%=pro.overview.truncate(256).html_safe%></p>
+                <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
               </div>
             </div>
-
           </div>
-
-          <div class="col-lg-6">
-					<%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'php-email-form'}) do |f| %>
-						<div class="form-row">
-    						<div class="col form-group">
-								<%= f.input :fullname, class: "form-control"%>
-    							<div class="validate"></div>
-    						</div>
-    						<div class="col form-group">
-								<%= f.input :category, collection: ["testimonial", "comment", "review"], class: "form-control"%>
-    							<div class="validate"></div>
-    						</div>
-    					</div>
-    					<div class="form-group">
-							<%= f.input :subject, class: "form-control"%>
-    						<div class="validate"></div>
-    					</div>
-    					<div class="form-group">
-							<%= f.input :message, class: "form-control", type: 'text'%>
-    						<div class="validate"></div>
-    					</div>
-    					<div class="mb-3">
-    						<div class="loading">Loading</div>
-    						<div class="error-message"></div>
-    						<div class="sent-message">Your message has been sent. Thank you!</div>
-    					</div>
-						<%= f.submit 'Send Message', class: 'btn btn-primary'%>
-    					<% end %>
-    			</div>
-
-        </div>
-
+          <!-- course item -->
+        <%end%>
+        <!-- /course list -->
       </div>
-    </section> <!-- End contact Section -->
-  </main>
+      </div>
+      <div>
+      <h2>Our Graduate Programs</h2>
+      <div class="row justify-content-center">
+        <%Program.where(study_level: 'graduate').each do |pro|%>
+          <!-- course item -->
+          <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+            <%= image_tag pro.photo, class:"card-img-top rounded-0" %>
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><%= Date.parse(pro.created_at.to_s).strftime('%A')%>, <%= Date.parse(pro.created_at.to_s).to_formatted_s(:long)%></li>
+                 <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><%= pro.modality%></li>
+
+                </ul>
+                <a href="course-single.html">
+                  <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
+                </a>
+                <p class="card-text mb-4"><%=pro.overview.truncate(256).html_safe%></p>
+                <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
+              </div>
+            </div>
+          </div>
+          <!-- course item -->
+        <%end%>
+        <!-- /course list -->
+      </div>
+      </div>
+      <div>
+      <h2>Our Short-Term Trainings</h2>
+      <div class="row justify-content-center">\
+      
+        <%Program.where(study_level: 'training').each do |pro|%>
+          <!-- course item -->
+          <div class="col-lg-4 col-sm-6 mb-5">
+            <div class="card p-0 border-primary rounded-0 hover-shadow">
+            <%= image_tag pro.photo, class:"card-img-top rounded-0" %>
+              <div class="card-body">
+                <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><%= Date.parse(pro.created_at.to_s).strftime('%A')%>, <%= Date.parse(pro.created_at.to_s).to_formatted_s(:long)%></li>
+                 <li class="list-inline-item"><i class="ti-calendar mr-1 text-color"></i><%= pro.modality%></li>
+
+                </ul>
+                <a href="course-single.html">
+                  <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
+                </a>
+                <p class="card-text mb-4"><%=pro.overview.truncate(256).html_safe%></p>
+                <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
+              </div>
+            </div>
+          </div>
+          <!-- course item -->
+        <%end%>
+        <!-- /course list -->
+      </div>
+      <div>
+    </div>
+  </section>
+  <!-- /courses -->
+    <!-- ======= Marketing Headline ======= -->
+  <section id="cta" class="cta">
+    <div class="container aos-init aos-animate " data-aos="zoom-in">
+      <% @marketing.where(page_to_display: 'programs').each do |m|%>
+        <div class="text-center">
+          <h3><%= m.headline_title.html_safe%></h3>
+          <p><%= m.description.html_safe%></p>
+          <%= link_to "Learn more", "#{m.action}", class:"cta-btn"%>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <!-- End Marketing -->
+    <!-- ======= Contact Section ======= -->
+  <section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
+      </div>
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <i class="bx bx-map"></i>
+                <h3>Our Address</h3>
+                <p>Ethiopia Addis Ababa, Asmara Road</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-envelope"></i>
+                <h3>Email Us</h3>
+                <p>info@yic@edu.et<br>
+                  contact@yic@edu.et</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-phone-call"></i>
+                <h3>Call Us</h3>
+                <p>+251-11-6-460954<br>
+                  +251-11-6-478965</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'php-email-form'}) do |f| %>
+            <div class="form-row">
+              <div class="col form-group">
+                <%= f.input :fullname, class: "form-control"%>
+                <div class="validate"></div>
+              </div>
+              <div class="col form-group">
+                <%= f.input :category, collection: ["testimonial", "comment", "review"], class: "form-control"%>
+                <div class="validate"></div>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= f.input :subject, class: "form-control"%>
+              <div class="validate"></div>
+            </div>
+            <div class="form-group">
+              <%= f.input :message, class: "form-control", type: 'text'%>
+              <div class="validate"></div>
+            </div>
+            <div class="mb-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <%= f.submit 'Send Message', class: 'btn btn-primary'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End contact Section -->
+</main>

@@ -1,65 +1,85 @@
+<main id="main">
 
-  <main id="main">
-    <section class="breadcrumbs">
-  		<div class="container">
-
-        <ol>
-          <li><%=link_to "Home","/"%></li>
-          <li>News & Events</li>
-        </ol>
-        <h2>News & Events</h2>
-
-  		</div>
-  	</section>
-
-    <section id="blog" class="blog">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-lg-8 entries">
-          <%# <% @news do |n|%>
-            <article class="entry">
-            <div class="post-img"><%= image_tag @news.photo %></div>
-              <h2 class="entry-title">
-                <div style= "color :#0975b8"><%= @news.news_title.html_safe%></div>
-              </h2>
-			        <br>
-			        <div class="entry-img">
-                <img src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-              </div>
-              <div class="entry-meta">
-                <ul>
-                  <li class="d-flex align-items-center"><i class="icofont-user"></i> <a href="blog-single.html"><%= @news.published_by%></a></li>
-                  <li class="d-flex align-items-center"><i class="icofont-wall-clock"></i> <%= Date.parse(@news.created_at.to_s).strftime('%A')%>, <%= Date.parse(@news.created_at.to_s).to_formatted_s(:long)%></li>               
-                </ul>
-              </div>
-              <div class="entry-content">
-                <p><%= @news.body.html_safe%></p>  
-              </div>
-            </article>
-          <%# <% end %> 
-            
-          </div>
-
-          <div class="col-lg-4">
-          <section id="course-details" class="course-details">
-            <div class="container" data-aos="fade-up">
-              <div class="course-info d-flex justify-content-between align-items-center">
-                  <h3>Recent News</h3>
-                </div>
-              <%@last_five_news.each do |news|%>
-                <div class="course-info d-flex justify-content-between align-items-center">
-                  <h6><%= link_to news.news_title,news_path(news)%></h6>
-                </div>
-              <%end%>              
-            </div>
-          </section>
-          </div>
-
-
+  <!-- blog details -->
+  <section class="section-sm bg-gray">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mb-4">
+          <%= image_tag @news.photo, class:"img-fluid w-100" %>
         </div>
-
+        <div class="col-12">
+          <ul class="list-inline">
+            <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><span class="font-weight-bold mr-2">Post:</span><%=@news.published_by%></li>
+            <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><%= Date.parse(@news.created_at.to_s).strftime('%A')%>, <%= Date.parse(@news.created_at.to_s).to_formatted_s(:long)%></li>
+            <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><i class="ti-book mr-2"></i>Read 289</li>
+            <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><i class="ti-share mr-2"></i>289</li>
+            <li class="list-inline-item mr-4 mb-3 mb-md-0 text-light"><a class="text-light" href="#"><i class="ti-comments mr-2"></i>265</a></li>
+          </ul>
+        </div>
+        <!-- border -->
+        <div class="col-12 mt-4">
+          <div class="border-bottom border-primary"></div>
+        </div>
+        <!-- blog contect -->
+        <div class="col-12 mb-5">
+          <h2><%=@news.news_title.html_safe%> </h2>
+          <p><%=@news.body.html_safe%></p>
+        </div>
+        <!-- comment box -->
+        <div class="col-12">
+          <form action="#" class="row">
+            <div class="col-sm-6">
+              <input type="text" class="form-control mb-4" id="name" name="name" placeholder="Full Name">
+            </div>
+            <div class="col-sm-6">
+              <input type="email" class="form-control mb-4" id="mail" name="mail" placeholder="Email Address">
+            </div>
+            <div class="col-12">
+              <textarea name="comment" id="comment" class="form-control mb-4" placeholder="Comment Here..."></textarea>
+            </div>
+            <div class="col-12">
+              <button type="submit" value="send" class="btn btn-primary">post comment</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </section>
-    </main>
-
-
+    </div>
+  </section>
+  <!-- /blog details -->
+  <!-- recommended post -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title">Recommended</h2>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <%@last_five_news.each do |news|%>
+          <!-- blog post -->
+          <article class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+            <div class="card rounded-0 border-bottom border-primary border-top-0 border-left-0 border-right-0 hover-shadow">
+              <%= image_tag news.photo, class:"card-img-top rounded-0" %>
+              <div class="card-body">
+                <!-- post meta -->
+                <ul class="list-inline mb-3">
+                  <!-- post date -->
+                  <li class="list-inline-item mr-3 ml-0"><%= Date.parse(news.created_at.to_s).strftime('%A')%>, <%= Date.parse(news.created_at.to_s).to_formatted_s(:long)%></li>
+                  <!-- author -->
+                  <li class="list-inline-item mr-3 ml-0">By <%= news.published_by%></li>
+                </ul>
+                <%= link_to news_path(news) do%>
+                  <h4 class="card-title"><%= news.news_title.html_safe%></h4>
+                <% end%>
+                <p class="card-text"><%= news.overview.truncate(256).html_safe%></p>
+                <%= link_to 'Read More', news_path(news), class: "btn btn-primary btn-sm" %>
+              </div>
+            </div>
+          </article>
+          <!-- blog post -->
+        <%end%>
+      </div>
+    </div>
+  </section>
+  <!-- /recommended post -->
+</main>

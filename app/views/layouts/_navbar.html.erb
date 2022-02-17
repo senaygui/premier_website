@@ -1,55 +1,50 @@
-<header id="header" class="fixed-top">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-xl-12 d-flex align-items-center">
-       <h1 class="logo mr-auto">
-            <%= link_to "/" do%>
-              <%=image_tag "logo2.png"%>
-            <%end%>
-       </h1>
-         <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <%= link_to <%=image_tag "assets/img/logo.png" alt=""%>, "index.html", class="logo mr-auto"%>-->
-
-        <nav class="nav-menu d-none d-lg-block mr-lg-5">
-          <ul>
-            <li class="active"><%= link_to "Home", root_path%></li>
-            <!-- <li><%= link_to "Admission", "#about"%></li> -->
-            <li class="drop-down"><%= link_to "Admission", "#"%>
-              <ul>
-                <% Admission.all.each do |admission|%>
-                  <li><%= link_to("#{admission.admission_name}", {controller: "admissions", action: "show", id: admission} )%></li>
-                  <!-- <li><%= link_to "Regular Masters", "regular_masters.html"%></li>
-                  <li><%= link_to "Online Masters","#"%></li>
-                  <li><%= link_to "Extension Degree", "#" %></li>
-                  <li><%= link_to "Distance Degree", "#"%></li>
-                  <li><%= link_to "TBVT", "#"%></li> -->
-                <%end%>
-              </ul>
-            </li>
-            <li><%= link_to "News&Event", news_index_path%></li>
-            <li><%= link_to "Accreditation", accreditation_path%></li>
-            <li><%= link_to "About", about_path%> </li>
-            <li><%= link_to "Office", staffs_path%></li>
-            <li><%= link_to "Programs", programs_path%></li>
-            <!-- <li class="drop-down"><a href="">Offices</a>
-              <ul>
-                <li><a href="">office 1 </a></li>
-                <li><a href="">office 2</a></li>
-              </ul>
-            </li> -->
-            <li><%= link_to "Almunis", almunis_path%></li>
-              
-              <li><%= link_to "Contact us", contact_path%></li>
-            
-          </ul>
-        </nav><!-- .nav-menu -->
-
-        <%= link_to "Apply now","https://sis.yic.edu.et/requirements", class: "get-started-btn scrollto"%>
+<!-- End Header -->
+<div class="navigation w-100">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark p-0">
+      <%= link_to "/" do%>
+        <%=image_tag "logo.png" ,{:style=>'height:100px;'}%>
+      <%end%>
+      <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navigation">
+        <ul class="navbar-nav ml-auto text-center">
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item @@about">
+            <%= link_to "About", about_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item @@courses">
+            <%= link_to "Programs", programs_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item @@blog">
+            <%= link_to "News&Event", news_index_path, class:"nav-link"%>
+          </li>
+          <!--<li class="nav-item dropdown view">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+              Pages
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="teacher.html">Teacher</a>
+              <a class="dropdown-item" href="teacher-single.html">Teacher Single</a>
+              <a class="dropdown-item" href="notice.html">Notice</a>
+              <a class="dropdown-item" href="notice-single.html">Notice Details</a>
+              <a class="dropdown-item" href="research.html">Research</a>
+              <a class="dropdown-item" href="scholarship.html">Scholarship</a>
+              <a class="dropdown-item" href="course-single.html">Course Details</a>
+              <a class="dropdown-item" href="event-single.html">Event Details</a>
+              <a class="dropdown-item" href="blog-single.html">Blog Details</a>
+            </div>
+          </li>-->
+          <li class="nav-item @@contact">
+            <%= link_to "Contact us", contact_path, class:"nav-link"%>
+          </li>
+        </ul>
       </div>
-    </div>
-
+    </nav>
   </div>
-</header><!-- End Header -->
-<div class="clear-header"></div>
+</div>

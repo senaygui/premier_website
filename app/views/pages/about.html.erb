@@ -1,447 +1,87 @@
-  <main id="main">
-    <section class="breadcrumbs">
-      <div class="container">
-
-        <ol>
-          <li><%= link_to "Home","/"%></li>
-          <li>About</li>
-        </ol>
-        <h2>About us</h2>
-
-      </div>
-    </section>
-
-    
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts counts-bg">
-      <div class="container">
-
-        <div class="row justify-content-end">
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="0" class="purecounter" style="color:#fcdb03"><%= Time.now.year - @college.establishment_date.year %></span>
-              <p><strong>Years of experience</strong></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="0" class="purecounter" style="color:#fcdb03"><%= @college.number_of_prorgam%></span>
-              <p><strong>Programs</strong></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="30" data-purecounter-duration="0" class="purecounter" style="color:#fcdb03"><%= @college.distance_center%></span>
-              <p><strong>Distance Centers</strong></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="0" class="purecounter" style="color:#fcdb03"><%= @college.student_enrolled%></span>
-              <p><strong>Enrolled Students</strong></p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-    
-    <!-- ======= Tabs Section ======= -->
-    <section id="tabs" class="tabs">
-      <div class="container" data-aos="fade-up">
-
-        <ul class="nav nav-tabs row d-flex">
-          <li class="nav-item col-3">
-            <a class="nav-link active show" data-toggle="tab" href="#tab-1">
-              <i class="ri-gps-line"></i>
-              <h4 class="d-none d-lg-block">Overview</h4>
-            </a>
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-toggle="tab" href="#tab-2">
-              <i class="ri-body-scan-line"></i>
-              <h4 class="d-none d-lg-block">History</h4>
-            </a>
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-toggle="tab" href="#tab-3">
-              <i class="ri-sun-line"></i>
-              <h4 class="d-none d-lg-block">Mission & Vision</h4>
-            </a>
-          </li>
-          <li class="nav-item col-3">
-            <a class="nav-link" data-toggle="tab" href="#tab-4">
-              <i class="ri-store-line"></i>
-              <h4 class="d-none d-lg-block">Mandate</h4>
-            </a>
-          </li>
-        </ul>
-
-        <div class="tab-content">
-          <div class="tab-pane active show" id="tab-1">
-            <div class="row">
-              <div class="col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0" data-aos="fade-up" data-aos-delay="100">
-                <%= @college.overview.html_safe%>
-              </div>
-              <%# <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
-                <%= image_tag "overview.jpeg", alt:"", class:"img-fluid" %>
-              <%# </div> %> 
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-2">
-            <div class="row">
-              <div class="col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0">
-                <%= @college.history.html_safe%>
-              </div>
-              <%# <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="https://lms.heuc@edu.et/pluginfile.php/1/theme_moove/sliderimage1/1631710258/%28A%29---1500%20x%20700%20pixel%20for%20front%20page%20header%20image-01.png" alt="" class="img-fluid">
-              </div> %>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-3">
-            <div class="row">
-              <div class="col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0">
-                <%= @college.mission.html_safe%>
-                <br>
-                <%= @college.vision.html_safe%>
-              </div>
-              <%# <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="https://lms.heuc@edu.et/pluginfile.php/1/theme_moove/sliderimage1/1631710258/%28A%29---1500%20x%20700%20pixel%20for%20front%20page%20header%20image-01.png" alt="" class="img-fluid">
-              </div> %>
-            </div>
-          </div>
-          <div class="tab-pane" id="tab-4">
-            <div class="row">
-              <div class="col-lg-12 order-2 order-lg-1 mt-3 mt-lg-0">
-                <%= @college.mandate.html_safe%>
-            </div>
+<main>
+<!-- funfacts -->
+  <section class="section-sm bg-primary">
+    <div class="container">
+      <div class="row">
+        <!-- funfacts item -->
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <div class="text-center">
+            <h2 class="text-white"><%=@college.establishment_date.year%></h2>
+            <h5 class="text-white">STARTING FROM</h5>
           </div>
         </div>
-
-      </div>
-    </section><!-- End Tabs Section -->
-    <section id="about" class="about section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="row no-gutters">
-          <% @staff.where(job_title: 'PRESIDENT').each do |s|%>
-            <div class="content col-xl-8 d-flex align-items-stretch">
-              <div class="content">
-                <h3>PRESIDENTS MESSAGE</h3>
-                <p>
-                  <%= s.message.html_safe %>
-                </p>
-                <p>
-                  <strong class="text-right"></strong> Congratulations once again!
-                </p>
-              </div>
-            </div>
-            <div class="col-xl-4 d-flex align-items-stretch mt-5" >
-              <%= image_tag s.photo, size: "466x350", style: "margin-top: 100px;" %>
-            </div>
-          <%end%>
+        <!-- funfacts item -->
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <div class="text-center">
+            <h2 class="count text-white" data-count=<%=@college.number_of_prorgam%>>0</h2>
+            <h5 class="text-white">COURSES</h5>
+          </div>
+        </div>
+        <!-- funfacts item -->
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <div class="text-center">
+            <h2 class="count text-white" data-count=<%=@college.student_enrolled%>>0</h2>
+            <h5 class="text-white">STUDENTS</h5>
+          </div>
+        </div>
+        <!-- funfacts item -->
+        <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+          <div class="text-center">
+            <h2 class="count text-white" data-count=<%=@college.distance_center%>>0</h2>
+            <h5 class="text-white">BRANCHES</h5>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  
-</section>
-<!-- ======= Departments Section ======= -->
-<section id="departments" class="departments">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Our Services</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-3">
-        <ul class="nav nav-tabs flex-column" id="portfolio-flters">
-            <% @service.each_with_index do |s,i|%>
-              <% if i == 0 %>
-                <li class="nav-item">
-                  <a class="nav-link active show" data-toggle="tab" href="#tab-<%= i %>"><%= s.service_name.html_safe%></a>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#tab-<%= i %>"><%= s.service_name.html_safe%></a>
-                </li>
-              <% end %>
-            <%end%>          
-        </ul>
-      </div>
-      <div class="col-lg-9 mt-4 mt-lg-0">
-        <div class="tab-content portfolio-container">
-          <% @service.each_with_index do |s,i|%>
-              <% if i == 0 %>
-                <div class="tab-pane active show" id="tab-<%= i %>">
-                  <div class="row portfolio-wrap">
-                    <div class="col-lg-8 details order-2 order-lg-1 portfolio-info">
-                      <h3><%= s.service_name.html_safe%></h3>
-                      <p class="font-italic"><%= s.service_overview.html_safe%></p>
-                      <p><%= s.details.html_safe%></p>
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
-              <% else %>
-                <div class="tab-pane" id="tab-<%= i %>">
-                  <div class="row portfolio-wrap">
-                    <div class="col-lg-8 details order-2 order-lg-1 portfolio-info">
-                      <h3><%= s.service_name.html_safe%></h3>
-                      <p class="font-italic"><%= s.service_overview.html_safe%></p>
-                      <p><%= s.details.html_safe%></p> 
-                    </div>
-                    <div class="col-lg-4 text-center order-1 order-lg-2">
-                      <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-          <%end%> 
+  <!-- /funfacts -->
+  <!-- about -->
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="section-title">ABOUT OUR JOURNY</h2>
+          <p> <%=@college.background.html_safe%></p>
+        </div>
+        <div class="col-6">
+          <h2 class="section-title">OUR MISSION</h2>
+          <p> <%=@college.mission.html_safe%></p>
+        </div>
+        <div class="col-6">
+          <h2 class="section-title">OUR VISION</h2>
+          <p> <%=@college.vision.html_safe%></p>
         </div>
       </div>
     </div>
-
-  </div>
-</section><!-- End Departments Section -->
-<!-- ======= Team Section ======= -->
-<section id="team" class="team section-bg">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>YIC Leadership</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-    </div>
-
-    <div class="row">
-
-      <% @staff.where.not(job_title: 'PRESIDENT').where.not(job_title: 'Vice PRESIDENT').each do |s|%>
-        <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-        <div class="member" data-aos="fade-up" data-aos-delay="100">
-          <div class="member-img">
-            <%= image_tag s.photo, size: "400x300"%>
-            <div class="social">
-              <a href=""><i class="icofont-twitter"></i></a>
-              <a href=""><i class="icofont-facebook"></i></a>
-              <a href=""><i class="icofont-instagram"></i></a>
-              <a href=""><i class="icofont-linkedin"></i></a>
+  </section>
+  <!-- /about -->
+  
+  <!-- teachers -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <h2 class="section-title">Our Staff</h2>
+        </div>
+        <!-- staffs -->
+        <%=@staff.each do |staff|%>
+          <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0">
+            <div class="card border-0 rounded-0 hover-shadow">
+              <%= image_tag staff.photo, class:"card-img-top rounded-0" %>
+              <div class="card-body">
+                <%= link_to staff_path(staff) do %>
+                <h4 class="card-title"><%=staff.fullname%></h4>
+              <%end%>
+              <div class="d-flex justify-content-between">
+                <span><%=staff.job_title%></span>
+              </div>
             </div>
-          </div>
-          <div class="member-info">
-            <h4><%= s.fullname.html_safe%></h4>
-            <span><%= s.job_title.html_safe%></span>
-          </div>
           </div>
         </div>
       <%end%>
-    
-    </div>
+      <!-- staffs -->
 
-  </div>
-</section>
-<!-- End Team Section -->
-
-<!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio">
-  <div class="container" data-aos="fade-up">
-
-    <div class="section-title">
-      <h2>Accreditations</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-    </div>
-
-      	<div class="row" data-aos="fade-up" data-aos-delay="100">
-  				<div class="col-lg-12 d-flex justify-content-center">
-  					<ul id="portfolio-flters">
-  						<li data-filter="*" class="filter-active">All</li>
-  						<li data-filter=".online">Online Programs</li>
-  						<li data-filter=".regular">Regular Programs</li>
-  						<li data-filter=".distance">Distance Programs</li>
-  						<li data-filter=".extention">Extientions Programs</li>
-  					</ul>
-  				</div>
-  			</div>
-
-  			<div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-          <% @accreditations.each do |a|%>
-    				<div class="col-lg-4 col-md-6 portfolio-item <%= a.modality.html_safe%>">
-    					<div class="portfolio-wrap">
-							<% if a.accreditation_documents[0].blank? %>
-								<div class="portfolio-info">
-									<h4>Data Not Found</h4>
-								</div>
-							<% else %>
-								<%= image_tag a.accreditation_documents[0], class: "img-fluid"%>
-								<div class="portfolio-info">
-									<h4><%= a.accreditation_title.html_safe%></h4>
-									<p><%= a.modality.html_safe%></p>
-									<div class="portfolio-links">
-										<%= link_to '<i class="bx bx-plus"></i>'.html_safe, a.accreditation_documents[0], {'data-gall': "portfolioGallery",class: "venobox", title: a.accreditation_title.html_safe}%>
-									</div>
-								</div>
-							<% end %>
-    					</div>
-    				</div>
-          <%end%>
-
-    </div>
-
-  </div>
-</section><!-- End Portfolio Section -->
-
-<section id="about" class="about section-bg">
-  <div class="container" data-aos="fade-up">
-    <div class="row no-gutters">
-      <div class="content col-xl-12  d-flex align-items-stretch">
-      <% @staff.where(job_title: 'Vice PRESIDENT').each do |s|%>
-        
-            <div class="content col-xl-8 d-flex align-items-stretch">
-              <div class="content">
-                <h3>Vice PRESIDENTS MESSAGE</h3>
-                <p>
-                  <%= s.message.html_safe %>
-                </p>
-                <p>
-                  <strong class="text-right"></strong> Congratulations once again!
-                </p>
-              </div>
-            </div>
-            <div class="col-xl-4 d-flex align-items-stretch mt-5" >
-              <%= image_tag s.photo, size: "466x350", style: "margin-top: 100px;" %>
-            </div>
-          <%end%>
-     
-  </div>
-</div>
-</section>
-<section id="recent-blog-posts" class="recent-blog-posts">
-
-  <div class="container aos-init aos-animate" data-aos="fade-up">
-
-    <header class="section-header">
-      <h2>News</h2>
-      <p>Latest news and articles</p>
-    </header>
-
-    <div class="row">
-      <% @news.each do |n|%>
-        <div class="col-lg-4 mt-5">
-          <div class="post-box">
-            <div class="post-img"><%= image_tag n.photo %></div>
-            <span class="post-date"><%= Date.parse(n.created_at.to_s).strftime('%A')%>, <%= Date.parse(n.created_at.to_s).to_formatted_s(:long)%></span>
-            <h3 class="post-title"><%= n.news_title.html_safe %></h3>
-            <%=link_to news_path(n), class:"readmore stretched-link mt-auto" do%>
-							<span>Read More</span><i class="bi bi-arrow-right"></i>
-						<%end%>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
-
-</section>
-<section id="gallery" class="gallery">
-  <div class="container">
-
-    <div class="section-title">
-      <h2>Gallery</h2>
-      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-    </div>
-  </div>
-
-  <div class="container-fluid">
-    <div class="row no-gutters">
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-4">
-        <div class="gallery-item">
-          <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-            <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-          </a>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-<section id="cta" class="cta">
-  <div class="container aos-init aos-animate " data-aos="zoom-in">
-			<% @marketing.where(page_to_display: 'about').each do |m|%>
-				<div class="text-center">
-					<h3><%= m.headline_title.html_safe%></h3>
-					<p><%= m.description.html_safe%></p>
-				
-					<%= link_to "Learn more", "#{m.action}", class:"cta-btn"%>
-        </div>
-			<% end %>
-  </div>
-</section>
-
-<!-- ======= Testimonials Section ======= -->
+      <!-- ======= Testimonials Section ======= -->
 <section id="testimonials" class="testimonials">
   <div class="container" data-aos="fade-up">
     <div class="section-title">
@@ -492,7 +132,7 @@
       <% @faq.each do |c, i|%>
         <li>
         <a data-toggle="collapse" class="collapsed" href="#faq1<%= c.id %>"><%= c.question%>? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-        <div id="faq1<%= c.id %>" class="collapse" data-parent=".faq-list">
+        <div id="faq1<%= c.id %>" class="collapse" data-animation-out="fadeOutUp" data-parent=".faq-list">
           <p>
           <%= c.answer%>
           </p>
@@ -581,3 +221,5 @@
 </section><!-- End Contact Section -->
 
 </main><!-- End #main -->
+
+
