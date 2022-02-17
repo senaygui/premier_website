@@ -21379,11 +21379,26 @@ html.overflow-y-hidden {
 .v-badge--tile .v-badge__badge {
   border-radius: 0;
 }
+.card-img-top {
+  height: 20em;
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
 .container {
   width: 100%;
-  padding: 12px;
+  padding: 0px;
   margin-right: auto;
   margin-left: auto;
+}
+.bg-cover {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.navigation {
+  background: linear-gradient(to right, transparent 10%, #ffbc3b 100%);
+  transition: .2s ease;
 }
 @media (min-width: 960px) {
   .container {
