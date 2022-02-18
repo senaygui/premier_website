@@ -29,7 +29,7 @@ ActiveAdmin.register MarketingSection do
       f.semantic_errors
       f.inputs "Marketing Section" do
         f.input :headline_title
-        f.input :page_to_display, as: :select, :collection => ["home", "about", "contact", "programs"]
+        f.input :page_to_display, as: :select, :collection => ["home", "about", "contact", "programs","admission"]
         f.input :description, as: :string, input_html: { maxlength: 255 }
         f.input :action
       f.actions
