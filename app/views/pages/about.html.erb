@@ -45,7 +45,7 @@
   <!-- /funfacts -->
   <!-- about -->
 
-  <section id="departments" class="departments">
+  <section id="departments" class="departments mb-3">
   <div class="container">
 
     <div class="section-title">
@@ -54,7 +54,7 @@
     </div>
 
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 d-flex align-items-stretch">
         <ul class="nav nav-tabs flex-column" id="portfolio-flters">
             <% @service.each_with_index do |s,i|%>
               <% if i == 0 %>
@@ -107,7 +107,7 @@
   </div>
 </section>
 <!--marketing-->
-<section class=" bg-primary">
+<section class=" bg-primary mt-2">
   <div class="container">
     <div class="section-title">
     <% @marketing.where(page_to_display: 'about').each do |m|%>
