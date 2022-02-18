@@ -13,7 +13,7 @@
 .navigation {
   // background: $primary-color 50%;
   background: linear-gradient(to right, $primary-color 50%);
-  height: 120px;
+  height: 100px;
   transition: 0.2s ease;
 
   @include desktop {

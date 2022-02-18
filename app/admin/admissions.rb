@@ -1,5 +1,5 @@
 ActiveAdmin.register Admission do
-permit_params :admission_name,:how_to_apply,:required_document,:payment_process,:useful_information,:study_level,:modality
+permit_params :admission_name,:how_to_apply,:required_document,:payment_process,:useful_information,:study_level,:modality,:overview
 
 
   controller do
@@ -33,7 +33,7 @@ permit_params :admission_name,:how_to_apply,:required_document,:payment_process,
       f.semantic_errors
       f.inputs "Admission Information", :multipart => true do
         f.input :admission_name
-        f.input :overview, as: :string, input_html: { maxlength: 255 }
+        f.input :overview, as: :string, input_html: { maxlength: 150 }
         f.input :how_to_apply, :as => :ckeditor
         f.input :required_document, :as => :ckeditor
         f.input :payment_process, :as => :ckeditor

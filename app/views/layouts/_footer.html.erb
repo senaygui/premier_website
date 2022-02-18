@@ -5,16 +5,17 @@
       <div class="row">
         <div class="col-lg-3 col-md-6 footer-contact">
           <h3><%= image_tag "logo.png", size: "150x80"%></h3>
-          <p>
-            Asmara Street <br>
+          <p class="text-white">
+          Saris nearest to Commercial Bank of Ethiopia  <br>
             Addis Ababa, Ethiopia<br>
             <br>
-            <strong>Phone:</strong> +251-906505050<br>
-            <strong>Email:</strong> info@heuc@edu.et<br>
+            <strong>Phone:</strong> 011 8 88 88 63<br>
+            <strong>Phone:</strong> 011 888 51 52<br>
+            <strong>Email:</strong> <a href='Registrar.grandintcollege@edu.et'>Registrar.grandintcollege@edu.et<br></a>
           </p>
         </div>
         <div class="col-lg-2 col-md-6 footer-links">
-          <h4 class="text-light">Useful Links</h4>
+          <h4 class="text-white">Useful Links</h4>
           <ul>
             <li><%= link_to "#" do %>
                 <i class="bx bx-chevron-right"></i><span>Home</span>
@@ -37,7 +38,7 @@
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 footer-links">
-          <h4 class="text-light">Our Admission</h4>
+          <h4 class="text-white">Our Admission</h4>
           <ul>
             <% Admission.all.each do |admission| %>
               <li><i class="bx bx-chevron-right"></i>
@@ -46,7 +47,7 @@
           </ul>
         </div>
         <div class="col-lg-3 col-md-12 footer-links">
-          <h4 class="text-light">Our Social Networks</h4>
+          <h4 class="text-white">Our Social Networks</h4>
           <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
           <div class="social-links mt-3">
             <%= link_to "#{College.last.twitter_handle}", class:"twitter" do %>
@@ -70,9 +71,9 @@
     </div>
   </div>
   <div class="container w-100 d-md-flepx py-4">
-    <div class="mr-md-auto text-center text-md-left">
-      <div class="copyright">
-        &copy; Copyright <span>Yardstick International College</span>. <br>
+    <div class="mr-md-auto text-center text-white text-md-left">
+      <div class="copyright text-white">
+        &copy; Copyright <span>Grand International College </span>. <br>
         All Rights Reserved.
       </div>
       <div class="credits">
