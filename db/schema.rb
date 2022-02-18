@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_105725) do
+ActiveRecord::Schema.define(version: 2022_02_18_055319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_105725) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.string "overview"
     t.index ["slug"], name: "index_admissions_on_slug", unique: true
   end
 
@@ -117,11 +118,11 @@ ActiveRecord::Schema.define(version: 2022_01_17_105725) do
     t.integer "phone_number"
     t.integer "second_phone_number"
     t.string "email"
-    t.bigint "program_id"
+    t.bigint "college_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "map"
-    t.index ["program_id"], name: "index_branches_on_program_id"
+    t.index ["college_id"], name: "index_branches_on_college_id"
   end
 
   create_table "career_opportunities", force: :cascade do |t|
@@ -166,6 +167,8 @@ ActiveRecord::Schema.define(version: 2022_01_17_105725) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "video_link"
+    t.bigint "college_id"
+    t.index ["college_id"], name: "index_colleges_on_college_id"
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -310,6 +313,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_105725) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "colleges", "colleges"
   add_foreign_key "requests", "almunis"
   add_foreign_key "steps", "how_tos"
 end

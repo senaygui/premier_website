@@ -10,6 +10,7 @@ class AdmissionsController < ApplicationController
   # GET /admissions/1 or /admissions/1.json
   def show
     @marketing = MarketingSection.all
+    @programs = Program.all
   end
 
   # GET /admissions/new
