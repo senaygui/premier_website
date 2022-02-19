@@ -289,7 +289,7 @@ $(document).on('turbolinks:load', function () {
   });
 
   // Porfolio isotope and filter
-  $(window).on('load', function () {
+ {
     var portfolioIsotope = $('.portfolio-container').isotope({
       itemSelector: '.portfolio-item',
       layoutMode: 'fitRows'
@@ -309,7 +309,7 @@ $(document).on('turbolinks:load', function () {
     $(document).ready(function () {
       $('.venobox').venobox();
     });
-  });
+  };
 
   // Init AOS
   function aos_init() {
