@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap.min.css
- *= require icofont.min
+ *= require icofont.min.css
  *= require boxicons.min
  *= require owl.carousel.min.css
  *= require remixicon
@@ -456,6 +456,7 @@ h6 {
 --------------------------------------------------------------*/
 .hero-section {
   padding: 250px 0 290px;
+  margin-top: 100px;
 }
 
 #hero {
@@ -560,6 +561,7 @@ h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
+  margin-top: 40px;
   padding: 60px 0;
   overflow: hidden;
   position: relative;
@@ -6185,6 +6187,7 @@ hr {
 details,
 main {
   display: block;
+  // margin-top: 50px;
 }
 summary {
   display: list-item;
@@ -21397,8 +21400,12 @@ html.overflow-y-hidden {
   background-repeat: no-repeat;
 }
 .navigation {
-  background: linear-gradient(to right, transparent 10%, #ffbc3b 100%);
+  background: linear-gradient(to right, transparent 100%, #FFFFFF 100%);
   transition: .2s ease;
+}
+
+.navigation .container{
+  max-width: 100%;
 }
 @media (min-width: 960px) {
   .container {

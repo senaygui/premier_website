@@ -1,5 +1,6 @@
-   <!-- hero slider -->
-<section class=" hero-section overlay bg-cover" data-background="page-title.jpg">
+
+<main id="main">   <!-- hero slider -->
+<section class=" hero-section overlay bg-cover " data-background="page-title.jpg">
   <div class="container">
     <div class="hero-slider">
       <!-- slider item -->
@@ -47,24 +48,6 @@
 <main id="main">
   <!-- banner-feature -->
 
-  <section id="featured-services" class="featured-services">
-  <div class="container" data-aos="fade-up">
-    <div class="section-title">
-      <h2>Check our Admissions</h2>
-    </div>
-    <div class="row">
-      <% @admissions.each do |admission|%>
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-          <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <%= link_to admission.modality+" " +admission.study_level, {controller: "admissions", action: "show", id: admission.id}, class:"title" %>
-            <p class="description"><%= admission.overview.truncate(150)%></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</section>
 
   <!-- /banner-feature -->
   <!-- about us -->
@@ -89,7 +72,7 @@
       <div class="row">
         <div class="col-12">
           <div class="d-flex align-items-center section-title justify-content-between">
-            <h2 class="mb-0 text-nowrap mr-3">Our Course</h2>
+            <h2 class="mb-0 text-nowrap mr-3">Our Programs</h2>
             <div class="border-top w-100 border-primary d-none d-sm-block"></div>
             <div>
               <%= link_to 'see all', programs_path, class:"btn btn-sm btn-primary-outline ml-sm-3 d-none d-sm-block" %>
@@ -135,7 +118,7 @@
       <% @marketing.where(page_to_display: 'home').each do |m|%>
         <div class="text-center">
           <h3><%= m.headline_title.html_safe%></h3>
-          <p><%= m.description.html_safe%></p>
+          <p class="text-muted"><%= m.description.html_safe%></p>
           <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
         </div>
       <% end %>
@@ -206,7 +189,7 @@
             <% @comment.where(category: "testimonial").where(display_on_home_page: true).where(main_testimonial: false).each do |c|%>
               <div class="testimonial-wrap">
                 <div class="testimonial-item">
-                  <%= image_tag(c.photo, class: "testimonial-img") if c.photo.attached?%>
+                  <%= image_tag("blank-profile-picture-973460_640.png", class: "testimonial-img")%>
                   <h3><%= c.fullname%></h3>
                   <h4><%= c.subject.html_safe%></h4>
                   <p>

@@ -1,4 +1,4 @@
-  <main id="main">
+  <main id="main mt-5">
 
   	
   	<!-- ======= Contact Section ======= -->
@@ -18,21 +18,22 @@
     						<div class="info-box">
     							<i class="bx bx-map"></i>
     							<h3>Our Address</h3>
-    							<p>Ethiopia Addis Ababa, Asmara Road</p>
+    							<p>Saris nearest to Commercial Bank of Ethiopia</p>
+								<p>Addis Ababa, Ethiopia</p>
     						</div>
     					</div>
     					<div class="col-md-6">
     						<div class="info-box mt-4">
     							<i class="bx bx-envelope"></i>
     							<h3>Email Us</h3>
-    							<p>info@yic@edu.et<br>contact@yic@edu.et</p>
+    							<p>info@gic@edu.et<br>contact@gic@edu.et</p>
     						</div>
     					</div>
     					<div class="col-md-6">
     						<div class="info-box mt-4">
     							<i class="bx bx-phone-call"></i>
     							<h3>Call Us</h3>
-    							<p>+251-11-6-460954<br>+251-11-6-478965</p>
+    							<p>+251-11-8-888863<br>+251-11-8-885152</p>
     						</div>
     					</div>
     				</div>
@@ -149,7 +150,7 @@
       <% @marketing.where(page_to_display: 'contact').each do |m|%>
         <div class="text-center">
           <h3><%= m.headline_title.html_safe%></h3>
-          <p><%= m.description.html_safe%></p>
+          <p  class="text-muted"><%= m.description.html_safe%></p>
           <%link_to "#{m.action}", class:"cta-btn" do %>Learn more<%end%>
         </div>
       <% end %>
