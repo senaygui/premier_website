@@ -29,12 +29,14 @@
 
 .navbar-nav {
   padding-left: 50px;
-  padding-right: 150px;
+  padding-right: 130px;
+  // height: 95px;
   background: $primary-color;
+  max-width: 85%;
 
   @include desktop {
     padding-left: 0;
-    background: $secondary-color;
+    background: $primary-color;
   }
 }
 

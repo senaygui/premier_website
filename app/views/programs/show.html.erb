@@ -1,90 +1,75 @@
   <main id="main">
   <!-- page title -->
-<section class="page-title-section overlay" data-background="images/backgrounds/page-title.jpg">
+  <section class="mt-4 page-title-section overlay" data-background="../page-title.jpg">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mt-4">
         <ul class="list-inline custom-breadcrumb">
           <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html"><%=@program.program_name%></a></li>
           <li class="list-inline-item text-white h3 font-secondary "></li>
         </ul>
-        <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
+        <p class="text-lighten">Our programs offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
       </div>
     </div>
   </div>
 </section>
-<!-- /page title -->
-
-    <!-- ======= Cource Details Section ======= -->
-    <section id="course-details" class="course-details">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-lg-8">
+  <!-- /page title -->
+  
+  <!-- ======= Cource Details Section ======= -->
+  <section id="course-details" class="course-details">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-8">
           <h2><%= @programs.program_name.html_safe %></h2>
           <%= image_tag @programs.photo, class: "img-fluid" %>
-            <h3><%= @programs.program_name.html_safe %></h3>
-            <%= @programs.program_description.html_safe %>
-          </div>
-          <div class="col-lg-4">
+          <h3><%= @programs.program_name.html_safe %></h3>
+          <%= @programs.program_description.html_safe %>
+        </div>
+        <div class="col-lg-4">
+          <div>
+            <div class="course-info d-flex justify-content-between align-items-center bg-primary">
+              <h3 class="text-white">Program Info</h3>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Study Level</h5>
+              <%= @programs.study_level.html_safe %>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Program Duration</h5>
+              <%= @programs.program_duration %>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>modality</h5>
+              <%= @programs.modality.html_safe %>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Total tuition</h5>
+              <%= @programs.total_tuition %>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Monthly tuition</h5>
+              <%= @programs.total_tuition %>
+            </div>
+            <div class="course-info d-flex justify-content-between align-items-center">
+              <h5>Credit Hour</h5>
+              <%= @programs.credit_hour %>
+            </div>
             <div>
-
-              <div class="course-info d-flex justify-content-between align-items-center bg-primary">
-                <h3>Program Info</h3>
-              </div>
-              <div class="course-info d-flex justify-content-between align-items-center">
-                <h5>Study Level</h5>
-                <%= @programs.study_level.html_safe %>
-              </div>
-              <div class="course-info d-flex justify-content-between align-items-center">
-                <h5>Program Duration</h5>
-                <%= @programs.program_duration %>
-          
-              </div>
-
-              <div class="course-info d-flex justify-content-between align-items-center">
-                <h5>modality</h5>
-                <%= @programs.modality.html_safe %>
-              </div>
-
-              <div class="course-info d-flex justify-content-between align-items-center">
-                <h5>Total tuition</h5>
-                <%= @programs.total_tuition %>
-              </div>
-
-              <div class="course-info d-flex justify-content-between align-items-center">
-                <h5>Monthly tuition</h5>
-                <%= @programs.total_tuition %>
-              </div>
-
-              <div class="course-info d-flex justify-content-between align-items-center">
-                <h5>Credit Hour</h5>
-                <%= @programs.credit_hour %>
-              </div>
-            <div>
-            <div class="mt-5">
+              <div class="mt-5">
                 <div class="course-info d-flex justify-content-between align-items-center bg-primary">
-                  <h3>Career Opportunities</h3>
+                  <h3 class="text-white">Career Opportunities</h3>
                 </div>
                 <% @careerOpportunity.where(program_id: @programs.id).each do |career| %>
                   <div class="course-info d-flex justify-content-between align-items-center">
                     <%= career.title.html_safe %>
                   </div>
                 <% end %>
-              
+              </div>
             </div>
           </div>
-          
         </div>
-
+        <!-- End Cource Details Section -->
       </div>
-    </section><!-- End Cource Details Section -->
-
-
-      </div>
-    </section><!-- End Cource Details Tabs Section -->
-
+    </section>
+    <!-- End Cource Details Tabs Section -->
   </main>
-  
-	
-	

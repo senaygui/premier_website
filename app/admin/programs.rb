@@ -1,6 +1,6 @@
 ActiveAdmin.register Program do
 
-  permit_params :program_name,:study_level,:modality,:overview,:program_description,:program_duration,:total_tuition,:monthly_tuition,:created_by,:last_updated_by, :credit_hour,:photo, career_opportunities_attributes: [:title]
+  permit_params :program_name,:study_level,:modality,:overview,:program_description,:program_duration,:total_tuition,:monthly_tuition,:created_by,:last_updated_by, :credit_hour,:photo, career_opportunities_attributes: [:id,:title]
 
   index do
     selectable_column
@@ -17,7 +17,7 @@ ActiveAdmin.register Program do
 
   filter :program_name
   filter :study_level, as: :select, :collection => ["undergraduate", "graduate", "training" ]
-  filter :modality, as: :select, :collection => ["online", "regular", "extention", "weekend"]
+  filter :modality, as: :select, :collection => ["online", "regular", "evening", "weekend"]
   filter :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7]       
   filter :created_by
   filter :last_updated_by
@@ -38,7 +38,7 @@ ActiveAdmin.register Program do
       f.input :overview,  :as => :ckeditor
       f.input :program_description,  :as => :ckeditor
       f.input :study_level, as: :select, :collection => ["undergraduate", "graduate", "training"], :include_blank => false
-      f.input :modality, as: :select, :collection => ["online", "regular", "extention", "weekend"], :include_blank => false
+      f.input :modality, as: :select, :collection => ["online", "regular", "evening", "weekend"], :include_blank => false
       f.input :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
       f.input :monthly_tuition
       f.input :total_tuition
