@@ -3,7 +3,7 @@
 <section class="page-title-section overlay" data-background="images/backgrounds/page-title.jpg">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mt-2">
         <ul class="list-inline custom-breadcrumb">
           <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Our Programs</a></li>
           <li class="list-inline-item text-white h3 font-secondary "></li>
@@ -35,7 +35,7 @@
                 <%=link_to program_path(pro) do %>
                   <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
                 <%end%>
-                <p class="card-text mb-4 mt-0"><%=pro.overview.truncate(256).html_safe%></p>
+                <p class="card-text mb-1"><%=pro.overview.truncate(256).html_safe%></p>
                 <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
               </div>
             </div>
@@ -61,7 +61,7 @@
                 <%=link_to program_path(pro) do %>
                   <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
                 <%end%>
-                <p class="card-text mb-4"><%=pro.overview.truncate(256).html_safe%></p>
+                <p class="card-text mb-1"><%=pro.overview.truncate(256).html_safe%></p>
                 <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
               </div>
             </div>
@@ -88,7 +88,7 @@
                 <%=link_to program_path(pro) do %>
                   <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
                 <%end%>
-                <p class="card-text mb-4"><%=pro.overview.truncate(256).html_safe%></p>
+                <p class="card-text mb-1"><%=pro.overview.truncate(256).html_safe%></p>
                 <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
               </div>
             </div>

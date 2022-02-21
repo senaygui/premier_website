@@ -107,7 +107,7 @@
   
   
 </figure>
-<h3>Lifelong learning</h3>
+<h3>Training</h3>
 <p>Continuing adult education, executive and professional programs, and programs for K-12 students</p>
 
 
@@ -126,7 +126,7 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 order-2 order-md-1">
-          <h2 class="section-title">About Us</h2>
+          <h2>About Us</h2>
           <p>	<%= @college.overview.html_safe %> </p>
           <%= link_to 'Learn more', about_path, class:"btn btn-primary-outline" %>
         </div>
@@ -165,7 +165,7 @@
                 <%= link_to program_path(program) do%>
                   <h4 class="card-title"><%= program.program_name.html_safe%></h4>
                 <% end%>
-                <p class="card-text mb-4"><%= program.overview.truncate(256).html_safe%> </p>
+                <p class="card-text mb-1"><%= program.overview.truncate(256).html_safe%> </p>
                 <%= link_to "Read More", program_path(program), class: "mt-auto align-self-start btn btn-primary btn-sm"%>
               </div>
             </div>
