@@ -1,10 +1,10 @@
 
 	<main id="main">
   <!-- page title -->
-<section class="page-title-section overlay" data-background="images/backgrounds/page-title.jpg">
+<section class="mt-4 page-title-section overlay" data-background="page-title.jpg">
   <div class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 mt-2">
         <ul class="list-inline custom-breadcrumb">
           <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Our <%=@admission.admission_name%> Courses</a></li>
         </ul>
@@ -123,7 +123,7 @@
                 <%= link_to program_path(program) do%>
                   <h4 class="card-title"><%= program.program_name.html_safe%></h4>
                 <% end%>
-                <p class="card-text mb-4"><%= program.overview.truncate(256).html_safe%> </p>
+                <p class="card-text mb-2"><%= program.overview.truncate(256).html_safe%> </p>
                 <%= link_to "Read More", program_path(program), class: "mt-auto align-self-start btn btn-primary btn-sm"%>
               </div>
             </div>
