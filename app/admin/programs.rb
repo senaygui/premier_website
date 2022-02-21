@@ -16,8 +16,8 @@ ActiveAdmin.register Program do
   end
 
   filter :program_name
-  filter :study_level, as: :select, :collection => ["undergraduate", "graduate", "TVET"]
-  filter :modality, as: :select, :collection => ["online", "regular", "extention", "distance"]
+  filter :study_level, as: :select, :collection => ["undergraduate", "graduate", "training" ]
+  filter :modality, as: :select, :collection => ["online", "regular", "extention", "weekend"]
   filter :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7]       
   filter :created_by
   filter :last_updated_by
@@ -37,8 +37,8 @@ ActiveAdmin.register Program do
       f.input :program_name
       f.input :overview,  :as => :ckeditor
       f.input :program_description,  :as => :ckeditor
-      f.input :study_level, as: :select, :collection => ["undergraduate", "graduate", "TVET"], :include_blank => false
-      f.input :modality, as: :select, :collection => ["online", "regular", "extention", "distance"], :include_blank => false
+      f.input :study_level, as: :select, :collection => ["undergraduate", "graduate", "training"], :include_blank => false
+      f.input :modality, as: :select, :collection => ["online", "regular", "extention", "weekend"], :include_blank => false
       f.input :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
       f.input :monthly_tuition
       f.input :total_tuition
