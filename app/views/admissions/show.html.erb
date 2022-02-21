@@ -1,7 +1,7 @@
 
 	<main id="main">
   <!-- page title -->
-<section class="mt-4 page-title-section overlay" data-background="page-title.jpg">
+<section class="mt-4 page-title-section overlay" data-background="../page-title.jpg">
   <div class="container">
     <div class="row">
       <div class="col-md-8 mt-2">
@@ -118,7 +118,7 @@
               <%= image_tag program.photo, class:"card-img-top rounded-0"%>
               <div class="card-body d-flex flex-column">
                 <ul class="list-inline mb-2">
-                  <li class="list-inline-item"><a class="text-color" href="#"><%= program.modality%></a></li>
+                  <li class="list-inline-item"><a class="text-color text-uppercase" href="#"><%= program.modality%></a></li>
                 </ul>
                 <%= link_to program_path(program) do%>
                   <h4 class="card-title"><%= program.program_name.html_safe%></h4>

@@ -108,7 +108,6 @@
   <% @staff.where(job_title: 'president').each do |s|%>
     <div class="col-md-5 mb-4 mb-md-0 ml-5">
       <%= image_tag s.photo, size: "466x350", style: "margin-top: 100px;", class:"img-fluid"%>
-
       <%# <img class="img-fluid" src="images/scholarship/scholarship.jpg" alt="scholarship news"> %>
     </div>
     <div class="col-md-6">
@@ -127,7 +126,7 @@
         <h2>Our Staff</h2>
       </div>
       <!-- staffs -->
-      <% @staff.each do |staff|%>
+      <% @staff.where(job_title: 'PRESIDENT').each do |staff|%>
         <div class="mb-2 col-lg-3 col-sm-4 d-flex align-self-stretch">
           <div class="card border-0 rounded-0 hover-shadow">
             <%= image_tag staff.photo, class:"card-img-top rounded-0" %>
@@ -140,59 +139,101 @@
           </div>
         </div>
       <%end%>
-      <!-- staffs -->
-      <!-- ======= Testimonials Section ======= -->
-      <section id="testimonials" class="testimonials bg-gray">
-        <div class="container" data-aos="fade-up">
-          <div class="section-title">
-            <h2>Testimonials</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
-          </div>
-        </div>
-        <div class="container-fluid">
-          <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-xl-10">
-              <div class="owl-carousel testimonials-carousel">
-                <% @comment.where(category: "testimonial").where(display_on_home_page: true).each do |c|%>
-                  <div class="testimonial-wrap">
-                    <div class="testimonial-item">
-                      <%= image_tag("blank-profile-picture-973460_640.png", class: "testimonial-img")%>
-                      <%# <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> %>
-                      <h3><%= c.fullname.html_safe%></h3>
-                      <h4>Ceo &amp; Founder</h4>
-                      <p>
-                        <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                        <%= c.message.html_safe%>
-                        <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                      </p>
-                    </div>
-                  </div>
-                <% end %>
+      <% @staff.where(job_title: 'Vice PRESIDENT').each do |staff|%>
+        <div class="mb-2 col-lg-3 col-sm-4 d-flex align-self-stretch">
+          <div class="card border-0 rounded-0 hover-shadow">
+            <%= image_tag staff.photo, class:"card-img-top rounded-0" %>
+            <div class="card-body  d-flex flex-column">
+              <h4 class="card-title"><%=staff.fullname%></h4>
+              <div class="d-flex justify-content-between">
+                <span><%=staff.job_title%></span>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <!-- End Testimonials Section -->
-      <!-- ======= Frequently Asked Questions Section ======= -->
-      <section id="faq" class="faq col-sm-12">
-        <div class="container " data-aos="fade-up">
-          <div class="section-title">
-            <h2>Frequently Asked Questions</h2>
+      <%end%>
+      <% @staff.where(job_title: 'FINANCE HEAD').each do |staff|%>
+        <div class="mb-2 col-lg-3 col-sm-4 d-flex align-self-stretch">
+          <div class="card border-0 rounded-0 hover-shadow">
+            <%= image_tag staff.photo, class:"card-img-top rounded-0" %>
+            <div class="card-body  d-flex flex-column">
+              <h4 class="card-title"><%=staff.fullname%></h4>
+              <div class="d-flex justify-content-between">
+                <span><%=staff.job_title%></span>
+              </div>
+            </div>
           </div>
-          <ul class="faq-list" data-aos="fade-up">
-            <% @faq.each do |c, i|%>
-              <li>
-                <a data-toggle="collapse" class="collapsed" href="#faq1<%= c.id %>"><%= c.question%>? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
-                <div id="faq1<%= c.id %>" class="collapse" data-animation-out="fadeOutUp" data-parent=".faq-list">
-                  <p>
-                    <%= c.answer%>
-                  </p>
-                </div>
-              </li>
-            <% end %>
-          </ul>
         </div>
-      </section>
-      <!-- End Frequently Asked Questions Section -->
-    </main><!-- End #main -->
+      <%end%>
+      <% @staff.where(job_title: 'COORDINATOR').each do |staff|%>
+        <div class="mb-2 col-lg-3 col-sm-4 d-flex align-self-stretch">
+          <div class="card border-0 rounded-0 hover-shadow">
+            <%= image_tag staff.photo, class:"card-img-top rounded-0" %>
+            <div class="card-body  d-flex flex-column">
+              <h4 class="card-title"><%=staff.fullname%></h4>
+              <div class="d-flex justify-content-between">
+                <span><%=staff.job_title%></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+</section>
+<!-- staffs -->
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials bg-gray">
+  <div class="container" data-aos="fade-up">
+    <div class="section-title">
+      <h2>Testimonials</h2>
+      <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.</p>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="100">
+      <div class="col-xl-10">
+        <div class="owl-carousel testimonials-carousel">
+          <% @comment.where(category: "testimonial").where(display_on_home_page: true).each do |c|%>
+            <div class="testimonial-wrap">
+              <div class="testimonial-item">
+                <%= image_tag("blank-profile-picture-973460_640.png", class: "testimonial-img")%>
+                <%# <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt=""> %>
+                <h3><%= c.fullname.html_safe%></h3>
+                <h4>Ceo &amp; Founder</h4>
+                <p>
+                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                  <%= c.message.html_safe%>
+                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Testimonials Section -->
+<!-- ======= Frequently Asked Questions Section ======= -->
+<section id="faq" class="faq col-sm-12">
+  <div class="container " data-aos="fade-up">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <ul class="faq-list" data-aos="fade-up">
+      <% @faq.each do |c, i|%>
+        <li>
+          <a data-toggle="collapse" class="collapsed" href="#faq1<%= c.id %>"><%= c.question%>? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-x icon-close"></i></a>
+          <div id="faq1<%= c.id %>" class="collapse" data-animation-out="fadeOutUp" data-parent=".faq-list">
+            <p>
+              <%= c.answer%>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+<!-- End Frequently Asked Questions Section -->
+</main><!-- End #main -->
