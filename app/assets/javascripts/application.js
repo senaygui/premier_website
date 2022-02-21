@@ -24,7 +24,7 @@
 //= require venobox.min.js
 //= require aos.js
 //= require slick.min.js
-
+//= require activestorage
 
 
 

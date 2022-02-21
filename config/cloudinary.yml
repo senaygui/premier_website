@@ -3,9 +3,11 @@ development:
   api_key: "727852849549781"
   api_secret: "jTiNwQQh9S23w_J4npEFPKb5AFU"
   secure: true
+  cdn_subdomain: true
 
 production:
   cloud_name: "de5bgmb1t"
   api_key: "727852849549781"
   api_secret: "jTiNwQQh9S23w_J4npEFPKb5AFU"
   secure: true
+  cdn_subdomain: true
