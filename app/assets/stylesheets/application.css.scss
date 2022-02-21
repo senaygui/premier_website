@@ -36,10 +36,19 @@
 @import "common";
 @import "typography";
 @import "slider";
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 // @import "style";
 
+@font-face {
+  font-family: 'futura-bold';
+  src: url("../fonts/Futura-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing: antialiased;
   color: #444444;
 }
 
@@ -58,7 +67,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+
+  font-family: "futura-bold";
 }
 
 /*--------------------------------------------------------------
@@ -230,7 +240,9 @@ h6 {
   transition: 0.3s;
   font-size: 15px;
   font-weight: 600;
-  font-family: "Raleway", sans-serif;
+
+  font-family: "Poppins", sans-serif;
+
 }
 
 .nav-menu a:hover,
@@ -518,7 +530,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
@@ -816,7 +828,7 @@ section {
 
 .counts .count-box p {
   padding: 8px 0 0 0;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 14px;
   color: #1e6ca6;
@@ -1035,7 +1047,7 @@ section {
 }
 
 .cta .cta-btn {
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 1px;
@@ -1482,7 +1494,7 @@ section {
 .pricing .box h4 {
   font-size: 42px;
   font-weight: 500;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppoins", sans-serif;
   margin-bottom: 20px;
 }
 
@@ -1533,7 +1545,7 @@ section {
   transition: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   transition: 0.3s;
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -2456,7 +2468,7 @@ section {
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #footer .footer-top h4 {
@@ -2859,7 +2871,7 @@ section {
 }
 
 #hero_new .btn-get-started {
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-size: 16px;
   margin-right: 10px;
@@ -6794,7 +6806,7 @@ html.overflow-y-hidden {
   overflow-y: hidden !important;
 }
 .v-application {
-  font-family: Roboto, sans-serif;
+  font-family: Poppoins, sans-serif;
   line-height: 1.5;
 }
 .v-application ::-ms-clear,
