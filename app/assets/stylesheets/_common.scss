@@ -56,7 +56,8 @@ a:hover {
 }
 
 a.text-primary:hover {
-  color: $primary-color!important;
+  color: #d6d6e0 !important;
+  font-weight: bold;
 }
 
 a.text-light:hover {
@@ -138,7 +139,8 @@ a h4{
 }
 
 .text-primary {
-  color: $primary-color !important;
+  color: #d6d6e0 !important;
+  font-weight: bold;
 }
 
 .text-color {
