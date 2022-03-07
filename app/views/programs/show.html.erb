@@ -54,11 +54,11 @@
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Total tuition</h5>
-              <%= @programs.total_tuition %>
+              <%= number_to_currency(@programs.total_tuition, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2) %>
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Monthly tuition</h5>
-              <%= @programs.total_tuition %>
+              <%= number_to_currency(@programs.monthly_tuition, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2)%>
             </div>
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Credit Hour</h5>
