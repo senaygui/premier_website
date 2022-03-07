@@ -1,6 +1,16 @@
 <main id="main">
   <!-- page title -->
-  <section class="mt-4 page-title-section overlay" data-background="page-title.jpg">
+  <section class="page-title-section on-the-fly-behavior overlay" data-background="page-title.jpg">
+  <style scoped>
+.on-the-fly-behavior {
+    margin-top: 145px;
+}
+@media (max-width: 1000px) {
+    .on-the-fly-behavior {
+        margin-top: 175px;
+    }
+}
+</style>
     <div class="container">
       <div class="row">
         <div class="col-md-8 mt-2">
@@ -15,13 +25,29 @@
   </section>
   <!-- /page title -->
   <section>
-    <div class="row mt-5">
-      <div class="col-5 card p-3 border-0 rounded-0 hover-shadow ml-5">
-        <h2 class="ml-5">OUR MISSION</h2>
+    <div class="row mt-5 on-the-fly-behavior-left">
+      <style scoped>
+        .on-the-fly-behavior-col-width {
+          width: 40%;
+        }    
+        .on-the-fly-behavior-left {
+          margin-left: 10%;
+        }
+        @media (max-width: 1000px) {
+          .on-the-fly-behavior-left {
+            margin-left: -5%;
+          }
+          .on-the-fly-behavior-col-width {
+            width: 80%;
+          }
+        }
+      </style>
+      <div class="on-the-fly-behavior-col-width card p-3 border-0 rounded-0 hover-shadow ml-5">
+        <h2 class="ml-5">Our Mission</h2>
         <p> <%=@college.mission.html_safe%></p>
       </div>
-      <div class="col-5 card p-3 border-0 rounded-0 hover-shadow ml-5">
-        <h2 class="ml-5">OUR VISION</h2>
+      <div class="on-the-fly-behavior-col-width card p-3 border-0 rounded-0 hover-shadow ml-5">
+        <h2 class="ml-5">Our Vision</h2>
         <p> <%=@college.vision.html_safe%></p>
       </div>
     </div>
