@@ -198,7 +198,34 @@
          <!-- <h5 class="text-center"><%= link_to 'More Training Programs', programs_path %></h5>-->
           <!-- /course list -->
         </div>
+
         <div>
+          <h2 class="text-center mb-3">Our Research</h2>
+          <div class="row">
+            <%Program.where(study_level: 'research').limit(3).each do |pro|%>
+              <!-- course item -->
+              <div class="col-lg-4 col-sm-6 mb-5">
+                <div class="card p-0 border-primary rounded-0 hover-shadow">
+                  <%= image_tag pro.photo, class:"card-img-top rounded-0" %>
+                  <div class="card-body">
+                    <ul class="list-inline mb-2">
+                      <li class="list-inline-item text-uppercase text-color"></i><%= pro.modality%></li>
+                  </ul>
+                  <%=link_to program_path(pro) do %>
+                    <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
+                  <%end%>
+                  <p class="card-text mb-1"><%=pro.overview.truncate(256).html_safe%></p>
+                  <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
+                </div>
+              </div>
+              </div>
+              <!-- course item -->
+            <%end%>
+          </div>
+         <!-- <h5 class="text-center"><%= link_to 'More Training Programs', programs_path %></h5>-->
+          <!-- /course list -->
+        </div>
+
         </div>
       </section>
       <!-- course item -->

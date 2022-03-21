@@ -190,8 +190,10 @@ $(document).on('turbolinks:load', function () {
   // Toggle .header-scrolled class to #header when page is scrolled
   $(window).scroll(function () {
     if ($(this).scrollTop() > 100) {
+      $(".navigation").css("background", "rgba(206, 225, 240,0.7)");
       $('#header').addClass('header-scrolled');
     } else {
+      $(".navigation").css("background", "rgba(0, 0,0,0)");
       $('#header').removeClass('header-scrolled');
     }
   });

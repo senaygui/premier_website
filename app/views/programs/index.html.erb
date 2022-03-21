@@ -1,6 +1,6 @@
   <main id="main">
   <!-- page title -->
-<section class="page-title-section on-the-fly-behavior overlay" data-background="page-title.jpg">
+<section class="hero-section-page-title overlay bg-cover" data-background="page-title.jpg">
 <style scoped>
 .on-the-fly-behavior {
     margin-top: 145px;
@@ -13,7 +13,7 @@
 </style>
   <div class="container">
     <div class="row">
-      <div class="col-md-8 mt-2">
+      <div class="col-md-8">
         <ul class="list-inline custom-breadcrumb">
           <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Our Programs</a></li>
           <li class="list-inline-item text-white h3 font-secondary "></li>
@@ -81,34 +81,7 @@
         <!-- /course list -->
       </div>
       </div>
-      <div>
-      <h2 class="text-center mb-3">Our Trainings</h2>
-      <div class="row">
-      
-        <%Program.where(study_level: 'training').each do |pro|%>
-          <!-- course item -->
-          <div class="col-lg-4 col-sm-6 mb-5">
-            <div class="card p-0 border-primary rounded-0 hover-shadow">
-            <%= image_tag pro.photo, class:"card-img-top rounded-0" %>
-              <div class="card-body">
-                <ul class="list-inline mb-2">
-                 <li class="list-inline-item text-uppercase text-color"></i><%= pro.modality%></li>
-
-                </ul>
-                <%=link_to program_path(pro) do %>
-                  <h4 class="card-title"><%=pro.program_name.html_safe%></h4>
-                <%end%>
-                <p class="card-text mb-1"><%=pro.overview.truncate(256).html_safe%></p>
-                <%= link_to 'Read More', program_path(pro), class:"btn btn-primary btn-sm" %>
-              </div>
-            </div>
-          </div>
-          <!-- course item -->
-        <%end%>
-        <!-- /course list -->
       </div>
-      <div>
-    </div>
   </section>
   <!-- /courses -->
   <!--marketing-->

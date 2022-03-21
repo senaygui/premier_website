@@ -28,6 +28,7 @@ class Ability
         # can :manage, Step
         can :manage, SectionHeadline
         can :manage, Service
+        can :manage, Vacancy
         can :manage, Staff
         can :manage, VisitorComment
         can :manage, FrequentlyAskedQuestion

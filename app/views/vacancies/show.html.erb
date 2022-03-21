@@ -1,0 +1,72 @@
+<main id="main">
+<%provide(:title, "#{@vacancy.title}")%>
+
+<section class="hero-section-page-title overlay bg-cover" data-background="../page-title.jpg">
+<style scoped>
+.on-the-fly-behavior {
+    margin-top: 145px;
+}
+@media (max-width: 1000px) {
+    .on-the-fly-behavior {
+        margin-top: 175px;
+    }
+}
+</style>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-2">
+        <ul class="list-inline custom-breadcrumb">
+          <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Vacancies</a></li>
+          <li class="list-inline-item text-white h3 font-secondary "></li>
+        </ul>
+        <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="list-group" style="
+    margin-top: 50px !important;
+">
+  	<div class="mb-2 ml-5">
+		  <li class="list-group-item ml-5">
+		    <h3 class="h2-responsive font-weight-bold text-center my-3"><strong><%= @vacancy.title%></strong></h3>
+		  </li>
+		  <li class="list-group-item ml-5">
+		  	<h6>Job By : <%= @vacancy.organization_name%></h6>
+
+		  	<span class="text-darken-3 lighten-3">City: </span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= @vacancy.city%> </span><br>
+		  	<span class="text-darken-3 lighten-3">Catagory: </span><span class="grey-text text-darken-3 lighten-3"> &ensp;<%= @vacancy.catagory %>  </span><br>
+		  	<span class="text-darken-3 lighten-3">Career Level: </span><span class="grey-text text-darken-3 lighten-3">&ensp;<%= @vacancy.career_level%> </span><br>
+		  	<span class="text-darken-3 lighten-3">Salary:</span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= @vacancy.salary%> ETB </span><br>
+		  	<span class="text-darken-3 lighten-3">Employment Type:</span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= @vacancy.employment_type%> </span><br>
+		  	<!-- fix the deadline and created at date by making it to count the dates -->
+		  	<span class="text-darken-3 lighten-3">Deadline:</span><span class="grey-text text-darken-3 
+		  	lighten-3">  &ensp;<%= time_ago_in_words(@vacancy.deadline) %> Left</span><br> 
+		  	<span class="text-darken-3 lighten-3">Created At:</span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= time_ago_in_words(@vacancy.created_at) %> ago</span><br>
+		  </li>
+		  <li class="list-group-item ml-5">
+		  	<h6><strong>Job Description</strong></h6>
+		  	<p class="grey-text text-darken-3 lighten-3"> <%= @vacancy.description%> </p>
+
+		  </li>
+		  <li class="list-group-item ml-5">
+		  	<h6><strong>Job Requiremnt</strong></h6>
+		  	<p class="grey-text text-darken-3 lighten-3"> <%= @vacancy.requirement %> </p>
+
+		  </li>
+
+		  <li class="list-group-item ml-5">
+		  	<small class="grey-text mb-3">Organization Information</small><br>
+
+		  	<span class="text-darken-3 lighten-3">Website: </span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= @vacancy.website%> </span><br>
+		  	<span class="text-darken-3 lighten-3">Email: </span><span class="grey-text text-darken-3 lighten-3"> &ensp;<%= @vacancy.email %>  </span><br>
+		  	<span class="text-darken-3 lighten-3">Address: </span><span class="grey-text text-darken-3 lighten-3">&ensp;<%= @vacancy.address_1%> </span><br>
+		  	<span class="text-darken-3 lighten-3">Phone Number:</span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= @vacancy.phone_number_1%></span><br>
+		  	<span class="text-darken-3 lighten-3">Address 2: </span><span class="grey-text text-darken-3 lighten-3">&ensp;<%= @vacancy.address_2%> </span><br>
+		  	<span class="text-darken-3 lighten-3">Phone Number 2:</span><span class="grey-text text-darken-3 lighten-3">  &ensp;<%= @vacancy.phone_number_2%></span><br>
+
+		  	
+		  </li>
+	  </div>
+</div>
+</main>

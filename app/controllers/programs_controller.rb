@@ -8,6 +8,11 @@ class ProgramsController < ApplicationController
   
   end
 
+  def trainings
+     @programs = Program.all
+    @marketing = MarketingSection.all
+  
+  end
   # GET /programs/1 or /programs/1.json
   def show
     @programs = Program.find(params[:id])

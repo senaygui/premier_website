@@ -471,6 +471,11 @@ h6 {
   margin-top: -110px;
 }
 
+.hero-section-page-title {
+  padding: 200px 0 50px;
+  margin-top: -110px;
+}
+
 #hero {
   width: 100%;
   height: 500vh;
@@ -19202,7 +19207,7 @@ html.overflow-y-hidden {
 }
 .theme--light.v-navigation-drawer:not(.v-navigation-drawer--floating)
   .v-navigation-drawer__border {
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: rgba(0, 0, 0, 0);
 }
 .theme--light.v-navigation-drawer .v-divider {
   border-color: rgba(0, 0, 0, 0.12);
@@ -21412,7 +21417,7 @@ html.overflow-y-hidden {
   background-repeat: no-repeat;
 }
 .navigation {
-  background:  rgba(206, 225, 240,0.7);
+  background:  rgba(0, 0, 0,0);
   transition: .2s ease;
 }
 

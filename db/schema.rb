@@ -310,6 +310,33 @@ ActiveRecord::Schema.define(version: 2022_02_18_055319) do
     t.index ["how_to_id"], name: "index_steps_on_how_to_id"
   end
 
+  create_table "vacancies", force: :cascade do |t|
+    t.bigint "admin_user_id"
+    t.string "title", null: false
+    t.text "description", null: false
+    t.datetime "deadline", null: false
+    t.string "salary"
+    t.string "number_of_employee"
+    t.string "catagory"
+    t.string "career_level"
+    t.string "employment_type"
+    t.text "requirement"
+    t.string "organization_name"
+    t.string "website"
+    t.string "email"
+    t.string "city"
+    t.string "subcity"
+    t.string "address_1", null: false
+    t.string "address_2"
+    t.string "phone_number_1", null: false
+    t.string "phone_number_2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_user_id"], name: "index_vacancies_on_admin_user_id"
+    t.index ["catagory"], name: "index_vacancies_on_catagory"
+    t.index ["title"], name: "index_vacancies_on_title"
+  end
+
   create_table "visitor_comments", force: :cascade do |t|
     t.string "fullname", null: false
     t.string "category", null: false
@@ -329,4 +356,5 @@ ActiveRecord::Schema.define(version: 2022_02_18_055319) do
   add_foreign_key "programs", "facuilties"
   add_foreign_key "requests", "almunis"
   add_foreign_key "steps", "how_tos"
+  add_foreign_key "vacancies", "admin_users"
 end
