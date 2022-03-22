@@ -7,15 +7,18 @@
         <div class="col-lg-4 text-center text-lg-left">
           <a class="text-color mr-3" href="callto:+2510118888863"><strong>CALL</strong> 011 8 88 88 63</a>
           <ul class="list-inline d-inline">
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-facebook"></i></a></li>
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-twitter-alt"></i></a></li>
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-linkedin"></i></a></li>
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="ti-instagram"></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-facebook" style="font-size: 18px;"></i></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-twitter" style="font-size: 18px;"></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-linkedin" style="font-size: 18px;"></i></a></li>
+            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-instagram" style="font-size: 18px;"></i></a></li>
           </ul>
         </div>
         <div class="col-lg-8 text-center text-lg-right">
           <ul class="list-inline ml-5">
-            <li class="list-inline-item ml-5"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">login</a></li>
+            <li class="list-inline-item ml-5">
+              <%= link_to "Contact us", contact_path, class:"text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"%>
+            </li>
+            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">login</a></li>
             <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal">register</a></li>
           </ul>
         </div>
@@ -33,7 +36,7 @@
           aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navigation">
+      <div class="collapse navbar-collapse" id="navigation" style="font-size: 13px;">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
             <%= link_to "Home", root_path, class:"nav-link"%>
@@ -84,7 +87,7 @@
             </div>
           </li>
           <li class="nav-item @@contact">
-            <%= link_to "Contact us", contact_path, class:"nav-link"%>
+            <%= link_to "Contact", contact_path, class:"nav-link"%>
           </li>
         </ul>
       </div>
