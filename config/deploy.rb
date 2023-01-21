@@ -2,8 +2,8 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.16.0"
 
-set :application, "yic_website"
-set :repo_url, "https://github.com/senaygui/yic_website.git"
+set :application, "premier_website"
+set :repo_url, "https://github.com/senaygui/premier_website.git"
 # set :ssh_options, { :forward_agent => true, :port => 4321 }
 set :user, "deploy"
 set :passenger_restart_with_touch, true
