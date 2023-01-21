@@ -5,9 +5,6 @@ set :branch, "master"
 set :rails_env, "production"
 set :deploy_to, '/home/deploy/premier_website'
 
-APPLICATIONNAME::Application.configure do
-    config.assets.compile = true
-end
 
 # server-based syntax
 # ======================
