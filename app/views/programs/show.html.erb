@@ -1,85 +1,131 @@
-  <main id="main">
-  <!-- page title -->
-  <section class="hero-section-page-title overlay bg-cover" data-background="../page-title.jpg">
-  <style scoped>
-.on-the-fly-behavior {
-    margin-top: 145px;
-}
-@media (max-width: 1000px) {
-    .on-the-fly-behavior {
-        margin-top: 175px;
-    }
-}
-</style>
+<main>
+<section class="bg-blue align-items-center d-flex" style="background:url(<%= asset_path('04.png')%>) no-repeat center center; background-size:cover;">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 mt-4">
-        <ul class="list-inline custom-breadcrumb">
-          <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html"><%=@program.program_name%></a></li>
-          <li class="list-inline-item text-white h3 font-secondary "></li>
-        </ul>
-        <p class="text-lighten">Our programs offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
+      <div class="col-12 text-center">
+        <!-- Title -->
+        <h1 class="text-white"><%= @programs.program_name.html_safe %></h1>
+        <!-- Breadcrumb -->
+        <div class="d-flex justify-content-center">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Program</li>
+            </ol>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
 </section>
-  <!-- /page title -->
-  
-  <!-- ======= Cource Details Section ======= -->
-  <section id="course-details" class="course-details">
-    <div class="container" data-aos="fade-up">
-      <div class="row">
-        <div class="col-lg-8">
-          <h2><%= @programs.program_name.html_safe %></h2>
-          <%= image_tag @programs.photo, class: "img-fluid" %>
-          <h3><%= @programs.program_name.html_safe %></h3>
-          <%= @programs.program_description.html_safe %>
-        </div>
-        <div class="col-lg-4">
-          <div>
-            <div class="course-info d-flex justify-content-between align-items-center bg-primary">
-              <h3 class="text-white">Program Info</h3>
-            </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Study Level</h5>
-              <%= @programs.study_level.html_safe %>
-            </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Program Duration</h5>
-              <%= @programs.program_duration %>
-            </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>modality</h5>
-              <%= @programs.modality.html_safe %>
-            </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Total tuition</h5>
-              <%= number_to_currency(@programs.total_tuition, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2) %>
-            </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Monthly tuition</h5>
-              <%= number_to_currency(@programs.monthly_tuition, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2)%>
-            </div>
-            <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Credit Hour</h5>
-              <%= @programs.credit_hour %>
-            </div>
-            <div>
-              <div class="mt-5">
-                <div class="course-info d-flex justify-content-between align-items-center bg-primary">
-                  <h3 class="text-white">Career Opportunities</h3>
-                </div>
-                <% @careerOpportunity.where(program_id: @programs.id).each do |career| %>
-                  <div class="course-info d-flex justify-content-between align-items-center">
-                    <%= career.title.html_safe %>
-                  </div>
-                <% end %>
+<!-- =======================
+Page content START -->
+<section class="pt-3 pt-xl-5">
+  <div class="container" data-sticky-container>
+    <div class="row g-4">
+      <!-- Main content START -->
+      <div class="col-xl-8">
+
+        <div class="row g-4">
+          <!-- Title START -->
+          <div class="col-12">
+            <!-- Title -->
+            <h2><%= @programs.program_name.html_safe %></h2>
+            <p><%= @programs.overview.html_safe %></p>
+          </div>
+          <!-- Title END -->
+
+          <!-- Image and video -->
+          <div class="col-12 position-relative">
+            <%= image_tag @programs.photo, class: "img-fluid rounded-3" %>
+          </div>
+
+          <!-- About course START -->
+          <div class="col-12">
+            <div class="card border">
+              <!-- Card header START -->
+              <div class="card-header border-bottom">
+                <h3 class="mb-0">Program description</h3>
               </div>
+              <!-- Card header END -->
+    
+              <!-- Card body START -->
+              <div class="card-body">
+                <p class="mb-3"><%= @programs.program_description.html_safe %></p>
+              </div>
+              <!-- Card body START -->
             </div>
           </div>
+          <!-- About course END -->
         </div>
-        <!-- End Cource Details Section -->
       </div>
-    </section>
-    <!-- End Cource Details Tabs Section -->
-  </main>
+      <!-- Main content END -->
+
+      <!-- Right sidebar START -->
+      <div class="col-xl-4">
+        <div data-sticky data-margin-top="80" data-sticky-for="768">
+          <div class="row g-4">
+            <div class="col-md-6 col-xl-12">
+              <!-- Course info START -->
+              <div class="card card-body border p-4">
+                <h5 class="mb-3">Program Information</h5>
+                <ul class="list-group list-group-borderless border-0">
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0 text-bold">Study Level</span>
+                    <span><%= @programs.study_level.html_safe %></span>
+                  </li>
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0">Program Duration</span>
+                    <span><%= @programs.program_duration %></span>
+                  </li>
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0">Modality</span>
+                    <span><%= @programs.modality.html_safe %></span>
+                  </li>
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0">Total tuition</span>
+                    <span><%= number_to_currency(@programs.total_tuition, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2) %></span>
+                  </li>
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0">Monthly tuition</span>
+                    <span><%= number_to_currency(@programs.monthly_tuition, unit: "ETB",  format: "%n %u" ,delimiter: ",", precision: 2)%></span>
+                  </li>
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0">Credit Hour</span>
+                    <span><%= @programs.credit_hour %></span>
+                  </li>
+                  <li class="list-group-item px-0 d-flex justify-content-between">
+                    <span class="h6 fw-light mb-0">Career Opportunities</span>
+                    <span>Yes</span>
+                  </li>
+                </ul>
+                <!-- Divider -->
+                
+              </div>
+              <!-- Course info END -->
+            </div>
+
+            <!-- Tags START -->
+            <div class="col-md-6 col-xl-12">
+              <div class="card card-body border p-4">
+                <h4 class="mb-3">Career Opportunities</h4>
+                <ul class="list-inline mb-0">
+                  <% @careerOpportunity.where(program_id: @programs.id).each do |career| %>
+                    <li class="list-inline-item"> <a class="btn btn-outline-light btn-sm" href="#"><%= career.title.html_safe %></a> </li>
+                  <%end%>
+                </ul>
+              </div>  
+            </div>
+            <!-- Tags END -->
+          </div><!-- Row End -->
+        </div>  
+      </div>
+      <!-- Right sidebar END -->
+
+    </div><!-- Row END -->
+  </div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>

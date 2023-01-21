@@ -1,71 +1,75 @@
 <main id="main">
-<%provide(:title, "Vacancies")%>
+	<%provide(:title, "Vacancies")%>
 
-<section class="hero-section-page-title overlay bg-cover" data-background="page-title.jpg">
-<style scoped>
-.on-the-fly-behavior {
-    margin-top: 145px;
-}
-@media (max-width: 1000px) {
-    .on-the-fly-behavior {
-        margin-top: 175px;
-    }
-}
-</style>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 mt-2">
-        <ul class="list-inline custom-breadcrumb">
-          <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="courses.html">Open Vacancies</a></li>
-          <li class="list-inline-item text-white h3 font-secondary "></li>
-        </ul>
-        <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
-      </div>
+	<section class="bg-blue align-items-center d-flex" style="background:url(<%= asset_path("04.png")%>) no-repeat center center; background-size:cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<!-- Title -->
+					<h1 class="text-white">Vacancies</h1>
+					<!-- Breadcrumb -->
+					<div class="d-flex justify-content-center">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Vacancies</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">List group item heading</h5>
+      <small>3 days ago</small>
     </div>
-  </div>
-</section>
+    <p class="mb-1">Some placeholder content in a paragraph.</p>
+    <small>And some small print.</small>
+  </a>
+</div>
+	<div class="content clearfix element content bg-white"><div class="list-group">
+		<li class="list-group-item list-group-item-action flex-column align-items-start active bg-white ">
+			<h2 class="h1-responsive font-weight-bold text-center my-3 bg-white">Vacancies</h2>
 
-<div class="content clearfix element content bg-white"><div class="list-group">
-	<li class="list-group-item list-group-item-action flex-column align-items-start active bg-white ">
-		  <h2 class="h1-responsive font-weight-bold text-center my-3 bg-white">የሥራ ማስታወቂያዎች</h2>
-		  <p class="grey-text text-center w-responsive mx-auto mb-2 dark-text">የህልምዎን ሥራ ያግኙ!</p>
-
-			  <div class="row my-3">
-				    <div class="col-lg-6  col-sm-12 offset-lg-3">
-				      <%= search_form_for(@search, html: { class: "input-group form-sm form-1 pl-0" }) do |f| %>
-				        <div class="input-group-prepend">
-				          <span class="input-group-text" id="basic-text1"><i class="fa fa-search text-dark"
-				            aria-hidden="true"></i></span>
-				          </div>
-				           
-				            <%= f.search_field :title_or_catagory_cont, class: "form-control my-0 py-1",placeholder: "Search by Vacancy name or catagory"   %>
-				            
-				          
-				          <!-- <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"> -->
-				      <% end %>
+			<div class="row my-3">
+				<div class="col-lg-6  col-sm-12 offset-lg-3">
+					<%= search_form_for(@search, html: { class: "input-group form-sm form-1 pl-0" }) do |f| %>
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-text1"><i class="fa fa-search text-dark"
+							aria-hidden="true"></i></span>
 						</div>
-				</div> 
-	</li>
- 
-	<% @vacancies.each do |v|%>
-	  <%= link_to vacancy_path(v.id), class: "list-group-item list-group-item-action flex-column align-items-start col-lg-11 mr-5 mb-5 pl ml-5 z-2 " do %>
-	    <div class="d-flex w-100 justify-content-between">
-	      <h4 class="mb-2 h4 font-weight-bold h4-responsive"><%= v.title%></h4>
-	      <small><%= time_ago_in_words(v.deadline) %> Left</small>
-	    </div>
-	    <p class="mb-2 font-weight-bold"><%= v.organization_name%></p>
-	    <p class=" mb-2 text-darken-3 lighten-3"><%= v.city%></p>
-	    <p class="grey-text text-darken-3 lighten-3"><span class="fa fa-briefcase ml-1">
-	    	
-	    </span> <%= v.employment_type%></p>
-	  <%end%>
-  <%end%>
 
-</div>
-	  <div class=" text-center my-5">
-	      <%= paginate @vacancies %> 
-	      <%= page_entries_info @vacancies %>
-	  </div>
-</div>
+						<%= f.search_field :title_or_catagory_cont, class: "form-control my-0 py-1",placeholder: "Search by Vacancy name or catagory"   %>
+
+
+						<!-- <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"> -->
+						<% end %>
+					</div>
+				</div> 
+			</li>
+
+			<% @vacancies.each do |v|%>
+			<%= link_to vacancy_path(v.id), class: "list-group-item list-group-item-action flex-column align-items-start col-lg-6 mr-5 mb-5 pl ml-5 z-2 " do %>
+			<div class="d-flex w-100 justify-content-between">
+				<h4 class="mb-2 h4 font-weight-bold h4-responsive"><%= v.title%></h4>
+				<small><%= time_ago_in_words(v.deadline) %> Left</small>
+			</div>
+			<p class="mb-2 font-weight-bold"><%= v.organization_name%></p>
+			<p class=" mb-2 text-darken-3 lighten-3"><%= v.city%></p>
+			<p class="grey-text text-darken-3 lighten-3"><span class="fa fa-briefcase ml-1">
+
+			</span> <%= v.employment_type%></p>
+			<%end%>
+			<%end%>
+
+		</div>
+		<div class=" text-center my-5">
+			<%= paginate @vacancies %> 
+			<%= page_entries_info @vacancies %>
+		</div>
+	</div>
 
 </main>

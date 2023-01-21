@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_055319) do
+ActiveRecord::Schema.define(version: 2022_11_30_135731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -308,6 +308,26 @@ ActiveRecord::Schema.define(version: 2022_02_18_055319) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["how_to_id"], name: "index_steps_on_how_to_id"
+  end
+
+  create_table "training_modules", force: :cascade do |t|
+    t.string "title"
+    t.bigint "training_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["training_id"], name: "index_training_modules_on_training_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "overview", null: false
+    t.string "description", null: false
+    t.integer "duration"
+    t.decimal "total_tuition", default: "0.0"
+    t.string "created_by"
+    t.string "last_updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "vacancies", force: :cascade do |t|

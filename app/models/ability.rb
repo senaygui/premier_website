@@ -32,6 +32,7 @@ class Ability
         can :manage, Staff
         can :manage, VisitorComment
         can :manage, FrequentlyAskedQuestion
+        can :manage, Training
     when "finance"
         can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
         can :manage, Program

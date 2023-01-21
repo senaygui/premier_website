@@ -1,9 +1,9 @@
-role :app, %w{deploy@165.232.70.109}
-role :web, %w{deploy@165.232.70.109}
-role :db, %w{deploy@165.232.70.109}, :primary => true
+role :app, %w{deploy@162.19.170.198}
+role :web, %w{deploy@162.19.170.198}
+role :db, %w{deploy@162.19.170.198}, :primary => true
 set :branch, "master"
 set :rails_env, "staging"
-set :deploy_to, '/home/deploy/yic_website'
+set :deploy_to, '/home/deploy/premier_website'
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

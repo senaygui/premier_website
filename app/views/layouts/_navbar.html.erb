@@ -1,97 +1,61 @@
-<!-- End Header -->
-<header class="fixed-top header">
-  <!-- top header -->
-  <div class="top-header py-2 bg-white">
+<!-- Header START -->
+<header class="navbar-light navbar-sticky header-static">
+  <!-- Logo Nav START -->
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <div class="row no-gutters">
-        <div class="col-lg-4 text-center text-lg-left">
-          <a class="text-color mr-3" href="callto:+2510118888863"><strong>CALL</strong> 011 8 88 88 63</a>
-          <ul class="list-inline d-inline">
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-facebook" style="font-size: 18px;"></i></i></a></li>
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-twitter" style="font-size: 18px;"></i></a></li>
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-linkedin" style="font-size: 18px;"></i></a></li>
-            <li class="list-inline-item mx-0"><a class="d-inline-block p-2 text-color" href="#"><i class="bx bxl-instagram" style="font-size: 18px;"></i></a></li>
-          </ul>
-        </div>
-        <div class="col-lg-8 text-center text-lg-right">
-          <ul class="list-inline ml-5">
-            <li class="list-inline-item ml-5">
-              <%= link_to "Contact us", contact_path, class:"text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block"%>
-            </li>
-            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">login</a></li>
-            <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal">register</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- navbar -->
-  <div class="navigation w-100 ">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark p-0">
-      <%= link_to "/" do%>
-        <%=image_tag "bglogo.png" ,{:style=>'height:100px; margin-left:50px'}%>
-      <%end%>
-      <button class="navbar-toggler rounded-0" type="button" data-toggle="collapse" data-target="#navigation"
-          aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <!-- Logo START -->
+      <a class="navbar-brand me-0 py-3" href="/">
+        <%= image_tag("logo-main2.jpg",class: "light-mode-item navbar-brand-item", alt: "logo")%>
+        <%= image_tag("logo-main2.jpg",class: "dark-mode-item navbar-brand-item", alt: "logo")%>
+      </a>
+      <!-- Logo END -->
+
+      <!-- Responsive navbar toggler -->
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-animation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </button>
-      <div class="collapse navbar-collapse" id="navigation" style="font-size: 13px;">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class:"nav-link"%>
-          </li>
-          <li class="nav-item @@about">
-            <%= link_to "About", about_path, class:"nav-link"%>
-          </li>
-          <li class="nav-item @@blog">
-            <%= link_to "Training&Research", trainings_path, class:"nav-link"%>
-          </li>
-          <li class="nav-item @@courses">
-            <%= link_to "Acadamics", programs_path, class:"nav-link"%>
-          </li>
-          <li class="nav-item @@courses">
-            <%= link_to "Office", staffs_path, class:"nav-link"%>
-          </li>
-          <li class="nav-item @@blog">
-            <%= link_to "News&Event", news_index_path, class:"nav-link"%>
-          </li>
 
-          <li class="nav-item @@blog">
-          <%= link_to "Vacancy", vacancies_path, class:"nav-link"%>
-          </li>
+      <!-- Main navbar START -->
+      <div class="navbar-collapse collapse" id="navbarCollapse">
 
-          <li class="nav-item dropdown view">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-              Admission
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <% Admission.all.each do |admission|%>
-                <%= link_to("#{admission.admission_name}", {controller: "admissions", action: "show", id: admission.id}, :class => "dropdown-item" )%>
-                <!-- <li><a href="regular_masters.html">Regular Masters</a></li>
-                <li><a href="#">Online Masters</a></li>
-                <li><a href="#">Extension Degree </a></li>
-                <li><a href="#">Distance Degree</a></li>
-                <li><a href="#">TBVT</a></li> -->
+        <!-- Nav Search END -->
+        <ul class="navbar-nav navbar-nav-scroll ms-auto">
+          <li class="nav-item dropdown"><%= link_to "Home", root_path,class: "nav-link active"%></li>
+
+          <li class="nav-item dropdown"><%= link_to "About us", about_path, class: "nav-link"%></li>
+          <li class="nav-item dropdown"><%= link_to "Programs", programs_path, class: "nav-link"%></li>
+          <!-- Nav item 1 Demos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admission</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="demoMenu">
+              <% Admission.all.each do |ad|%>
+                <li> <%= link_to ad.admission_name, admission_path(ad),class: "dropdown-item"%></li>
               <%end%>
-              <!--<a class="dropdown-item" href="teacher.html"></a>
-              <a class="dropdown-item" href="teacher-single.html">Teacher Single</a>
-              <a class="dropdown-item" href="notice.html">Notice</a>
-              <a class="dropdown-item" href="notice-single.html">Notice Details</a>
-              <a class="dropdown-item" href="research.html">Research</a>
-              <a class="dropdown-item" href="scholarship.html">Scholarship</a>
-              <a class="dropdown-item" href="course-single.html">Course Details</a>
-              <a class="dropdown-item" href="event-single.html">Event Details</a>
-              <a class="dropdown-item" href="blog-single.html">Blog Details</a>-->
-            </div>
+            </ul>
           </li>
-          <li class="nav-item @@contact">
-            <%= link_to "Contact", contact_path, class:"nav-link"%>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">How It Works</a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="demoMenu">
+              <li> <%= link_to "How to apply", "#",class: "dropdown-item"%></li>
+              <li> <%= link_to "How to learn", "#",class: "dropdown-item"%></li>
+            </ul>
           </li>
+          <li class="nav-item dropdown"><%= link_to "News & Events", news_index_path, class: "nav-link"%></li>
         </ul>
       </div>
-    </nav>
-  </div>
-</div>
-  </header>
+      <!-- Main navbar END -->
+      
+      <!-- Signin button -->
+      <div class="navbar-nav ms-2 d-none d-sm-block">
+        <a href="https://portal.premiercollege.edu.et" class= "btn btn-md btn-dark mb-0">Apply Now</a>
+      </div>
+
+    </div>
+  </nav>
+  <!-- Logo Nav END -->
+</header>
+<!-- Header END -->

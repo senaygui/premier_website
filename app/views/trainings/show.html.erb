@@ -1,0 +1,96 @@
+<main>
+<section class="bg-blue align-items-center d-flex" style="background:url(<%= asset_path('04.png')%>) no-repeat center center; background-size:cover;">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <!-- Title -->
+        <h1 class="text-white"><%= @training.title.html_safe %></h1>
+        <!-- Breadcrumb -->
+        <div class="d-flex justify-content-center">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Trainings</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- =======================
+Page content START -->
+<section class="pt-3 pt-xl-5">
+  <div class="container" data-sticky-container>
+    <div class="row g-4">
+      <!-- Main content START -->
+      <div class="col-xl-8">
+
+        <div class="row g-4">
+          <!-- Title START -->
+          <div class="col-12">
+            <!-- Title -->
+            <h2><%= @training.title.html_safe %></h2>
+            <p><%= @training.overview.html_safe %></p>
+          </div>
+          <!-- Title END -->
+
+          <!-- Image and video -->
+          <div class="col-12 position-relative">
+            <%= image_tag @training.photo, class: "img-fluid rounded-3" %>
+          </div>
+
+          <!-- About course START -->
+          <div class="col-12">
+            <div class="card border">
+              <!-- Card header START -->
+              <div class="card-header border-bottom">
+                <h3 class="mb-0">Training description</h3>
+              </div>
+              <!-- Card header END -->
+    
+              <!-- Card body START -->
+              <div class="card-body">
+                <p class="mb-3"><%= @training.description.html_safe %></p>
+              </div>
+              <!-- Card body START -->
+            </div>
+          </div>
+          <!-- About course END -->
+        </div>
+      </div>
+      <!-- Main content END -->
+
+      <!-- Right sidebar START -->
+      <div class="col-xl-4">
+        <div data-sticky data-margin-top="80" data-sticky-for="768">
+          <div class="row g-4">
+            <div class="col-md-6 col-xl-12">
+              <!-- Course info START -->
+              <div class="card card-body border p-4">
+                <h5 class="mb-3">Training list</h5>
+                <ul class="list-group list-group-borderless border-0">
+                 <% @training.training_modules.each do |t|%>
+	                  <li class="list-group-item px-0 d-flex justify-content-between">
+	                    <span class="h6 fw-light mb-0 text-bold"><%= t.title%></span>
+	                  </li>
+                  <%end%>
+                </ul>
+                <!-- Divider -->
+                
+              </div>
+              <!-- Course info END -->
+            </div>
+          </div><!-- Row End -->
+        </div>  
+      </div>
+      <!-- Right sidebar END -->
+
+    </div><!-- Row END -->
+  </div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+

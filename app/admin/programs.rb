@@ -37,8 +37,8 @@ ActiveAdmin.register Program do
       f.input :program_name
       f.input :overview,  :as => :ckeditor
       f.input :program_description,  :as => :ckeditor
-      f.input :study_level, as: :select, :collection => ["undergraduate", "graduate", "training","research"], :include_blank => false
-      f.input :modality, as: :select, :collection => ["online", "regular", "evening", "weekend"], :include_blank => false
+      f.input :study_level, as: :select, :collection => ["undergraduate", "graduate", "TVET"], :include_blank => false
+      f.input :modality
       f.input :program_duration, as: :select, :collection => [1, 2,3,4,5,6,7], :include_blank => false
       f.input :monthly_tuition
       f.input :total_tuition

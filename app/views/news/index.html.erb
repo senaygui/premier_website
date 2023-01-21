@@ -1,28 +1,25 @@
   <main id="main">
 <!-- page title -->
-<section class="hero-section-page-title overlay bg-cover" data-background="page-title.jpg">
-<style scoped>
-.on-the-fly-behavior {
-    margin-top: 145px;
-}
-@media (max-width: 1000px) {
-    .on-the-fly-behavior {
-        margin-top: 175px;
-    }
-}
-</style>
+<section class="bg-blue align-items-center d-flex" style="background:url(<%= asset_path("04.png")%>) no-repeat center center; background-size:cover;">
   <div class="container">
     <div class="row">
-      <div class="col-md-8 mt-2">
-        <ul class="list-inline custom-breadcrumb">
-          <li class="list-inline-item"><a class="h2 text-primary font-secondary" href="@@page-link">News and Events</a></li>
-          <li class="list-inline-item text-white h3 font-secondary @@nasted"></li>
-        </ul>
-        <p class="text-lighten">Our courses offer a good compromise between the continuous assessment favoured by some universities and the emphasis placed on final exams by others.</p>
+      <div class="col-12 text-center">
+        <!-- Title -->
+        <h1 class="text-white">News & Events</h1>
+        <!-- Breadcrumb -->
+        <div class="d-flex justify-content-center">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">News & Events</li>
+            </ol>
+          </nav>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 <!-- /page title -->
 <!-- blogs -->
 <section class="section">

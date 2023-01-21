@@ -1,101 +1,103 @@
-<!-- ======= Footer ======= -->
-<footer id="footer">
-  <div class="footer-top bg-footer">
-    <div class="container bg-footer">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 footer-contact">
-          <h3><%= image_tag "bglogo.png", :style =>"height:100px; width:150px;"%></h3>
-          <p class="text-white">
-          Saris nearest to Commercial Bank of Ethiopia  <br>
-            Addis Ababa, Ethiopia<br>
-            <br>
-            <strong>Phone:</strong> 011 8 88 88 63<br>
-            <strong>Phone:</strong> 011 888 51 52<br>
-            <strong>Email:</strong> <a href='Registrar.grandintcollege@edu.et'>Registrar.grandintcollege@edu.et<br></a>
-          </p>
-        </div>
-        <div class="col-lg-2 col-md-6 footer-links">
-          <h4 class="text-white">Useful Links</h4>
-          <ul>
-            <li><%= link_to "#" do %>
+<footer class="pt-5 bg-light">
+  <div class="container">
+    <!-- Row START -->
+    <div class="row g-4">
+
+      <!-- Widget 1 START -->
+      <div class="col-lg-3">
+        <!-- logo -->
+        <a class="me-0" href="index-2.html">
+          <%= image_tag "logo-main2.jpg", class: "light-mode-item h-100px", alt: "logo"%>
+        </a>
+        <p class="my-3">Saris nearest to Commercial Bank of Ethiopia, Addis Ababa, Ethiopia </p>
+        <!-- Social media icon -->
+        <ul class="list-inline mb-0 mt-3">
+          <li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-facebook" href="https://www.facebook.com/grandmarkinternationalcollege"><i class="fab fa-fw fa-facebook-f"></i></a> </li>
+          <li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-instagram" href="#"><i class="fab fa-fw fa-instagram"></i></a> </li>
+          <li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-twitter" href="#"><i class="fab fa-fw fa-twitter"></i></a> </li>
+          <li class="list-inline-item"> <a class="btn btn-white btn-sm shadow px-2 text-linkedin" href="#"><i class="fab fa-fw fa-linkedin-in"></i></a> </li>
+        </ul>
+      </div>
+      <!-- Widget 1 END -->
+
+      <!-- Widget 2 START -->
+      <div class="col-lg-6">
+        <div class="row g-4">
+          <!-- Link block -->
+          <div class="col-6 col-md-6">
+            <h5 class="mb-2 mb-md-4">Useful Links</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item"><%= link_to "#",class: "nav-link" do %>
                 <i class="bx bx-chevron-right"></i><span>Home</span>
-              <% end%></li>
-            <li><%= link_to "about" do %>
-                <i class="bx bx-chevron-right"></i><span>About us</span>
-              <% end%></li>
-            <li><%= link_to "#" do %>
-                <i class="bx bx-chevron-right"></i><span>Services</span>
-              <% end%></li>
-            <li><%= link_to "accreditation" do %>
-                <i class="bx bx-chevron-right"></i><span>Accreditation</span>
-              <% end%></li>
-            <li><%= link_to "staffs" do %>
-                <i class="bx bx-chevron-right"></i><span>Office</span>
-              <% end%></li>
-            <li><%= link_to "programs" do %>
-                <i class="bx bx-chevron-right"></i><span>Programs</span>
-              <% end%></li>
-          </ul>
+                <% end%></li>
+              <li class="nav-item"><%= link_to "about",class: "nav-link" do %>
+                  <i class="bx bx-chevron-right"></i><span>About us</span>
+                <% end%></li>
+              <li class="nav-item"><%= link_to "#",class: "nav-link" do %>
+                  <i class="bx bx-chevron-right"></i><span>Services</span>
+                <% end%></li>
+              <li class="nav-item"><%= link_to "programs",class: "nav-link" do %>
+                  <i class="bx bx-chevron-right"></i><span>Programs</span>
+                <% end%></li>
+            </ul>
+          </div>
+          
+          <div class="col-6 col-md-6">
+            <h5 class="mb-2 mb-md-4">Useful Links</h5>
+            <ul class="nav flex-column">
+              <li class="nav-item"><%= link_to "#",class: "nav-link" do %>
+                <i class="bx bx-chevron-right"></i><span>Acadmaics</span>
+                <% end%></li>
+              <li class="nav-item"><%= link_to "about",class: "nav-link" do %>
+                  <i class="bx bx-chevron-right"></i><span>Trainings</span>
+                <% end%></li>
+              <li class="nav-item"><%= link_to "#",class: "nav-link" do %>
+                  <i class="bx bx-chevron-right"></i><span>Offices</span>
+                <% end%></li>
+              <li class="nav-item"><%= link_to "programs",class: "nav-link" do %>
+                  <i class="bx bx-chevron-right"></i><span>News & Events</span>
+                <% end%></li>
+            </ul>
+          </div>
         </div>
-        <div class="col-lg-3 col-md-6 footer-links">
-          <h4 class="text-white">Our Admission</h4>
-          <ul>
-            <% Admission.all.each do |admission| %>
-              <li><i class="bx bx-chevron-right"></i>
-                <%=link_to "#{admission.modality}", "admissions/#{admission.id}"%></li>
-            <% end %>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-12 footer-links">
-          <h4 class="text-white">Our Social Networks</h4>
-          <div class="social-links mt-3">
-            <%= link_to "#{College.last.twitter_handle}", class:"twitter" do %>
-              <i class="bx bxl-twitter"></i>
-            <% end%>
-            <%= link_to "#{College.last.facebook_handle}", class:"facebook" do %>
-              <i class="bx bxl-facebook"></i>
-            <% end%>
-            <%= link_to "#{College.last.instagram_handle}", class:"instagram" do %>
-              <i class="bx bxl-instagram"></i>
-            <% end%>
-            <%= link_to "#", class:"skype" do %>
-              <i class="bx bxl-skype"></i>
-            <% end%>
-            <%= link_to "#{College.last.linkedin_handle}", class:"linkedin" do %>
-              <i class="bx bxl-linkedin"></i>
-            <% end%>
+      </div>
+      <!-- Widget 2 END -->
+
+      <!-- Widget 3 START -->
+      <div class="col-lg-3">
+        <h5 class="mb-2 mb-md-4">Contact</h5>
+        <!-- Time -->
+        <p class="mb-2">
+          call:<span class="h6 fw-light ms-2"><%= College.first.phone_number %></span>
+          <!-- <span class="d-block small">(9:AM to 8:PM IST)</span> -->
+        </p>
+
+        <p class="mb-0">Email:<span class="h6 fw-light ms-2"><%= College.first.email %></span></p>
+
+        
+      </div> 
+      <!-- Widget 3 END -->
+    </div><!-- Row END -->
+
+    <!-- Divider -->
+    <hr class="mt-4 mb-0">
+
+    <!-- Bottom footer -->
+    <div class="py-3">
+      <div class="container px-0">
+        <div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-md-left">
+          <!-- copyright text -->
+          <div class="text-primary-hover"> Copyrights <a href="#" class="text-body">©2022 Premier College</a>. All rights reserved. </div>
+          <!-- copyright links-->
+          <div class="justify-content-center mt-3 mt-lg-0">
+            <ul class="nav list-inline justify-content-center mb-0">
+              <li class="list-inline-item">
+                <strong> DESIGNED BY : </strong>  <a href="https://yesuitsolution.com/">Yesu IT Solution PLC</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="container w-100 d-md-flepx py-4">
-    <div class="mr-md-auto text-center text-white text-md-left">
-      <div class="copyright text-white">
-        &copy; Copyright <span>Grandmark International College </span>. <br>
-        All Rights Reserved.
-      </div>
-      <div class="credits">
-        <strong> DESIGNED BY : </strong>  <%= link_to "Yesu IT Solution PLC", "https://yesuitsolution.com/"%>
-      </div>
-    </div>
-    <div class="social-links text-center text-md-right pt-3 pt-md-0">
-      <%= link_to "#", class:"twitter" do%>
-        <i class="bx bxl-twitter"></i>
-      <%end%>
-      <%= link_to "#", class:"facebook" do%>
-        <i class="bx bxl-facebook"></i>
-      <%end%>
-      <%= link_to "#", class:"instagram" do%>
-        <i class="bx bxl-instagram"></i>
-      <%end%>
-      <%= link_to "#", class:"skype" do%>
-        <i class="bx bxl-skype"></i>
-      <%end%>
-      <%= link_to "#", class:"linkedin" do%>
-        <i class="bx bxl-linkedin"></i>
-      <%end%>
-    </div>
-  </footer>
-  <!-- End Footer -->
-  <%= link_to `<i class="icofont-simple-up"></i>`, `"#"  class="back-to-top"`%>
+</footer>
