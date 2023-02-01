@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: yic_development
+  database: premier_web_development
   username: postgres
   password: biruk
   host: localhost
