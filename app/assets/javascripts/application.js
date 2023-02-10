@@ -18,7 +18,7 @@
 //= require turbolinks
 //= require tiny-slider.js
 //= require purecounter_vanilla.js
-//= require bootstrap.bundle.min.js
+
 
 
 

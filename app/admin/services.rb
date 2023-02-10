@@ -23,7 +23,7 @@ permit_params :service_name,:service_overview,:details
       
       f.input :service_name
       f.input :service_overview
-      f.input :details, :as => :ckeditor      
+      f.input :details    
     end
     f.actions
   end

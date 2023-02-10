@@ -25,8 +25,8 @@ ActiveAdmin.register Training do
     f.semantic_errors
     f.inputs "training information" do
       f.input :title
-      f.input :overview,  :as => :ckeditor
-      f.input :description,  :as => :ckeditor
+      f.input :overview
+      f.input :description
       f.input :duration
       f.input :total_tuition
       f.input :photo, as: :file

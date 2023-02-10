@@ -23,12 +23,12 @@ ActiveAdmin.register College do
     f.semantic_errors
     f.inputs "College basic information" do
       f.input :college_name
-      f.input :overview, :as => :ckeditor
-      f.input :background,  :as => :ckeditor
-      f.input :mission,  :as => :ckeditor
-      f.input :vision,  :as => :ckeditor
-      f.input :history, :as => :ckeditor
-      f.input :mandate, :as => :ckeditor   
+      f.input :overview
+      f.input :background
+      f.input :mission
+      f.input :vision
+      f.input :history
+      f.input :mandate  
       f.input :establishment_date, as: :date_time_picker
       f.input :student_enrolled
       f.input :distance_center

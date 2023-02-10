@@ -44,7 +44,7 @@ menu label: "Comment"
       f.input :phone_number
       f.input :display_on_home_page
       f.input :main_testimonial
-      f.input :message, :as => :ckeditor   
+      f.input :message
       f.input :photo, as: :file 
     end
     f.actions

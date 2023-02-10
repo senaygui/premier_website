@@ -40,7 +40,7 @@ permit_params :news_title,:overview,:body,:publish,:published_by, :photo
       f.inputs "News", :multipart => true do
         f.input :news_title 
         f.input :overview
-        f.input :body, :as => :ckeditor 
+        f.input :body
         f.input :publish
         f.input :published_by 
         f.input :photo, as: :file

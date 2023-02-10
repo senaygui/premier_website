@@ -31,14 +31,14 @@ ActiveAdmin.register HowTo do
     f.semantic_errors
     f.inputs "How To Information" do
       f.input :title
-      f.input :description,  :as => :ckeditor
+      f.input :description
       f.input :video_link
       f.input :image, as: :file
 
       f.inputs 'Steps' do
         f.has_many  :steps do |d|
           d.input :step_name
-          d.input :step_description,  :as => :ckeditor
+          d.input :step_description
           d.input :step_video_link
           d.input :image, as: :file
         end

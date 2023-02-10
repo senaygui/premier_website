@@ -34,8 +34,8 @@ permit_params :fullname,:message,:job_title,:office_name,:major_responsibilities
         f.input :message
         f.input :job_title
         f.input :office_name
-        f.input :major_responsibilities, :as => :ckeditor
-        f.input :offices_that_answerable_to, :as => :ckeditor
+        f.input :major_responsibilities
+        f.input :offices_that_answerable_to
         f.input :office_address
         f.input :office_phone_number
         f.input :email

@@ -12,7 +12,7 @@ gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+# gem 'uglifier', '>= 1.3.0'
 gem 'sassc', '2.4.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
@@ -31,7 +31,7 @@ gem 'jquery-rails'
 # gem 'hirb'
 gem 'devise', '~> 4.8'
 gem 'activeadmin', '~> 2.9'
-gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+# gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin_addons', '~> 1.7', '>= 1.7.1'
 gem 'active_admin_theme', '~> 1.1', '>= 1.1.4'
 gem 'name_of_person', '~> 1.1', '>= 1.1.1'
@@ -53,13 +53,8 @@ gem "chunky_png", "~> 1.4"
 gem "barby", "~> 0.6.8"
 gem "active_admin_import"
 gem 'active_admin_scoped_collection_actions'
-gem 'ckeditor', '~> 4.3.0' 
+# gem 'ckeditor', '~> 4.3.0' 
 
-
-gem 'rack-google-analytics'
-
-gem 'google-api-client'  # v. 0.11
-gem 'omniauth-google-oauth2' # v. 0.4.1 with Devise
 
 
 # In a model or controller somewhere...

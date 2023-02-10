@@ -4,7 +4,7 @@
 //= require active_admin_scoped_collection_actions
 //= require activestorage
 //= require active_storage_drag_and_drop
-var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+
 
 $(document).ready(function(){
 
