@@ -83,8 +83,8 @@ development:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-# production:
-#   <<: *default
-#   database: gic_production
-#   username: app
-#   password: <%= ENV["APP_DATABASE_PASSWORD"] %>
+production:
+  <<: *default
+  database: premier_web_development
+  username: app
+  password: <%= ENV["APP_DATABASE_PASSWORD"] %>
