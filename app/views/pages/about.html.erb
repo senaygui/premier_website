@@ -1,3 +1,4 @@
+<%provide(:title, "about us")%>
 <main>
 <section class="bg-dark align-items-center d-flex" style="background:url(<%= asset_path('04.png')%>) no-repeat center center; background-size:cover;">
   <!-- Main banner background image -->
@@ -10,7 +11,7 @@
         <div class="d-flex">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">About</li>
             </ol>
           </nav>
@@ -43,7 +44,7 @@ About END -->
             </div>
             <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
               <h5 class="mb-0">Vision</h5>
-              <p class="mb-0">“To lead and shape the future of higher education”. Our vision describes the aspiration for PREMIER COLLEGE 20 years in the future. We aspire to become a world-renowned institution that excels in education, research, and community service—and to become a model of higher education. </p>
+              <p class="mb-0"><%= @college.vision%> </p>
             </div>
           </li>
           <!-- Item -->
@@ -53,7 +54,7 @@ About END -->
             </div>
             <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
               <h5 class="mb-0">Mission</h5>
-              <p class="mb-0">To strive for quality education in keeping with the motto of the college: “Excellence in Education”. Our mission is to educate our students and prepare them for life. In addition, our responsibility is to drive the development of research and community service that creates and advances knowledge.  </p>
+              <p class="mb-0"><%= @college.mission%>  </p>
             </div>
           </li>
       </div>
@@ -253,7 +254,7 @@ About END -->
           </li>
           <li class="list-group-item px-0">
             <span class="h6 fw-light"><i class="fas fa-fw fa-globe text-primary me-1 me-sm-3"></i>Website:</span>
-            <span>https://grandintcollege.edu.et</span>
+            <span>https://premiercollege.edu.et</span>
           </li>
         </ul>
 
@@ -357,8 +358,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration Is Now Open</h3>
-                  <p class="text-white small mt-3">Premier College is now accredited by Ethiopia Education and Training Authority (ETA) to register and teach students.</p>
+                  <h3 class="text-white mb-0">Registration will be open soon</h3>
+                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -368,7 +369,8 @@ Counter START -->
                 </div>
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
-                  <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a>
+                  <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
+                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
                 </div>
               </div> <!-- Row END -->
             </div>
@@ -458,7 +460,7 @@ Counter END -->
           <!-- Telephone box -->
           <div class="col-sm-6 col-lg-12 col-xl-6 mb-5 mb-xl-0">
             <div class="card card-body shadow">
-              <div class="icon-lg bg-purple text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
+              <div class="icon-lg bg-danger text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
                 <i class="fas fa-tty"></i>
               </div>
               <h6>Phone number</h6>
@@ -469,11 +471,11 @@ Counter END -->
           <!-- Website box -->
           <div class="col-sm-6 col-lg-12 col-xl-6 mb-5 mb-xl-0">
             <div class="card card-body shadow">
-              <div class="icon-lg bg-orange text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
+              <div class="icon-lg bg-info text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
                 <i class="fas fa-globe"></i>
               </div>
               <h6>Website</h6>
-              <p class="mb-0"><a href="#" class="h6 mb-0 fw-light stretched-link">https://grandintcollege.edu.et</a></p>
+              <p class="mb-0"><a href="#" class="h6 mb-0 fw-light stretched-link">https://premiercollege.edu.et</a></p>
             </div>
           </div>
         </div>

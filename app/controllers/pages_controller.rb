@@ -25,6 +25,13 @@ class PagesController < ApplicationController
     @faq= FrequentlyAskedQuestion.all
   end
 
+  def how_to_learn
+  end
+  def how_to_apply
+  end
+  def remind_me
+  end
+
   def accreditation
   	@accreditations = Accreditation.all
     @marketing = MarketingSection.all

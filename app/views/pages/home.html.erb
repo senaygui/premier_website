@@ -1,3 +1,4 @@
+<%provide(:title, "Home")%>
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 
@@ -145,9 +146,12 @@ About START -->
           <!-- Item -->
           <div class="col-6">
             <div class="d-sm-flex mb-lg-0 align-items-center">
-              <div class="icon-md fs-5 text-white bg-purple rounded">
+              <div class="icon-md fs-5 text-white bg-danger rounded">
                 <i class="bi bi-laptop"></i>
               </div>
+              <!-- <div class="icon-md fs-5 text-white bg-purple rounded">
+                <i class="bi bi-laptop"></i>
+              </div> -->
               <div class="ms-0 ms-sm-3 mt-2 mt-sm-0">
                 <h6 class="mb-0">Training</h6>
                 <div class="small"><i class="bi bi-stopwatch me-2"></i>Coming soon...</div>
@@ -267,7 +271,7 @@ About END -->
         <!-- Title -->
         <h2 class="h1">How to use our Learning Platform.</h2>
         <p class="py-2 text-justify my-3 subtitle-1">Self-paced learning, enabled through our e-learning platform, gives students the flexibility to learn in the pace and style that works best for them. Our learning platform has modern, easy to use interface designed to be responsive and accessible and it is easy to navigate on both PC and mobile devices. It also has a personalized dashboard to display current, past and future courses, along with collaborative tools and activities to work and learn together in forums, glossaries, database activities, and much more.</p>
-        <%= link_to "Learn More", "#",class: "btn btn-blue mb-0 rounded-pill"%>
+        <%= link_to "Learn More",how_to_learn_path,class: "btn btn-blue mb-0 rounded-pill"%>
       </div>
 
 
@@ -311,8 +315,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration Is Now Open</h3>
-                  <p class="text-white small mt-3">Premier College is now accredited by Ethiopia Education and Training Authority (ETA) to register and teach students.</p>
+                  <h3 class="text-white mb-0">Registration will be open soon</h3>
+                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -322,7 +326,8 @@ Counter START -->
                 </div>
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
-                  <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a>
+                  <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
+                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
                 </div>
               </div> <!-- Row END -->
             </div>
@@ -378,7 +383,7 @@ Counter END -->
         <!-- Title -->
         <h2 class="h1">How to apply online?</h2>
         <p class="py-2 text-justify my-3 subtitle-1">Our application and enrollment process is very simple and easy to use. You can visit the "how it works" section to understand the application process until the final payment verification steps.</p>
-        <a class="btn btn-blue mb-0 rounded-pill" href="#">Learn More</a>
+        <%= link_to "Learn More",how_to_apply_path,class: "btn btn-blue mb-0 rounded-pill"%>
       </div>
 
 
@@ -436,7 +441,7 @@ Event END -->
           <!-- Telephone box -->
           <div class="col-sm-6 col-lg-12 col-xl-6 mb-5 mb-xl-0">
             <div class="card card-body shadow">
-              <div class="icon-lg bg-purple text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
+              <div class="icon-lg bg-danger text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
                 <i class="fas fa-tty"></i>
               </div>
               <h6>Phone number</h6>
@@ -447,7 +452,7 @@ Event END -->
           <!-- Website box -->
           <div class="col-sm-6 col-lg-12 col-xl-6 mb-5 mb-xl-0">
             <div class="card card-body shadow">
-              <div class="icon-lg bg-orange text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
+              <div class="icon-lg bg-info text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
                 <i class="fas fa-globe"></i>
               </div>
               <h6>Website</h6>

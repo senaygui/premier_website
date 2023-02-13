@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   resources :how_tos do
     resources :steps
   end
+  get "how_to_learn" => 'pages#how_to_learn'
+  get "how_to_apply" => 'pages#how_to_apply'
+  get "remind_me" => 'pages#remind_me'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: "pages#home"
