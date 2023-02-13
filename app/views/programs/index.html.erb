@@ -1,8 +1,9 @@
+<%provide(:title, "Programs")%>
 <main>
 
 <!-- =======================
 Page Banner START -->
-<section class="bg-blue align-items-center d-flex" style="background:url(<%= asset_path('04.png')%>) no-repeat center center; background-size:cover;">
+<section class="bg-dark align-items-center d-flex" style="background:url(<%= asset_path('04.png')%>) no-repeat center center; background-size:cover;">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
@@ -94,8 +95,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration Is Now Open</h3>
-                  <p class="text-white small mt-3">Premier College is now accredited by Ethiopia Education and Training Authority (ETA) to register and teach students.</p>
+                  <h3 class="text-white mb-0">Registration will be open soon</h3>
+                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -105,7 +106,8 @@ Counter START -->
                 </div>
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
-                  <a href="/contact" class="btn btn-warning mb-0">Contact Us</a>
+                  <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
+                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
                 </div>
               </div> <!-- Row END -->
             </div>
