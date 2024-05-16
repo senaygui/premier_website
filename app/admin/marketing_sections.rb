@@ -5,7 +5,7 @@ ActiveAdmin.register MarketingSection do
   
   # Uncomment all parameters which should be permitted for assignment
   
-  permit_params :headline_title, :description, :page_to_display, :action
+  permit_params :action_title,:headline_title, :description, :page_to_display, :action
   
   # # or
   
@@ -31,7 +31,8 @@ ActiveAdmin.register MarketingSection do
         f.input :headline_title
         f.input :page_to_display, as: :select, :collection => ["home", "about", "contact", "programs","admission"]
         f.input :description, as: :string, input_html: { maxlength: 255 }
-        f.input :action
+        f.input :action_title
+        f.input :action, label: "Action URL"
       f.actions
     end
   end

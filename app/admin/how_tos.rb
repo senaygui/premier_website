@@ -14,12 +14,13 @@ ActiveAdmin.register HowTo do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  permit_params :title, :description, :video_link,:image, steps_attributes: [:id, :step_name, :step_description, :step_video_link, :image]
+  permit_params :category,:title, :description, :video_link,:image, steps_attributes: [:id, :step_name, :step_description, :step_video_link, :image]
 
   index do
     selectable_column
     column :title
     column :description
+    column :category
     column :video_link
     column "Created At", sortable: true do |c|
       c.created_at.strftime("%b %d, %Y")
@@ -33,6 +34,7 @@ ActiveAdmin.register HowTo do
       f.input :title
       f.input :description
       f.input :video_link
+      f.input :category, as: :select, :collection => ["how to apply", "how to learn"]
       f.input :image, as: :file
 
       f.inputs 'Steps' do
@@ -51,6 +53,7 @@ ActiveAdmin.register HowTo do
     panel "How To Information" do
       attributes_table_for how_to do
         row :title
+        row :category
         row :description
         row :video_link
         row :steps do |c|

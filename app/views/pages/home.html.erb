@@ -44,7 +44,8 @@ Main Banner START -->
           
           <div class="d-flex justify-content-center align-items-center mt-4">
             <!-- Button -->
-            <a href="#" class="btn btn-lg btn-primary me-2 mb-4 mb-sm-0">Get Started</a>
+            <a href="https://portal.premiercollege.edu.et/requirements?modality=online&study_level=graduate" class="btn btn-lg btn-primary me-2 mb-4 mb-sm-0" style="background: #272367; border-color: #272367;">Apply Now</a>
+            <a href="#" class="btn btn-lg btn-secondary me-2 mb-4 mb-sm-0">Get Started</a>
           </div>
         </div>
       </div>
@@ -180,7 +181,7 @@ About END -->
       <div class="col-md-6">
         <!-- Title -->
         <h2 class="display-6">About Us</h2>
-        <p class="lead" style="line-height: 1.9;"><%= College.first.overview.html_safe %></p>
+        <p class="lead" style="line-height: 1.9;  text-align: justify; "><%= College.first.overview.html_safe %></p>
         <!-- <a href="#" class="btn btn-lg btn-primary-soft mb-0 mt-lg-2">Learn More</a> -->
         <%= link_to "Learn More", about_path, class: "btn btn-lg btn-primary-soft mb-0 mt-lg-2"%>
       </div>
@@ -269,16 +270,24 @@ About END -->
         </figure>
 
         <!-- Title -->
-        <h2 class="h1">How to use our Learning Platform.</h2>
-        <p class="py-2 text-justify my-3 subtitle-1">Self-paced learning, enabled through our e-learning platform, gives students the flexibility to learn in the pace and style that works best for them. Our learning platform has modern, easy to use interface designed to be responsive and accessible and it is easy to navigate on both PC and mobile devices. It also has a personalized dashboard to display current, past and future courses, along with collaborative tools and activities to work and learn together in forums, glossaries, database activities, and much more.</p>
+        <% if HowTo.where(category: "how to learn").first.present? %>
+          <h2 class="h1"><%= HowTo.where(category: "how to learn").first.title.html_safe %></h2>
+          <p class="py-2 my-3 subtitle-1 " style="text-align: justify;"><%= HowTo.where(category: "how to learn").first.description.html_safe %></p>
+        <%else%>
+          <h2 class="h1">How to use our Learning Platform.</h2>
+          <p class="py-2 text-justify my-3 subtitle-1">Self-paced learning, enabled through our e-learning platform, gives students the flexibility to learn in the pace and style that works best for them. Our learning platform has modern, easy to use interface designed to be responsive and accessible and it is easy to navigate on both PC and mobile devices. It also has a personalized dashboard to display current, past and future courses, along with collaborative tools and activities to work and learn together in forums, glossaries, database activities, and much more.</p>
+        <%end%>
         <%= link_to "Learn More",how_to_learn_path,class: "btn btn-blue mb-0 rounded-pill"%>
       </div>
 
 
       <div class="col-lg-6 position-relative mt-4 mt-lg-0">
         <!-- Image -->
-        
-        <%= image_tag("training.jpg",class: "rounded border border-5 border-white rounded-2", alt: "students")%>
+        <%if HowTo.where(category: "how to learn").first.present?%>
+          <%= image_tag(HowTo.where(category: "how to learn").first.image,class: "rounded border border-5 border-white rounded-2", alt: "students")%>
+        <%else%>
+          <%= image_tag("training.jpg",class: "rounded border border-5 border-white rounded-2", alt: "students")%>
+        <%end%>
       </div>
     </div>
   </div>
@@ -315,8 +324,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration will be open soon</h3>
-                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
+                  <h3 class="text-white mb-0"><%= MarketingSection.where(page_to_display: "home").first.headline_title if MarketingSection.where(page_to_display: "home").first.present? %></h3>
+                  <p class="text-white small mt-3"><%= MarketingSection.where(page_to_display: "home").first.description if MarketingSection.where(page_to_display: "home").first.present? %></p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -327,7 +336,7 @@ Counter START -->
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                   <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
-                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
+                  <%= link_to "#{MarketingSection.where(page_to_display: "home").first.action_title}",MarketingSection.where(page_to_display: "home").first.action ,class: "btn btn-warning mb-0" if MarketingSection.where(page_to_display: "home").first.present?%>
                 </div>
               </div> <!-- Row END -->
             </div>
@@ -381,16 +390,24 @@ Counter END -->
         </figure>
 
         <!-- Title -->
-        <h2 class="h1">How to apply online?</h2>
-        <p class="py-2 text-justify my-3 subtitle-1">Our application and enrollment process is very simple and easy to use. You can visit the "how it works" section to understand the application process until the final payment verification steps.</p>
+        <% if HowTo.where(category: "how to apply").first.present? %>
+          <h2 class="h1"><%= HowTo.where(category: "how to apply").first.title.html_safe %></h2>
+          <p class="py-2 my-3 subtitle-1 " style="text-align: justify;"><%= HowTo.where(category: "how to apply").first.description.html_safe %></p>
+        <%else%>
+          <h2 class="h1">How to apply online?</h2>
+          <p class="py-2 text-justify my-3 subtitle-1">Our application and enrollment process is very simple and easy to use. You can visit the "how it works" section to understand the application process until the final payment verification steps.</p>
+        <%end%>
         <%= link_to "Learn More",how_to_apply_path,class: "btn btn-blue mb-0 rounded-pill"%>
       </div>
 
 
       <div class="col-lg-6 position-relative mt-4 mt-lg-0">
         <!-- Image -->
-        
-        <%= image_tag("apply.jpg",class: "rounded border border-5 border-white rounded-2", alt: "students")%>
+        <%if HowTo.where(category: "how to apply").first.present?%>
+          <%= image_tag(HowTo.where(category: "how to apply").first.image,class: "rounded border border-5 border-white rounded-2", alt: "students")%>
+        <%else%>
+          <%= image_tag("apply.jpg",class: "rounded border border-5 border-white rounded-2", alt: "students")%>
+        <%end%>
       </div>
     </div>
   </div>

@@ -20,7 +20,7 @@ class Ability
         # can :manage, Accreditation
         can :manage, Admission
         # can :manage, Almuni
-        # can :manage, HowTo
+        can :manage, HowTo
         can :manage, CareerOpportunity
         can :manage, MarketingSection
         can :manage, News

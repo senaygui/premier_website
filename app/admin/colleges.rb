@@ -61,16 +61,16 @@ ActiveAdmin.register College do
        f.input :linkedin_handle
     end
 
-    f.inputs 'Branches' do
-      f.has_many  :branches, allow_destroy: true, new_record: true do |d|
-        d.input :location
-        d.input :name
-        d.input :map
-        d.input :phone_number
-        d.input :second_phone_number
-        d.input :email
-      end
-    end  
+    # f.inputs 'Branches' do
+    #   f.has_many  :branches, allow_destroy: true, new_record: true do |d|
+    #     d.input :location
+    #     d.input :name
+    #     d.input :map
+    #     d.input :phone_number
+    #     d.input :second_phone_number
+    #     d.input :email
+    #   end
+    # end  
     if f.object.new_record?
       f.input :created_by, as: :hidden, :input_html => { :value => current_admin_user.name.full}
     else
@@ -111,7 +111,7 @@ ActiveAdmin.register College do
         row :facebook_handle
         row :twitter_handle
         row :instagram_handle
-        # row :linkedin_handle 
+        row :linkedin_handle 
         row :created_by
         row :last_updated_by
         row :created_at
