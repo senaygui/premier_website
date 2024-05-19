@@ -33,7 +33,7 @@ About END -->
       <div class="col-lg-6">
         <!-- Title -->
         <h2 class="h3 mb-5">About Premier College</h2>
-        <p class="mb-4">Premier College offers high quality 100% online graduate programs at an affordable fee to students. The College was established with the purpose of providing internationally recognized undergraduate and graduate programs. The college is to start its operation with three graduate degree programs Master of Business Administration, Master of Arts in Leadership and Master of Arts in Project Management in online programs.</p>
+        <p class="mb-4"><%= College.first.overview%></p>
         
         <!-- List -->
         <ul class="list-inline vstack gap-4 flex-wrap mb-4">
@@ -233,27 +233,29 @@ About END -->
         <!-- Title -->
         <h5 class="mb-0">Dean’s Message</h5>
         <h1 class="mb-0">DR. Ahmed Fantaw</h1>
-        <p>Dear students, </p>
+        
         <!-- Content -->
+        <h5 class="mt-4">Dear students,</h5>
         <p class="mt-4">
-          <h5>Welcome to PREMIER COLLEGE, ONLINE.</h5>
-        Thank you for taking a few minutes to learn more about us. Our College is the place to be as you pursue your academic, professional and personal goals. As you decide to join our College, I want you to know that the College has amazing faculty, staff and administrators who are very experienced, and ready to help you online. We have state of the art Learning Management System (LMS) and well-organized digital library. We are here to work with you hand in hand to maximize your potentials and find out what you can do best.
+         <strong>Welcome to Premier College, Online Program!</strong> <br><br>
+         <p style="text-align: justify;">
+         Thank you for taking a few minutes to learn more about us. Our College is the place to be as you pursue your academic, professional and personal goals. As you decide to join our College, I want you to know that the College has amazing faculty, staff and administrators who are very experienced, and ready to help you online. We have state of the art Learning Management System (LMS) and well-organized digital library. We are here to work with you hand in hand to maximize your potentials and find out what you can do best.
         Here at Premier College, we live by the motto Excellence in Education! Our job is to provide a learning environment that fosters your success and helps you accomplish your goals. In our programs, we adopt the most challenging requirements of any online learning College/University. It is these high standards that distinguishes us from other Colleges/Universities. Therefore, I personally invite distinguished students who are exceptionally committed and who are dedicated learners to apply. 
-        This College expects from all its students to strive their hardest to gain the highest levels of knowledge and to be exemplary role models in their studies and in their profession. I look forward to having the brightest students joining this College. Do not hesitate to contact us if you have any questions, we here to help. 
+        This College expects from all its students to strive their hardest to gain the highest levels of knowledge and to be exemplary role models in their studies and in their profession. I look forward to having the brightest students joining this College. Do not hesitate to contact us if you have any questions, we here to help. </p>
         </p>
         <!-- Personal info -->
         <ul class="list-group list-group-borderless">
           <li class="list-group-item px-0">
             <span class="h6 fw-light"><i class="fas fa-fw fa-map-marker-alt text-primary me-1 me-sm-3"></i>Address:</span>
-            <span>Kality Bus Station behind Quara Hotel. </span>
+            <span><%= College.first.headquarter_address%></span>
           </li>
           <li class="list-group-item px-0">
             <span class="h6 fw-light"><i class="fas fa-fw fa-envelope text-primary me-1 me-sm-3"></i>Email:</span>
-            <span>info@premiercollege.edu.et</span>
+            <span><%= College.first.email %></span>
           </li>
           <li class="list-group-item px-0">
             <span class="h6 fw-light"><i class="fas fa-fw fa-headphones text-primary me-1 me-sm-3"></i>Phone number:</span>
-            <span>+251 911803339</span>
+            <span><%= College.first.phone_number %></span>
           </li>
           <li class="list-group-item px-0">
             <span class="h6 fw-light"><i class="fas fa-fw fa-globe text-primary me-1 me-sm-3"></i>Website:</span>
@@ -275,7 +277,7 @@ About END -->
   </div>
 </section>
 
-<section class="pt-0">
+<section class="pt-0 mt-4">
   <div class="container">
     <div class="bg-light p-4 rounded-3">
       <!-- Title -->
@@ -361,8 +363,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration will be open soon</h3>
-                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
+                  <h3 class="text-white mb-0"><%= MarketingSection.where(page_to_display: "about").first.headline_title if MarketingSection.where(page_to_display: "about").first.present? %></h3>
+                  <p class="text-white small mt-3"><%= MarketingSection.where(page_to_display: "about").first.description if MarketingSection.where(page_to_display: "about").first.present? %></p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -373,7 +375,7 @@ Counter START -->
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                   <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
-                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
+                  <%= link_to "#{MarketingSection.where(page_to_display: "about").first.action_title}",MarketingSection.where(page_to_display: "about").first.action ,class: "btn btn-warning mb-0" if MarketingSection.where(page_to_display: "about").first.present?%>
                 </div>
               </div> <!-- Row END -->
             </div>

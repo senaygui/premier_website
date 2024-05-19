@@ -1,3 +1,5 @@
+<%provide(:title, "#{@admission.admission_name}")%>
+
 <main>
 
 <!-- =======================
@@ -394,8 +396,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration will be open soon</h3>
-                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
+                  <h3 class="text-white mb-0"><%= MarketingSection.where(page_to_display: "admission").first.headline_title if MarketingSection.where(page_to_display: "admission").first.present? %></h3>
+                  <p class="text-white small mt-3"><%= MarketingSection.where(page_to_display: "admission").first.description if MarketingSection.where(page_to_display: "admission").first.present? %></p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -406,7 +408,7 @@ Counter START -->
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                   <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
-                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
+                  <%= link_to "#{MarketingSection.where(page_to_display: "admission").first.action_title}",MarketingSection.where(page_to_display: "admission").first.action ,class: "btn btn-warning mb-0" if MarketingSection.where(page_to_display: "admission").first.present?%>
                 </div>
               </div> <!-- Row END -->
             </div>

@@ -17,7 +17,7 @@ class Ability
         # #TODO: after one college created disable new action   
         # cannot :destroy, College, id: 1
 
-        # can :manage, Accreditation
+        can :manage, Accreditation
         can :manage, Admission
         # can :manage, Almuni
         can :manage, HowTo
