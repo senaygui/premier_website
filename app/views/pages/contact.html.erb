@@ -1,3 +1,4 @@
+<%provide(:title, "Contact")%>
 <main>
 
 <!-- =======================
@@ -62,7 +63,7 @@ Page Banner START -->
           <!-- Telephone box -->
           <div class="col-sm-6 col-lg-12 col-xl-6 mb-5 mb-xl-0">
             <div class="card card-body shadow">
-              <div class="icon-lg bg-purple text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
+              <div class="icon-lg bg-danger text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
                 <i class="fas fa-tty"></i>
               </div>
               <h6>Phone number</h6>
@@ -73,7 +74,7 @@ Page Banner START -->
           <!-- Website box -->
           <div class="col-sm-6 col-lg-12 col-xl-6 mb-5 mb-xl-0">
             <div class="card card-body shadow">
-              <div class="icon-lg bg-orange text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
+              <div class="icon-lg bg-info text-white rounded-circle position-absolute top-0 start-100 translate-middle ms-n6">
                 <i class="fas fa-globe"></i>
               </div>
               <h6>Website</h6>
@@ -121,8 +122,6 @@ Page Banner START -->
   </div>
 </section>
 
-<!-- =======================
-Counter START -->
 <section class="py-5">
   <div class="container position-relative">
     <div class="row">
@@ -153,8 +152,8 @@ Counter START -->
               <div class="row align-items-center">
                 <!-- Title -->
                 <div class="col-lg-7">
-                  <h3 class="text-white mb-0">Registration will be open soon</h3>
-                  <p class="text-white small mt-3">Registration will be open soon until then fill our form and we will let you know when we start registering.</p>
+                  <h3 class="text-white mb-0"><%= MarketingSection.where(page_to_display: "contact").first.headline_title if MarketingSection.where(page_to_display: "contact").first.present? %></h3>
+                  <p class="text-white small mt-3"><%= MarketingSection.where(page_to_display: "contact").first.description if MarketingSection.where(page_to_display: "contact").first.present? %></p>
                   <!-- List -->
                   <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
                     <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
@@ -165,7 +164,7 @@ Counter START -->
                 <!-- Content and input -->
                 <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
                   <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
-                  <%= link_to "Remind me",remind_me_path,class: "btn btn-warning mb-0"%>
+                  <%= link_to "#{MarketingSection.where(page_to_display: "home").first.action_title}",MarketingSection.where(page_to_display: "home").first.action ,class: "btn btn-warning mb-0" if MarketingSection.where(page_to_display: "home").first.present?%>
                 </div>
               </div> <!-- Row END -->
             </div>
@@ -175,7 +174,5 @@ Counter START -->
     </div> <!-- Row END -->
   </div>
 </section>
-<!-- =======================
-Counter END -->
 
 </main>
