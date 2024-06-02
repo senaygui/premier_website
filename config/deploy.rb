@@ -10,7 +10,7 @@ set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'
 set :stages, %w(production staging)
 # append :linked_files, "config/database.yml", "config/master.key"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads", "storage"
 
 set :keep_releases, 5
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
