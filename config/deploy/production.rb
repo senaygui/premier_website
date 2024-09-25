@@ -1,6 +1,6 @@
-role :app, %w{deploy@51.77.82.252}
-role :web, %w{deploy@51.77.82.252}
-role :db, %w{deploy@51.77.82.252}, :primary => true
+role :app, %w{deploy@87.98.245.128}
+role :web, %w{deploy@87.98.245.128}
+role :db, %w{deploy@87.98.245.128}, :primary => true
 set :branch, "master"
 set :rails_env, "production"
 set :deploy_to, '/home/deploy/premier_website'
