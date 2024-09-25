@@ -1,6 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.17.1"
+lock "~> 3.19.1"
 
 set :application, "premier_website"
 set :repo_url, "https://github.com/senaygui/premier_website.git"
