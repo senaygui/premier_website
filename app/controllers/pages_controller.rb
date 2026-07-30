@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     @news = News.order('created_at DESC').first(6)
     @programs = Program.all
     @admissions = Admission.all
+    @accreditations = Accreditation.all
   end
 
   def contact

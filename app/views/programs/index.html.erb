@@ -1,123 +1,77 @@
 <%provide(:title, "Programs")%>
 <main>
 
-<!-- =======================
-Page Banner START -->
-<section class="bg-dark align-items-center d-flex" style="background:url(<%= asset_path('04.png')%>) no-repeat center center; background-size:cover;">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <!-- Title -->
-        <h1 class="text-white">Our Programs</h1>
-        <!-- Breadcrumb -->
-        <div class="d-flex justify-content-center">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Programs</li>
-            </ol>
-          </nav>
-        </div>
+<section class="hero-section hero-gradient position-relative overflow-hidden rounded-bottom-4 shadow-lg text-white">
+  <div class="container position-relative z-index-9">
+    <div class="row justify-content-center text-center py-4">
+      <div class="col-lg-8" data-aos="zoom-in" data-aos-duration="1000">
+        <h1 class="text-white display-4 fw-bold mb-3">Our Academic Programs</h1>
+        <nav aria-label="breadcrumb" class="d-flex justify-content-center">
+          <ol class="breadcrumb breadcrumb-dark mb-0">
+            <li class="breadcrumb-item"><a href="/" class="text-white-50">Home</a></li>
+            <li class="breadcrumb-item active text-white" aria-current="page">Programs</li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
 </section>
-<section class="py-5 my-5 " >
-  <div class="container ">
-    <!-- Title -->
-    <div class="row mb-5 ">
-      <div class="col-lg-8 mx-auto text-center">
-        <h2 class="fs-2">Our Programs</h2>
-        <p class="mb-0">Here are our graduate programs </p>
+
+<section class="py-10 bg-white">
+  <div class="container">
+    <div class="row mb-5 text-center" data-aos="fade-up">
+      <div class="col-lg-8 mx-auto">
+        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Educational Tracks</span>
+        <h2 class="display-5 fw-bold text-primary mt-2">Accredited Graduate Degrees</h2>
+        <p class="lead text-muted">Specialized Master of Business Administration (MBA), Project Management (MPM), and Leadership (MOL).</p>
       </div>
     </div>
 
-    <div class="row ">
-      <div class="col-lg-12 col-xl-12">
-        <div class="row g-4 d-flex justify-content-md-center">
-          <% Program.where(study_level: 'undergraduate').or(Program.where(study_level: 'graduate')).each do |pro|%>
-            <div class="col-sm-6 col-xl-3">
-              <div class="card border h-100">
-                <%= image_tag pro.photo, class:"card-img-top" ,alt: "#{pro.program_name}", style: "min-height: 254px !important;"%>
-                <!-- Card body -->
-                <div class="card-body" style="padding-right: 0px;">
-                  <!-- Title -->
-                  <h5 class="card-title"><%= link_to pro.program_name, program_path(pro), class: "stretched-link"%></h5>
-                  
-                </div>
-                <div class="card-footer">
-                  <div class="d-sm-flex justify-content-between align-items-center">
-                    <h6 class="badge bg-success bg-opacity-10 text-success mb-0"><%= pro.modality%></h6>
-                    <%= link_to "View detail <i class='bi bi-arrow-right ms-2'></i>".html_safe, program_path(pro), class: "btn btn-link p-0 mb-0"%>
-                  </div>
-                </div>
+    <div class="row g-4 justify-content-center">
+      <% active_programs = (@programs.present? && @programs.any?) ? @programs : Program.all %>
+      <% active_programs.each_with_index do |pro, index|%>
+        <div class="col-sm-6 col-md-4 col-lg-4" data-aos="fade-up" data-aos-delay="<%= 100 * (index + 1) %>">
+          <div class="card card-premium h-100 d-flex flex-column">
+            <% if pro.respond_to?(:photo) && pro.photo.attached? %>
+              <%= image_tag pro.photo, class:"card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;"%>
+            <% else %>
+              <%= image_tag "ac.jpg", class:"card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;"%>
+            <% end %>
+            <div class="card-body p-4 d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold"><%= pro.try(:modality) || "100% Online" %></span>
+                <span class="text-muted small"><i class="fas fa-graduation-cap me-1"></i> <%= pro.try(:study_level)&.capitalize || "Master Degree" %></span>
+              </div>
+              
+              <h4 class="card-title fw-bold mb-3">
+                <%= link_to pro.program_name, program_path(pro), class: "stretched-link text-dark text-decoration-none"%>
+              </h4>
+              
+              <p class="text-muted small mb-4">
+                <%= pro.try(:overview)&.truncate(120) || "Structured to build executive leadership, strategic decision-making, and specialized domain mastery." %>
+              </p>
+
+              <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                <span class="text-primary fw-bold small">View Program <i class="fas fa-arrow-right ms-1"></i></span>
+                <span class="btn btn-sm btn-outline-primary btn-pill">Details</span>
               </div>
             </div>
-          <%end%>
+          </div>
         </div>
-      </div>
+      <%end%>
     </div>
   </div>
 </section> 
 
-
-
-
-<!-- =======================
-Counter START -->
-<section class="py-5">
-  <div class="container position-relative">
-    <div class="row">
-      <div class="col-12">
-        <!-- SVG decoration START -->
-        <figure class="position-absolute top-50 start-50 translate-middle ms-2">
-          <svg>
-            <path class="fill-white opacity-2" d="m496 22.999c0 10.493-8.506 18.999-18.999 18.999s-19-8.506-19-18.999 8.507-18.999 19-18.999 18.999 8.506 18.999 18.999z"></path>
-            <path class="fill-white opacity-2" d="m775 102.5c0 5.799-4.701 10.5-10.5 10.5-5.798 0-10.499-4.701-10.499-10.5 0-5.798 4.701-10.499 10.499-10.499 5.799 0 10.5 4.701 10.5 10.499z"></path>
-            <path class="fill-white opacity-2" d="m192 102c0 6.626-5.373 11.999-12 11.999s-11.999-5.373-11.999-11.999c0-6.628 5.372-12 11.999-12s12 5.372 12 12z"></path>
-            <path class="fill-white opacity-2" d="m20.499 10.25c0 5.66-4.589 10.249-10.25 10.249-5.66 0-10.249-4.589-10.249-10.249-0-5.661 4.589-10.25 10.249-10.25 5.661-0 10.25 4.589 10.25 10.25z"></path>
-          </svg>
-        </figure>
-        <!-- SVG decoration END -->
-
-        <div class="bg-dark p-4 p-sm-5 rounded-3">
-          <div class="row justify-content-center position-relative">
-            <!-- Svg decoration START -->
-            <figure class="fill-white opacity-1 position-absolute top-50 start-0 translate-middle-y">
-              <svg width="141px" height="141px">
-                <path d="M140.520,70.258 C140.520,109.064 109.062,140.519 70.258,140.519 C31.454,140.519 -0.004,109.064 -0.004,70.258 C-0.004,31.455 31.454,-0.003 70.258,-0.003 C109.062,-0.003 140.520,31.455 140.520,70.258 Z"></path>
-              </svg>
-            </figure>
-            <!-- SVG decoration END -->
-            
-            <!-- Action box -->
-            <div class="col-11 position-relative">
-              <div class="row align-items-center">
-                <!-- Title -->
-                <div class="col-lg-7">
-                  <h3 class="text-white mb-0"><%= MarketingSection.where(page_to_display: "programs").first.headline_title if MarketingSection.where(page_to_display: "programs").first.present? %></h3>
-                  <p class="text-white small mt-3"><%= MarketingSection.where(page_to_display: "programs").first.description if MarketingSection.where(page_to_display: "programs").first.present? %></p>
-                  <!-- List -->
-                  <ul class="list-inline mb-0 justify-content-center justify-content-lg-start">
-                    <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Graduate Program</li>
-                    <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>Online Modality</li>
-                    <!-- <li class="list-inline-item text-white me-2"> <i class="bi bi-check-circle-fill text-success me-2"></i>TVET Program</li> -->
-                  </ul>
-                </div>
-                <!-- Content and input -->
-                <div class="col-lg-5 text-lg-end mt-3 mt-lg-0">
-                  <!-- <a href="#contact-form" class="btn btn-warning mb-0">Contact Us</a> -->
-                  <%= link_to "#{MarketingSection.where(page_to_display: "programs").first.action_title}",MarketingSection.where(page_to_display: "programs").first.action ,class: "btn btn-warning mb-0" if MarketingSection.where(page_to_display: "programs").first.present?%>
-                </div>
-              </div> <!-- Row END -->
-            </div>
-          </div>
-        </div>
+<section class="py-10 hero-gradient text-white position-relative overflow-hidden rounded-4 mx-2 mx-md-4 mb-5 shadow-2xl" data-aos="fade-up">
+  <div class="container position-relative z-index-9 text-center py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <h3 class="display-5 fw-bold text-white mb-3"><%= MarketingSection.where(page_to_display: "programs").first.headline_title if MarketingSection.where(page_to_display: "programs").first.present? %></h3>
+        <p class="lead text-white-50 mb-4"><%= MarketingSection.where(page_to_display: "programs").first.description if MarketingSection.where(page_to_display: "programs").first.present? %></p>
+        <%= link_to "Apply Now", "https://portal.premiercollege.edu.et", class: "btn btn-warning btn-pill btn-lg shadow-lg px-5 py-3 fw-bold"%>
       </div>
-    </div> <!-- Row END -->
+    </div>
   </div>
 </section>
-<!-- =======================
-Counter END -->
-
 </main>

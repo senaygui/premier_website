@@ -1,39 +1,38 @@
 <!-- Header START -->
-<header class="navbar-light navbar-sticky header-static">
+<header class="navbar-light navbar-sticky header-static navbar-glass">
   <div class="navbar-top navbar-dark bg-light d-none d-xl-block py-2 mx-2 mx-md-4 rounded-bottom-4">
-  <div class="container">
-    <div class="d-lg-flex justify-content-lg-between align-items-center">
-      <!-- Navbar top Left-->
-      <!-- Top info -->
-      <ul class="nav align-items-center justify-content-center">
-        <li class="nav-item me-3" data-bs-toggle="tooltip" data-bs-animation="false" data-bs-placement="bottom" data-bs-original-title="Sunday CLOSED">
-          <span><i class="far fa-clock me-2"></i>Visit time: Mon-Sat 9:00-19:00</span>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fas fa-headset me-2"></i>Call us now: <%= College.first.phone_number %></a>
-        </li>
-      </ul>
-
-      <!-- Navbar top Right-->
-      <div class="nav d-flex align-items-center justify-content-center">
-        <!-- Top social -->
-        <ul class="list-unstyled d-flex mb-0">
-          <li> <a class="px-2 nav-link" href="<%= College.first.facebook_handle%>"><i class="fab fa-facebook"></i></a> </li>
-          <li> <a class="px-2 nav-link" href="<%= College.first.instagram_handle%>"><i class="fab fa-instagram"></i></a> </li>
-          <li> <a class="px-2 nav-link" href="<%= College.first.twitter_handle%>"><i class="fab fa-twitter"></i></a> </li>
-          <li> <a class="ps-2 nav-link" href="<%= College.first.linkedin_handle%>"><i class="fab fa-linkedin-in"></i></a> </li>
+    <div class="container">
+      <div class="d-lg-flex justify-content-lg-between align-items-center">
+        <!-- Navbar top Left-->
+        <ul class="nav align-items-center justify-content-center">
+          <li class="nav-item me-3">
+            <span class="text-dark fw-medium"><i class="far fa-clock me-2 text-primary"></i>Visit time: Mon-Sat 9:00-19:00</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark fw-medium p-0" href="tel:<%= College.first.phone_number %>"><i class="fas fa-headset me-2 text-primary"></i>Call us now: <%= College.first.phone_number %></a>
+          </li>
         </ul>
+
+        <!-- Navbar top Right-->
+        <div class="nav d-flex align-items-center justify-content-center">
+          <ul class="list-unstyled d-flex mb-0 gap-2">
+            <li> <a class="px-2 nav-link text-primary" href="<%= College.first.facebook_handle%>"><i class="fab fa-facebook"></i></a> </li>
+            <li> <a class="px-2 nav-link text-primary" href="<%= College.first.instagram_handle%>"><i class="fab fa-instagram"></i></a> </li>
+            <li> <a class="px-2 nav-link text-primary" href="<%= College.first.twitter_handle%>"><i class="fab fa-twitter"></i></a> </li>
+            <li> <a class="ps-2 nav-link text-primary" href="<%= College.first.linkedin_handle%>"><i class="fab fa-linkedin-in"></i></a> </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
   <!-- Logo Nav START -->
   <nav class="navbar navbar-expand-lg">
     <div class="container">
       <!-- Logo START -->
       <a class="navbar-brand me-0 py-3" href="/">
-        <%= image_tag("logo-main2.jpg",class: "light-mode-item navbar-brand-item", alt: "logo")%>
-        <%= image_tag("logo-main2.jpg",class: "dark-mode-item navbar-brand-item", alt: "logo")%>
+        <%= image_tag("logo-main2.jpg", class: "light-mode-item navbar-brand-item", alt: "logo")%>
+        <%= image_tag("logo-main2.jpg", class: "dark-mode-item navbar-brand-item", alt: "logo")%>
       </a>
       <!-- Logo END -->
 
@@ -48,41 +47,25 @@
 
       <!-- Main navbar START -->
       <div class="navbar-collapse collapse" id="navbarCollapse">
-
-        <!-- Nav Search END -->
-        <ul class="navbar-nav navbar-nav-scroll ms-auto">
-          <li class="nav-item dropdown"><%= link_to "Home", root_path,class: "nav-link active"%></li>
-
-          <li class="nav-item dropdown"><%= link_to "About us", about_path, class: "nav-link"%></li>
-          <li class="nav-item dropdown"><%= link_to "Programs", programs_path, class: "nav-link"%></li>
-          <!-- Nav item 1 Demos -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admission</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="demoMenu">
-              <% Admission.all.each do |ad|%>
-                <li> <%= link_to ad.admission_name, admission_path(ad),class: "dropdown-item"%></li>
-              <%end%>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="demoMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">How It Works</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="demoMenu">
-              <li> <%= link_to "How to apply", how_to_apply_path,class: "dropdown-item"%></li>
-              <li> <%= link_to "How to learn", how_to_learn_path,class: "dropdown-item"%></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown"><%= link_to "News & Events", news_index_path, class: "nav-link"%></li>
-          <li class="nav-item dropdown"><%= link_to "Contact Us", contact_path, class: "nav-link"%></li>
-          <li class="nav-item dropdown">
-            <a href="https://portal.premiercollege.edu.et/students/sign_in" class= "nav-link">Sign In</a>
+        <ul class="navbar-nav navbar-nav-scroll ms-auto align-items-lg-center">
+          <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link active"%></li>
+          <li class="nav-item"><%= link_to "About", about_path, class: "nav-link"%></li>
+          <li class="nav-item"><%= link_to "Programs", programs_path, class: "nav-link"%></li>
+          <li class="nav-item"><%= link_to "Online Learning", how_to_learn_path, class: "nav-link"%></li>
+          <li class="nav-item"><%= link_to "How to Apply", how_to_apply_path, class: "nav-link"%></li>
+          <li class="nav-item"><%= link_to "News & Events", news_index_path, class: "nav-link"%></li>
+          <li class="nav-item"><a href="https://training.premiercollege.edu.et/" target="_blank" class="nav-link">Trainings Portal</a></li>
+          <li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link"%></li>
+          <li class="nav-item ms-lg-2 mt-2 mt-lg-0 d-lg-none">
+            <a href="https://portal.premiercollege.edu.et" class="btn btn-primary btn-pill w-100">Apply Now</a>
           </li>
         </ul>
       </div>
       <!-- Main navbar END -->
       
-      <!-- Signin button -->
-      <div class="navbar-nav ms-2 d-none d-sm-block">
-        <a href="https://portal.premiercollege.edu.et" class= "btn btn-md btn-dark mb-0">Apply Now</a>
+      <!-- Apply Now button desktop -->
+      <div class="navbar-nav ms-3 d-none d-lg-block">
+        <a href="https://portal.premiercollege.edu.et" class="btn btn-primary btn-pill shadow-sm">Apply Now</a>
       </div>
 
     </div>
