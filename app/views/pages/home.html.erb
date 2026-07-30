@@ -168,11 +168,7 @@
       <% active_programs.each_with_index do |pro, index|%>
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<%= 100 * (index + 1) %>">
           <div class="card card-premium h-100 d-flex flex-column">
-            <% if pro.respond_to?(:photo) && pro.photo.attached? %>
-              <%= image_tag pro.photo, class:"card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;"%>
-            <% else %>
-              <%= image_tag "ac.jpg", class:"card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;"%>
-            <% end %>
+            <%= safe_photo_tag(pro, "ac.jpg", class: "card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;") %>
             <div class="card-body p-4 d-flex flex-column">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold"><%= pro.try(:modality) || "100% Online" %></span>
@@ -312,13 +308,7 @@
           <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<%= 100 * (index + 1) %>">
             <div class="card card-premium h-100 d-flex flex-column">
               <!-- Accreditation Photo / Document -->
-              <% if acc.respond_to?(:accreditation_documents) && acc.accreditation_documents.attached? %>
-                <%= image_tag acc.accreditation_documents.first, class: "card-img-top", alt: acc.accreditation_title, style: "height: 200px; object-fit: cover;" %>
-              <% elsif acc.program.present? && acc.program.respond_to?(:photo) && acc.program.photo.attached? %>
-                <%= image_tag acc.program.photo, class: "card-img-top", alt: acc.program.program_name, style: "height: 200px; object-fit: cover;" %>
-              <% else %>
-                <%= image_tag "ac.jpg", class: "card-img-top", alt: "Accreditation Certificate", style: "height: 200px; object-fit: cover;" %>
-              <% end %>
+              <%= safe_photo_tag(acc, "ac.jpg", class: "card-img-top", alt: acc.try(:accreditation_title) || "Accreditation Certificate", style: "height: 200px; object-fit: cover;") %>
 
               <div class="card-body p-4 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-center mb-2">

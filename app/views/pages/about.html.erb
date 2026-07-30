@@ -230,13 +230,7 @@
           <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<%= 100 * (idx + 1) %>">
             <div class="card card-premium h-100 d-flex flex-column">
               <!-- Accreditation Photo / Document -->
-              <% if acc.respond_to?(:accreditation_documents) && acc.accreditation_documents.attached? %>
-                <%= image_tag acc.accreditation_documents.first, class: "card-img-top", alt: acc.accreditation_title, style: "height: 200px; object-fit: cover;" %>
-              <% elsif acc.program.present? && acc.program.respond_to?(:photo) && acc.program.photo.attached? %>
-                <%= image_tag acc.program.photo, class: "card-img-top", alt: acc.program.program_name, style: "height: 200px; object-fit: cover;" %>
-              <% else %>
-                <%= image_tag "ac.jpg", class: "card-img-top", alt: "Accreditation Certificate", style: "height: 200px; object-fit: cover;" %>
-              <% end %>
+              <%= safe_photo_tag(acc, "ac.jpg", class: "card-img-top", alt: acc.try(:accreditation_title) || "Accreditation Certificate", style: "height: 200px; object-fit: cover;") %>
 
               <div class="card-body p-4 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-center mb-2">
@@ -281,11 +275,7 @@
         <% @staff.each_with_index do |member, idx| %>
           <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="<%= 100 * (idx + 1) %>">
             <div class="card card-premium text-center p-3 h-100">
-              <% if member.respond_to?(:photo) && member.photo.present? %>
-                <%= image_tag member.photo, class: "rounded-circle mx-auto mb-3 object-fit-cover", style: "width:110px; height:110px;" %>
-              <% else %>
-                <%= image_tag "avatar.webp", class: "rounded-circle mx-auto mb-3 object-fit-cover", style: "width:110px; height:110px;" %>
-              <% end %>
+              <%= safe_photo_tag(member, "avatar.webp", class: "rounded-circle mx-auto mb-3 object-fit-cover", style: "width:110px; height:110px;") %>
               <h5 class="fw-bold text-primary mb-1"><%= member.try(:full_name) || member.try(:name) %></h5>
               <span class="badge bg-primary bg-opacity-10 text-primary mb-2"><%= member.try(:position) || member.try(:role) || "Faculty Member" %></span>
               <p class="text-muted small mb-0"><%= member.try(:bio)&.truncate(90) %></p>
