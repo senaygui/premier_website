@@ -5,6 +5,11 @@ lock "~> 3.19.1"
 set :application, "premier_website"
 set :repo_url, "https://github.com/senaygui/premier_website.git"
 # set :ssh_options, { :forward_agent => true, :port => 4321 }
+
+set :git_http_username, 'senaygui' 
+ask(:github_token, "github_token", echo: false) 
+set :git_http_password, fetch((:github_token))
+
 set :user, "deploy"
 set :passenger_restart_with_touch, true
 # set :rbenv_path, '/home/deploy/.rbenv/'

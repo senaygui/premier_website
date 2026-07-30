@@ -3,9 +3,9 @@ set :ssh_options, {
   verify_host_key: :never
 }
 
-role :app, %w{aacp@51.79.99.156}, port: 13
-role :web, %w{aacp@51.79.99.156}, port: 13  
-role :db, %w{aacp@51.79.99.156}, port: 13, :primary => true
+role :app, %w{deploy@51.79.99.156}, port: 13
+role :web, %w{deploy@51.79.99.156}, port: 13  
+role :db, %w{deploy@51.79.99.156}, port: 13, :primary => true
 
 #set :branch, "main"
 set :branch, "master" 
