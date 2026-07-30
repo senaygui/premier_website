@@ -1,10 +1,17 @@
-role :app, %w{deploy@178.33.32.14}
-role :web, %w{deploy@178.33.32.14}
-role :db, %w{deploy@178.33.32.14}, :primary => true
-set :branch, "master"
-set :rails_env, "production"
-set :deploy_to, '/home/deploy/premier_website'
+set :ssh_options, {
+  forward_agent: false,
+  verify_host_key: :never
+}
 
+role :app, %w{aacp@51.79.99.156}, port: 13
+role :web, %w{aacp@51.79.99.156}, port: 13  
+role :db, %w{aacp@51.79.99.156}, port: 13, :primary => true
+
+#set :branch, "main"
+set :branch, "master" 
+set :rails_env, "production"
+
+set :deploy_to, '/home/deploy/premier_website'
 
 # server-based syntax
 # ======================
