@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(first_name: "fenet",last_name: "fenet", email: "fenet2@gmail.com", password: "password", password_confirmation: "password", role: "admin") if Rails.env.development?
+# AdminUser.create!(first_name: "fenet",last_name: "fenet", email: "fenet2@gmail.com", password: "password", password_confirmation: "password", role: "admin") if Rails.env.development?
 
 
-AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first_name]}",   last_name: "#{Rails.application.credentials.production[:last_name]}",
-									email: "#{Rails.application.credentials.production[:admin_email]}", 
-									password: "#{Rails.application.credentials.production[:seed_password]}",password_confirmation: "#{Rails.application.credentials.production[:seed_password]}",  
-									role: "#{Rails.application.credentials.production[:role]}") if Rails.env.production?
+# AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first_name]}",   last_name: "#{Rails.application.credentials.production[:last_name]}",
+# 									email: "#{Rails.application.credentials.production[:admin_email]}", 
+# 									password: "#{Rails.application.credentials.production[:seed_password]}",password_confirmation: "#{Rails.application.credentials.production[:seed_password]}",  
+# 									role: "#{Rails.application.credentials.production[:role]}") if Rails.env.production?
 
 # Seed Event Galleries (works in both development and production)
 gallery_seed_file = Rails.root.join("lib", "tasks", "seed_gallery.rb")
