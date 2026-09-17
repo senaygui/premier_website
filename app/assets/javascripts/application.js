@@ -16,9 +16,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require page_loading
+//= require home_carousel
+//= require ethiopian_new_year
+//= require ui_animations
+//= require event_gallery
 //= require tiny-slider.js
 //= require purecounter_vanilla.js
-
 
 
 

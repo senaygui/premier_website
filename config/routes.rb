@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # get 'trainings' => "programs#trainings"
   get 'about' => 'pages#about'
   get 'accreditation' => 'pages#accreditation'
+  get 'gallery' => 'pages#gallery', as: :gallery
   post 'request'=>'requests#create'
   resources :admissions
   resources :trainings

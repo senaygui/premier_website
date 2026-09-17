@@ -1,0 +1,402 @@
+/* ==========================================================================
+   PREMIER COLLEGE - COMPLETE FUTURISTIC & MODERN UI MAKEOVER
+   High-End Glassmorphism, Curved Section Architecture, & Accessible Animations
+   ========================================================================== */
+
+:root {
+  --pc-primary: #1e1b4b;        /* Deep Nebula Indigo */
+  --pc-primary-dark: #0f172a;   /* Cosmic Obsidian */
+  --pc-secondary: #8c181b;      /* Royal Crimson */
+  --pc-cyan: #06b6d4;           /* Futuristic Cyber Cyan */
+  --pc-cyan-glow: rgba(6, 182, 212, 0.35);
+  --pc-amber: #f59e0b;          /* Vibrant Amber Gold */
+  --pc-amber-glow: rgba(245, 158, 11, 0.3);
+  --pc-purple: #7c3aed;         /* Electric Violet */
+  --pc-surface-bg: #f8fafc;     /* Clean Modern Slate */
+  --pc-card-bg: #ffffff;
+  --pc-text-main: #0f172a;
+  --pc-text-muted: #334155;
+  --pc-radius-pill: 9999px;
+  --pc-radius-card: 24px;
+  --pc-radius-section: 48px;
+  --pc-shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --pc-shadow-card: 0 10px 30px -5px rgba(30, 27, 75, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  --pc-shadow-hover: 0 25px 50px -12px rgba(30, 27, 75, 0.18), 0 0 25px rgba(6, 182, 212, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION - FUTURISTIC COSMOS WITH CURVED ARCHITECTURE
+   -------------------------------------------------------------------------- */
+.hero-futuristic {
+  position: relative;
+  background: radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.22) 0%, transparent 45%),
+              radial-gradient(circle at 15% 85%, rgba(124, 58, 237, 0.25) 0%, transparent 50%),
+              linear-gradient(140deg, #0b0f19 0%, #17153b 40%, #1e1b4b 70%, #2b1028 100%);
+  border-bottom-left-radius: var(--pc-radius-section);
+  border-bottom-right-radius: var(--pc-radius-section);
+  box-shadow: 0 20px 60px rgba(11, 15, 25, 0.25);
+  overflow: hidden;
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .hero-futuristic {
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+  }
+}
+
+/* Subtle Cyber Grid Pattern Overlay */
+.hero-cyber-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ambient Radial Light Orb in Hero */
+.hero-ambient-orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+  top: -100px;
+  right: -50px;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+  animation: orbDrift 10s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, 40px) scale(1.1); }
+}
+
+/* Gradient Headline Text */
+.headline-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 60%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* --------------------------------------------------------------------------
+   2. PILLS, BADGES & GLOWING ACCENTS
+   -------------------------------------------------------------------------- */
+.badge-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--pc-radius-pill);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.badge-capsule-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  color: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+}
+
+.badge-capsule-cyan {
+  background: rgba(6, 182, 212, 0.12);
+  color: #0284c7 !important;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.badge-capsule-cyan:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.5);
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.25);
+}
+
+/* Futuristic Glowing Status Dot */
+.led-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981, 0 0 16px rgba(16, 185, 129, 0.6);
+  animation: ledPulse 2s ease-in-out infinite;
+}
+
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
+/* --------------------------------------------------------------------------
+   3. MODERN FUTURISTIC CARDS (Glassmorphism & Luminous Border)
+   -------------------------------------------------------------------------- */
+.card-future {
+  position: relative;
+  background: #ffffff;
+  border-radius: var(--pc-radius-card);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: var(--pc-shadow-card);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Luminous gradient line on top edge */
+.card-future::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--pc-cyan), var(--pc-purple), var(--pc-amber));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+}
+
+.card-future:hover {
+  transform: translateY(-8px) scale(1.008);
+  box-shadow: var(--pc-shadow-hover);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.card-future:hover::before {
+  opacity: 1;
+}
+
+/* Squircle Icon Wrapper */
+.icon-squircle {
+  width: 58px;
+  height: 58px;
+  min-width: 58px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-future:hover .icon-squircle {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+/* Floating Glass Cards on Photos */
+.glass-capsule-float {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05);
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* --------------------------------------------------------------------------
+   4. CURVED SECTION CONTAINERS & FLOW
+   -------------------------------------------------------------------------- */
+.section-surface-light {
+  background-color: #ffffff;
+  position: relative;
+}
+
+.section-surface-tint {
+  background-color: var(--pc-surface-bg);
+  position: relative;
+}
+
+/* Elegant Curved Section Overhang */
+.section-curved-in {
+  position: relative;
+  border-radius: var(--pc-radius-section);
+  margin-top: -24px;
+  z-index: 6;
+}
+
+/* Registration CTA High-Energy Curved Banner */
+.cta-banner-future {
+  position: relative;
+  border-radius: 36px;
+  background: radial-gradient(circle at 10% 20%, rgba(6, 182, 212, 0.3) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.25) 0%, transparent 40%),
+              linear-gradient(135deg, #0f172a 0%, #1e1b4b 55%, #3b0764 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35), 0 0 40px rgba(6, 182, 212, 0.12);
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   5. PROGRESSIVE SCROLL ANIMATIONS (Guaranteed Visibility Fallback)
+   -------------------------------------------------------------------------- */
+/* Elements start 100% visible so nothing is ever hidden or blank */
+[data-animate] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Only when JS observer initializes and marks support, apply initial offsets */
+.js-reveal-active [data-animate] {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.js-reveal-active [data-animate="fade-up"] {
+  transform: translateY(32px);
+}
+
+.js-reveal-active [data-animate="fade-right"] {
+  transform: translateX(-32px);
+}
+
+.js-reveal-active [data-animate="fade-left"] {
+  transform: translateX(32px);
+}
+
+.js-reveal-active [data-animate="zoom-in"] {
+  transform: scale(0.95);
+}
+
+/* Revealed State */
+.js-reveal-active [data-animate].is-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* Stagger Delays */
+.js-reveal-active [data-animate-delay="100"] { transition-delay: 0.1s; }
+.js-reveal-active [data-animate-delay="150"] { transition-delay: 0.15s; }
+.js-reveal-active [data-animate-delay="200"] { transition-delay: 0.2s; }
+.js-reveal-active [data-animate-delay="250"] { transition-delay: 0.25s; }
+.js-reveal-active [data-animate-delay="300"] { transition-delay: 0.3s; }
+.js-reveal-active [data-animate-delay="400"] { transition-delay: 0.4s; }
+
+/* --------------------------------------------------------------------------
+   6. HIGH CONTRAST ACCESSIBLE TYPOGRAPHY & FOCUS STATES (WCAG AA/AAA)
+   -------------------------------------------------------------------------- */
+.text-contrast-dark {
+  color: #0f172a !important; /* Exceeds 7:1 AAA ratio on light surfaces */
+}
+
+.text-contrast-muted {
+  color: #334155 !important; /* Exceeds 5.5:1 AA ratio on light surfaces */
+}
+
+.text-contrast-light {
+  color: #ffffff !important;
+}
+
+.text-contrast-light-muted {
+  color: rgba(255, 255, 255, 0.88) !important; /* Exceeds 5.5:1 AA ratio on dark surfaces */
+}
+
+/* Luminous Futuristic Focus Rings */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #6366f1 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.7) !important;
+  border-radius: 6px;
+}
+
+.btn-pill:focus-visible {
+  border-radius: 9999px !important;
+}
+
+/* Accessible Skip Link */
+.skip-to-content-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--pc-primary);
+  color: #ffffff !important;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  z-index: 99999;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.skip-to-content-link:focus {
+  top: 20px;
+}
+
+/* Modern Smooth Sticky Header Space */
+#sticky-space {
+  display: block;
+  width: 100%;
+  pointer-events: none;
+  transition: height 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Modern Accessible Back to Top Floating Button */
+.back-top {
+  border-radius: 50% !important;
+  background: var(--pc-primary) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 24px rgba(30, 27, 75, 0.35), 0 0 15px rgba(6, 182, 212, 0.3) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, background 0.3s ease !important;
+
+  &:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    transform: translateY(-4px) scale(1.08) !important;
+    box-shadow: 0 12px 30px rgba(2, 132, 199, 0.45), 0 0 20px rgba(6, 182, 212, 0.5) !important;
+  }
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js-reveal-active [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .glass-capsule-float {
+    animation: none !important;
+  }
+}
+

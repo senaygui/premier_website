@@ -1,0 +1,75 @@
+<div class="hero-slide-inner py-4 py-lg-5 position-relative">
+  <!-- Ambient Radial Glow in Hero -->
+  <div class="hero-ambient-orb" aria-hidden="true"></div>
+
+  <div class="container position-relative z-index-9">
+    <div class="row align-items-center justify-content-between g-4 g-lg-5">
+      <div class="col-lg-6 text-center text-lg-start" data-animate="fade-right">
+        <!-- Futuristic Badges -->
+        <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center justify-content-lg-start">
+          <% if ethiopian_new_year_active? %>
+            <span class="badge-capsule badge-capsule-festive shadow-sm" onclick="if(window.toggleEthiopianNewYearBanner){window.toggleEthiopianNewYearBanner();}" style="cursor:pointer;" title="Click to view New Year celebration">
+              <span class="festive-flower-spin me-1" aria-hidden="true">🌼</span>
+              <span>መልካም አዲስ ዓመት <%= Time.now.year - 7 %>!</span>
+            </span>
+          <% end %>
+          <span class="badge-capsule badge-capsule-gold shadow-sm">
+            <span class="led-indicator" aria-hidden="true"></span>
+            <span>100% Online Graduate Education</span>
+          </span>
+        </div>
+        
+        <!-- Headline -->
+        <h1 class="hero-title text-white mb-3">
+          <span class="headline-gradient">Advance Your Career</span> with Flexible Online Graduate Education
+        </h1>
+        
+        <!-- Supporting text with high contrast -->
+        <p class="lead text-contrast-light-muted mb-4 fs-5" style="line-height: 1.65;">
+          Study online from anywhere in Ethiopia or around the world with Premier College's accredited master’s programs tailored for ambitious working professionals.
+        </p>
+        
+        <!-- CTAs -->
+        <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+          <a href="https://portal.premiercollege.edu.et" class="btn btn-lg btn-warning btn-pill fw-bold shadow-lg" aria-label="Apply Now to Premier College">
+            Apply Now <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+          </a>
+          <a href="#programs-section" class="btn btn-lg btn-outline-light btn-pill fw-bold" aria-label="Explore Graduate Programs">
+            Explore Programs
+          </a>
+        </div>
+
+        <!-- Micro Trust badges -->
+        <div class="mt-4 pt-3 border-top border-white-10 d-flex flex-wrap justify-content-center justify-content-lg-start gap-4" role="list" aria-label="Key Highlights">
+          <div class="d-flex align-items-center text-contrast-light-muted small" role="listitem">
+            <i class="fas fa-check-circle text-warning fs-6 me-2" aria-hidden="true"></i> Accredited Programs
+          </div>
+          <div class="d-flex align-items-center text-contrast-light-muted small" role="listitem">
+            <i class="fas fa-check-circle text-warning fs-6 me-2" aria-hidden="true"></i> Flexible Schedule
+          </div>
+          <div class="d-flex align-items-center text-contrast-light-muted small" role="listitem">
+            <i class="fas fa-check-circle text-warning fs-6 me-2" aria-hidden="true"></i> Addis Ababa Headquarters
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Image & Floating Cards -->
+      <div class="col-lg-5" data-animate="fade-left">
+        <div class="position-relative hero-image-wrapper">
+          <%= image_tag("pic1.jpg", class: "rounded-4 shadow-2xl w-100 object-fit-cover home-carousel-photo", alt: "African graduate students learning online with Premier College")%>
+          
+          <!-- Futuristic Floating Frosted Glass Element -->
+          <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n3 mb-n3 glass-capsule-float p-3 d-none d-sm-flex align-items-center gap-3" style="max-width: 280px; z-index: 10;">
+            <div class="bg-primary text-white p-3 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width:48px; height:48px; min-width:48px;">
+              <i class="fas fa-graduation-cap fs-5" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h6 class="mb-0 fw-bold text-dark">MBA, MPM &amp; MOL</h6>
+              <span class="text-muted small">Specialized Master Degrees</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

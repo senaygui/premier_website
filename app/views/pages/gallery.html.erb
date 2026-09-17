@@ -1,0 +1,141 @@
+<% provide(:title, "Campus Gallery - Premier College") %>
+
+<main id="main-content">
+  <!-- ========================================================================= -->
+  <!-- HERO HEADER SECTION                                                       -->
+  <!-- ========================================================================= -->
+  <section class="gallery-page-hero text-center position-relative">
+    <div class="container position-relative z-index-2">
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb justify-content-center small mb-0 text-white-50">
+          <li class="breadcrumb-item"><a href="/" class="text-white-50 text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item active text-warning" aria-current="page">Campus Gallery</li>
+        </ol>
+      </nav>
+
+      <div class="gallery-eyebrow text-warning mb-2">THROUGH OUR LENS</div>
+      <h1 class="display-4 fw-bold text-white mb-3" style="font-family: 'Playfair Display', Georgia, serif;">
+        Campus Life &amp; Event Gallery
+      </h1>
+      <p class="lead text-white-50 mx-auto" style="max-width: 680px; font-size: 1.1rem;">
+        Explore moments of celebration, scholarly discourse, and community connection across Premier College in Addis Ababa, Ethiopia.
+      </p>
+
+      <!-- Category Filter Pills -->
+      <div class="gallery-filter-bar">
+        <%= link_to gallery_path, class: "gallery-filter-pill #{'active' if @active_category.blank?}" do %>
+          <i class="fas fa-th-large me-1"></i> All Moments (<%= @total_gallery_count %>)
+        <% end %>
+
+        <% @categories.each do |cat| %>
+          <%= link_to gallery_path(category: cat), class: "gallery-filter-pill #{'active' if @active_category == cat}" do %>
+            <span><%= cat %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- GALLERY GRID SECTION                                                      -->
+  <!-- ========================================================================= -->
+  <section class="py-6 py-lg-8 bg-light position-relative">
+    <div class="container">
+      <% if @event_galleries.any? %>
+        <div class="gallery-full-grid" data-animate-stagger="true">
+          <% @event_galleries.each_with_index do |gallery, idx| %>
+            <div class="gallery-grid-card" data-gallery-trigger="<%= idx %>" tabindex="0" role="button" aria-label="View <%= gallery.title %>" data-animate="fade-up">
+              <%= safe_photo_tag(gallery, "gallery/img1.jpg", class: "gallery-tile-img", alt: gallery.title, loading: "lazy") %>
+              
+              <!-- Expand Icon Badge -->
+              <span class="gallery-tile-expand" aria-hidden="true">
+                <i class="bi bi-arrows-fullscreen"></i>
+              </span>
+
+              <!-- Bottom Dark Vignette & Information -->
+              <div class="gallery-tile-overlay">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <span class="gallery-tile-tag" style="color: #fbbf24 !important;"><%= gallery.category.presence || "MOMENT" %></span>
+                  <% if gallery.event_date.present? %>
+                    <span class="small text-white-50" style="font-size: 0.72rem;"><%= gallery.event_date.strftime("%b %Y") %></span>
+                  <% end %>
+                </div>
+                <h3 class="gallery-tile-title" style="color: #ffffff !important;"><%= gallery.title %></h3>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="text-center py-5 my-5">
+          <div class="text-muted mb-3 fs-1"><i class="far fa-images"></i></div>
+          <h4 class="fw-bold">No photographs found in this category</h4>
+          <p class="text-muted">Try selecting "All Moments" to view the complete photo archive.</p>
+          <%= link_to "View All Photos", gallery_path, class: "btn btn-outline-primary btn-pill mt-2" %>
+        </div>
+      <% end %>
+
+      <!-- Back to Home Button -->
+      <div class="text-center mt-6 pt-4">
+        <%= link_to root_path, class: "btn btn-outline-dark btn-pill px-4 py-2" do %>
+          <i class="fas fa-arrow-left me-2"></i> Back to Homepage
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- LIGHTBOX MODAL VIEWER                                                     -->
+  <!-- ========================================================================= -->
+  <div id="gallery-lightbox-modal" class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photograph preview viewer" tabindex="-1">
+    <div class="gallery-modal-backdrop" data-modal-close></div>
+    
+    <div class="gallery-modal-content">
+      <!-- Close Button -->
+      <button type="button" class="gallery-modal-close" data-modal-close aria-label="Close photo preview">
+        <i class="fas fa-times" aria-hidden="true"></i>
+      </button>
+
+      <!-- Navigation Arrows -->
+      <button type="button" class="gallery-modal-arrow gallery-modal-prev" data-modal-prev aria-label="Previous photo">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="gallery-modal-arrow gallery-modal-next" data-modal-next aria-label="Next photo">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
+
+      <!-- Modal Body: Image & Caption -->
+      <div class="gallery-modal-card">
+        <div class="gallery-modal-image-wrap">
+          <img id="gallery-modal-img" src="" alt="" class="gallery-modal-image" />
+        </div>
+        <div class="gallery-modal-details">
+          <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+            <span id="gallery-modal-category" class="gallery-modal-tag"></span>
+            <span id="gallery-modal-date" class="gallery-modal-date"></span>
+          </div>
+          <h3 id="gallery-modal-title" class="gallery-modal-title" style="color: #ffffff !important;"></h3>
+          <p id="gallery-modal-caption" class="gallery-modal-caption"></p>
+          <div class="gallery-modal-footer">
+            <span id="gallery-modal-counter" class="gallery-modal-counter"></span>
+            <span><i class="fas fa-keyboard me-1" aria-hidden="true"></i> Use &larr; &rarr; arrows to navigate &bullet; Esc to close</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JSON Data Payload for Modal Engine -->
+  <script type="application/json" id="gallery-items-data">
+    <%= raw @event_galleries.map.with_index { |g, i|
+      {
+        index: i,
+        title: g.title,
+        caption: g.caption.presence || "",
+        category: g.category.presence || "MOMENT",
+        date: g.event_date ? g.event_date.strftime("%B %d, %Y") : "",
+        url: safe_photo_url(g, "gallery/img1.jpg")
+      }
+    }.to_json %>
+  </script>
+</main>

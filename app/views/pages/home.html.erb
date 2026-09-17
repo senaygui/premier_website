@@ -1,609 +1,811 @@
 <%provide(:title, "Home")%>
 <!-- **************** MAIN CONTENT START **************** -->
-<main>
+<main data-ethiopian-new-year="true" id="main-content">
+  <!-- Accessible Skip to Content Link -->
+  <a href="#main-content-start" class="skip-to-content-link">Skip to main content</a>
 
-<!-- SECTION 1: HERO START -->
-<section class="hero-section hero-gradient position-relative overflow-hidden rounded-bottom-4 shadow-lg text-white">
-  <div class="container position-relative z-index-9">
-    <div class="row align-items-center justify-content-between g-5">
-      <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right" data-aos-duration="1000">
-        <!-- Badge -->
-        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3 shadow-sm">
-          <i class="fas fa-certificate me-1"></i> 100% Online Graduate Education
-        </span>
-        
-        <!-- Headline -->
-        <h1 class="text-white hero-title">
-          Advance Your Career with Flexible Online Graduate Education
-        </h1>
-        
-        <!-- Supporting text -->
-        <p class="lead text-white-50 mb-4 fs-5" style="line-height: 1.7;">
-          Study online from anywhere in Ethiopia or around the world with Premier College's accredited master’s programs tailored for ambitious working professionals.
-        </p>
-        
-        <!-- CTAs -->
-        <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
-          <a href="https://portal.premiercollege.edu.et" class="btn btn-lg btn-warning btn-pill fw-bold shadow-lg">
-            Apply Now <i class="fas fa-arrow-right ms-2"></i>
-          </a>
-          <a href="#programs-section" class="btn btn-lg btn-outline-light btn-pill fw-bold">
-            Explore Programs
-          </a>
+  <!-- ========================================================================= -->
+  <!-- SECTION 1: HERO CAROUSEL START                                            -->
+  <!-- ========================================================================= -->
+  <section class="home-carousel hero-futuristic text-white position-relative overflow-hidden" data-home-carousel role="region" aria-roledescription="carousel" aria-label="Premier College highlights">
+    <!-- Full-Section Background Image Layers (Covers 100% width and 100% height of entire hero section) -->
+    <div class="home-carousel-bg-wrap" aria-hidden="true">
+      <!-- Slide 1 Background (matches front photo: pic1.jpg) -->
+      <div class="home-carousel-bg-item active" data-bg-index="0" style="background-image: linear-gradient(135deg, rgba(11, 15, 25, 0.90) 0%, rgba(30, 27, 75, 0.85) 50%, rgba(140, 24, 27, 0.80) 100%), url('<%= image_path('pic1.jpg') %>');"></div>
+      
+      <!-- Subsequent Slides Backgrounds (matches each post's photo) -->
+      <% @featured_news.each_with_index do |post, index| %>
+        <div class="home-carousel-bg-item" data-bg-index="<%= index + 1 %>" style="background-image: linear-gradient(135deg, rgba(11, 15, 25, 0.90) 0%, rgba(30, 27, 75, 0.85) 50%, rgba(140, 24, 27, 0.80) 100%), url('<%= safe_photo_url(post, "pic1.jpg") %>');"></div>
+      <% end %>
+    </div>
+
+    <!-- Subtle Cyber Grid Pattern Overlay -->
+    <div class="hero-cyber-grid" aria-hidden="true"></div>
+
+    <!-- Dedicated Carousel Loader Overlay -->
+    <div class="carousel-loader-overlay" data-carousel-loader role="status" aria-live="polite" aria-label="Loading featured highlights">
+      <div class="carousel-loader-overlay__card">
+        <div class="carousel-loader-overlay__spinner">
+          <div class="spinner-ring"></div>
+          <div class="spinner-icon"><i class="fas fa-graduation-cap"></i></div>
         </div>
-
-        <!-- Micro Trust badges -->
-        <div class="mt-5 pt-3 border-top border-white-10 d-flex flex-wrap justify-content-center justify-content-lg-start gap-4">
-          <div class="d-flex align-items-center text-white-50 small">
-            <i class="fas fa-check-circle text-warning fs-6 me-2"></i> Accredited Programs
-          </div>
-          <div class="d-flex align-items-center text-white-50 small">
-            <i class="fas fa-check-circle text-warning fs-6 me-2"></i> Flexible Schedule
-          </div>
-          <div class="d-flex align-items-center text-white-50 small">
-            <i class="fas fa-check-circle text-warning fs-6 me-2"></i> Addis Ababa Headquarters
-          </div>
-        </div>
-      </div>
-
-      <!-- Hero Image -->
-      <div class="col-lg-5" data-aos="fade-left">
-        <div class="position-relative">
-          <%= image_tag("pic1.jpg", class: "rounded-4 shadow-2xl w-100 object-fit-cover", alt: "African graduate students learning online", style: "min-height: 400px; border: 4px solid rgba(255,255,255,0.15);")%>
-          
-          <!-- Floating badge element -->
-          <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n3 mb-n3 bg-white text-dark p-3 rounded-4 shadow-lg d-none d-sm-flex align-items-center gap-3" style="max-width: 260px;">
-            <div class="bg-primary text-white p-3 rounded-circle d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-              <i class="fas fa-graduation-cap fs-5"></i>
-            </div>
-            <div>
-              <h6 class="mb-0 fw-bold">MBA, MPM & MOL</h6>
-              <span class="text-muted small">Specialized Master Degrees</span>
-            </div>
-          </div>
+        <h3 class="carousel-loader-overlay__title">Premier College Highlights</h3>
+        <p class="carousel-loader-overlay__caption">Loading programs &amp; featured stories&hellip;</p>
+        <div class="carousel-loader-overlay__shimmer" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- SECTION 1: HERO END -->
 
-
-<!-- SECTION 2: WHY CHOOSE PREMIER COLLEGE START -->
-<section class="py-10 bg-white">
-  <div class="container">
-    <div class="row mb-5 text-center" data-aos="fade-up">
-      <div class="col-lg-8 mx-auto">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Why Premier College</span>
-        <h2 class="display-5 fw-bold text-primary mt-2">Designed for Working Professionals</h2>
-        <p class="lead text-muted">Empowering ambitious leaders through modern, flexible, and accredited higher education.</p>
-      </div>
-    </div>
-
-    <div class="row g-4">
-      <!-- Feature 1 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card card-premium p-4 h-100">
-          <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px;">
-            <i class="fas fa-laptop-house fs-4"></i>
-          </div>
-          <h4 class="fw-bold mb-3">100% Online Learning</h4>
-          <p class="text-muted mb-0">Study anywhere, anytime without interrupting your career or personal commitments.</p>
-        </div>
+    <div class="home-carousel-track">
+      <!-- Slide 1: Main Introduction Hero -->
+      <div class="home-carousel-slide active" data-hero-slide role="group" aria-roledescription="slide" aria-label="1 of <%= @featured_news.size + 1 %>">
+        <%= render "main_hero" %>
       </div>
 
-      <!-- Feature 2 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card card-premium p-4 h-100">
-          <div class="icon-lg bg-secondary bg-opacity-10 text-secondary rounded-circle mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px;">
-            <i class="far fa-clock fs-4"></i>
-          </div>
-          <h4 class="fw-bold mb-3">Flexible Schedules</h4>
-          <p class="text-muted mb-0">Balance work, life, and academic goals with self-paced coursework and continuous access.</p>
-        </div>
-      </div>
+      <!-- Subsequent Slides: Featured News & Events -->
+      <% @featured_news.each_with_index do |post, index| %>
+        <div class="home-carousel-slide" data-hero-slide hidden role="group" aria-roledescription="slide" aria-label="<%= index + 2 %> of <%= @featured_news.size + 1 %>">
+          <div class="hero-slide-inner py-4 py-lg-5 position-relative">
+            <!-- Ambient Glow Orb -->
+            <div class="hero-ambient-orb" aria-hidden="true"></div>
 
-      <!-- Feature 3 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card card-premium p-4 h-100">
-          <div class="icon-lg bg-success bg-opacity-10 text-success rounded-circle mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px;">
-            <i class="fas fa-shield-alt fs-4"></i>
-          </div>
-          <h4 class="fw-bold mb-3">Accredited Programs</h4>
-          <p class="text-muted mb-0">Fully accredited degrees ensuring global credibility, quality standards, and industry recognition.</p>
-        </div>
-      </div>
+            <div class="container position-relative z-index-9">
+              <div class="row align-items-center justify-content-between g-4 g-lg-5">
+                <div class="col-lg-6 text-center text-lg-start" data-animate="fade-right">
+                  <!-- Badges: Festive New Year + Content Type -->
+                  <div class="d-flex flex-wrap gap-2 mb-3 justify-content-center justify-content-lg-start">
+                    <% if ethiopian_new_year_active? %>
+                      <span class="badge-capsule badge-capsule-festive shadow-sm" onclick="if(window.toggleEthiopianNewYearBanner){window.toggleEthiopianNewYearBanner();}" style="cursor:pointer;" title="Click to view New Year celebration">
+                        <span class="festive-flower-spin me-1" aria-hidden="true">🌼</span>
+                        <span>መልካም አዲስ ዓመት <%= Time.now.year - 7 %>!</span>
+                      </span>
+                    <% end %>
+                    <% if post.content_type == 'event' %>
+                      <span class="badge-capsule badge-capsule-gold shadow-sm">
+                        <span class="led-indicator" aria-hidden="true"></span>
+                        <i class="fas fa-calendar-alt me-1 text-dark" aria-hidden="true"></i> Featured Event
+                      </span>
+                    <% else %>
+                      <span class="badge-capsule badge-capsule-gold shadow-sm">
+                        <span class="led-indicator" aria-hidden="true"></span>
+                        <i class="fas fa-newspaper me-1 text-dark" aria-hidden="true"></i> Featured News
+                      </span>
+                    <% end %>
+                  </div>
 
-      <!-- Feature 4 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
-        <div class="card card-premium p-4 h-100">
-          <div class="icon-lg bg-warning bg-opacity-10 text-warning rounded-circle mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px;">
-            <i class="fas fa-tags fs-4"></i>
-          </div>
-          <h4 class="fw-bold mb-3">Affordable Education</h4>
-          <p class="text-muted mb-0">High-quality graduate education at transparent, competitive tuition rates with payment plans.</p>
-        </div>
-      </div>
+                  <!-- Post Title -->
+                  <h2 class="hero-title text-white mb-3">
+                    <%= post.news_title %>
+                  </h2>
 
-      <!-- Feature 5 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
-        <div class="card card-premium p-4 h-100">
-          <div class="icon-lg bg-info bg-opacity-10 text-info rounded-circle mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px;">
-            <i class="fas fa-user-tie fs-4"></i>
-          </div>
-          <h4 class="fw-bold mb-3">Expert Instructors</h4>
-          <p class="text-muted mb-0">Learn directly from seasoned academics and industry leaders dedicated to your growth.</p>
-        </div>
-      </div>
+                  <!-- Overview Text -->
+                  <p class="lead text-contrast-light-muted mb-3 fs-5" style="line-height: 1.75;">
+                    <%= truncate(strip_tags(post.overview), length: 260) %>
+                  </p>
 
-      <!-- Feature 6 -->
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
-        <div class="card card-premium p-4 h-100">
-          <div class="icon-lg bg-danger bg-opacity-10 text-danger rounded-circle mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px;">
-            <i class="fas fa-chart-line fs-4"></i>
-          </div>
-          <h4 class="fw-bold mb-3">Career-Focused Learning</h4>
-          <p class="text-muted mb-0">Curriculum structured around practical real-world skills to accelerate your professional promotion.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- SECTION 2: WHY CHOOSE PREMIER COLLEGE END -->
+                  <!-- Post Meta (Date / Author) -->
+                  <div class="d-flex flex-wrap justify-content-center justify-content-lg-start align-items-center gap-3 text-contrast-light-muted small mb-4">
+                    <% if post.created_at.present? %>
+                      <span><i class="far fa-clock text-warning me-1" aria-hidden="true"></i> <%= post.created_at.strftime("%B %d, %Y") %></span>
+                    <% end %>
+                    <% if post.published_by.present? %>
+                      <span><i class="far fa-user text-warning me-1" aria-hidden="true"></i> <%= post.published_by %></span>
+                    <% end %>
+                  </div>
 
+                  <!-- CTAs -->
+                  <div class="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                    <%= link_to news_path(post), class: "btn btn-lg btn-warning btn-pill fw-bold shadow-lg", aria_label: "View details for #{post.news_title}" do %>
+                      <%= post.content_type == 'event' ? 'View Event Details' : 'Read Full Story' %> <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+                    <% end %>
+                    <%= link_to news_index_path, class: "btn btn-lg btn-outline-light btn-pill fw-bold" do %>
+                      All News &amp; Events
+                    <% end %>
+                  </div>
 
-<!-- SECTION 3: GRADUATE PROGRAMS START -->
-<section id="programs-section" class="py-10 bg-tint">
-  <div class="container">
-    <div class="row mb-5 text-center" data-aos="fade-up">
-      <div class="col-lg-8 mx-auto">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Explore Offerings</span>
-        <h2 class="display-5 fw-bold text-primary mt-2">Accredited Graduate Programs</h2>
-        <p class="lead text-muted">Specialized Master's degrees crafted to transform your leadership and management expertise.</p>
-      </div>
-    </div>
-
-    <div class="row g-4 justify-content-center">
-      <% active_programs = (@programs.present? && @programs.any?) ? @programs : Program.all %>
-      <% active_programs.each_with_index do |pro, index|%>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<%= 100 * (index + 1) %>">
-          <div class="card card-premium h-100 d-flex flex-column">
-            <%= safe_photo_tag(pro, "ac.jpg", class: "card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;") %>
-            <div class="card-body p-4 d-flex flex-column">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold"><%= pro.try(:modality) || "100% Online" %></span>
-                <span class="text-muted small"><i class="fas fa-graduation-cap me-1"></i> <%= pro.try(:study_level)&.capitalize || "Master Degree" %></span>
-              </div>
-              
-              <h4 class="card-title fw-bold mb-3">
-                <%= link_to pro.program_name, program_path(pro), class: "stretched-link text-dark text-decoration-none"%>
-              </h4>
-              
-              <p class="text-muted small mb-4">
-                <%= pro.try(:overview)&.truncate(120) || "Gain advanced strategic capabilities and leadership skills designed for immediate impact in your industry." %>
-              </p>
-
-              <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-                <span class="text-primary fw-bold small">View Program <i class="fas fa-arrow-right ms-1"></i></span>
-                <span class="btn btn-sm btn-outline-primary btn-pill">Details</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      <%end%>
-    </div>
-  </div>
-</section>
-<!-- SECTION 3: GRADUATE PROGRAMS END -->
-
-<!-- SECTION 3.5: SHORT TERM TRAINING START -->
-<section class="py-10 bg-white">
-  <div class="container">
-    <div class="row g-5 align-items-center justify-content-between">
-      <div class="col-lg-6" data-aos="fade-right">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Professional Upskilling</span>
-        <h2 class="display-5 fw-bold text-primary mt-2 mb-3">Short-Term Training Programs</h2>
-        <p class="lead text-muted mb-4" style="line-height: 1.8;">
-          Enhance your practical expertise with Premier College's short-term professional development courses. Designed for immediate workplace impact, career transitions, and organizational growth.
-        </p>
-
-        <!-- Feature List -->
-        <div class="row g-3 mb-5">
-          <div class="col-sm-6">
-            <div class="d-flex align-items-center p-3 card-premium">
-              <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fas fa-certificate fs-5"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-0">Certifications</h6>
-                <span class="text-muted small">Industry-Ready Skills</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="d-flex align-items-center p-3 card-premium">
-              <div class="icon-lg bg-secondary bg-opacity-10 text-secondary rounded-circle me-3 d-flex align-items-center justify-content-center" style="width:45px; height:45px;">
-                <i class="fas fa-briefcase fs-5"></i>
-              </div>
-              <div>
-                <h6 class="fw-bold mb-0">Executive Workshops</h6>
-                <span class="text-muted small">Leadership & Tech</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <a href="https://training.premiercollege.edu.et/" target="_blank" class="btn btn-lg btn-primary btn-pill shadow-lg">
-          Visit Training Portal <i class="fas fa-external-link-alt ms-2"></i>
-        </a>
-      </div>
-
-      <div class="col-lg-5" data-aos="fade-left">
-        <div class="position-relative">
-          <%= image_tag("training.jpg", class: "rounded-4 shadow-xl w-100 object-fit-cover", alt: "Short term professional training at Premier College", style: "min-height: 380px;")%>
-          <div class="position-absolute bottom-0 end-0 m-4 bg-white text-dark p-3 rounded-4 shadow-lg border" style="max-width: 240px;">
-            <div class="d-flex align-items-center gap-2">
-              <i class="fas fa-check-circle text-success fs-4"></i>
-              <div>
-                <h6 class="mb-0 fw-bold">Flexible Schedules</h6>
-                <span class="text-muted small">Weekend & Evening</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- SECTION 3.5: SHORT TERM TRAINING END -->
-
-
-<!-- SECTION 4: ABOUT & ACCREDITATION TRUST START -->
-<section class="py-10 bg-white">
-  <div class="container">
-    <div class="row g-5 align-items-center">
-      <div class="col-lg-6" data-aos="fade-right">
-        <%= image_tag("Congratulations Graduates.png", class: "rounded-4 shadow-lg w-100 object-fit-cover", alt: "About Premier College Graduates")%>
-      </div>
-
-      <div class="col-lg-6" data-aos="fade-left">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">About Us</span>
-        <h2 class="display-5 fw-bold text-primary mt-2 mb-4">Leading Flexible Higher Education in Ethiopia</h2>
-        <p class="lead text-muted mb-4" style="line-height: 1.8;">
-          <%= College.first.overview.html_safe %>
-        </p>
-
-        <!-- Trust & Accreditation badges -->
-        <div class="p-4 bg-tint rounded-4 mb-4 border">
-          <h6 class="fw-bold mb-2 text-primary"><i class="fas fa-award text-warning me-2 fs-5"></i> Licensing & Accreditation</h6>
-          <p class="text-muted small mb-0">Premier College operates under full licensing and accreditation, committed to academic excellence, ethical standards, and high graduate employability in Ethiopia and beyond.</p>
-        </div>
-
-        <div class="d-flex align-items-center gap-3">
-          <%= link_to "Learn More About Us", about_path, class: "btn btn-primary btn-pill shadow-sm" %>
-          <div class="text-muted small"><i class="fas fa-map-marker-alt text-danger me-1"></i> Headquartered in Addis Ababa</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- SECTION 4: ABOUT & ACCREDITATION TRUST END -->
-
-<!-- SECTION 4.5: DYNAMIC ACCREDITATIONS START -->
-<section class="py-10 bg-tint border-top border-bottom">
-  <div class="container">
-    <div class="row mb-5 text-center" data-aos="fade-up">
-      <div class="col-lg-8 mx-auto">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Institutional Credibility</span>
-        <h2 class="display-5 fw-bold text-primary mt-2">Licensing & Accreditations</h2>
-        <p class="lead text-muted">Fully accredited by national education regulatory bodies for global recognition and graduate confidence.</p>
-      </div>
-    </div>
-
-    <div class="row g-4 justify-content-center">
-      <% accs = (@accreditations.present? && @accreditations.any?) ? @accreditations : Accreditation.all %>
-      <% if accs.present? && accs.any? %>
-        <% accs.each_with_index do |acc, index| %>
-          <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="<%= 100 * (index + 1) %>">
-            <div class="card card-premium h-100 d-flex flex-column">
-              <!-- Accreditation Photo / Document -->
-              <%= safe_photo_tag(acc, "ac.jpg", class: "card-img-top", alt: acc.try(:accreditation_title) || "Accreditation Certificate", style: "height: 200px; object-fit: cover;") %>
-
-              <div class="card-body p-4 d-flex flex-column">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill small"><%= acc.try(:modality)&.capitalize || "100% Online" %></span>
-                  <span class="badge bg-primary bg-opacity-10 text-primary fw-bold small"><%= acc.try(:study_level)&.capitalize || "Graduate" %></span>
+                  <!-- Micro Trust badges -->
+                  <div class="mt-4 pt-3 border-top border-white-10 d-flex flex-wrap justify-content-center justify-content-lg-start gap-4">
+                    <div class="d-flex align-items-center text-contrast-light-muted small">
+                      <i class="fas fa-check-circle text-warning fs-6 me-2" aria-hidden="true"></i> <%= post.content_type == 'event' ? 'Campus Event' : 'Official News' %>
+                    </div>
+                    <div class="d-flex align-items-center text-contrast-light-muted small">
+                      <i class="fas fa-university text-warning fs-6 me-2" aria-hidden="true"></i> Premier College Community
+                    </div>
+                  </div>
                 </div>
 
-                <h4 class="fw-bold text-primary mb-2 mt-1"><%= acc.try(:accreditation_title) %></h4>
-
-                <% if acc.program.present? %>
-                  <div class="p-2 rounded bg-tint border mb-3">
-                    <span class="text-secondary small fw-bold d-block"><i class="fas fa-graduation-cap me-1"></i> Program:</span>
-                    <span class="fw-bold text-dark small"><%= acc.program.program_name %></span>
+                <!-- Slide Image & Floating Badge -->
+                <div class="col-lg-5" data-animate="fade-left">
+                  <div class="position-relative hero-image-wrapper">
+                    <%= safe_photo_tag(post, "pic1.jpg", class: "rounded-4 shadow-2xl w-100 object-fit-cover home-carousel-photo", alt: post.news_title, loading: "lazy") %>
+                    
+                    <!-- Floating Glass Badge -->
+                    <div class="position-absolute bottom-0 start-0 translate-middle-y ms-n3 mb-n3 glass-capsule-float p-3 d-none d-sm-flex align-items-center gap-3" style="max-width: 280px; z-index: 10;">
+                      <div class="bg-primary text-white p-3 rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width:48px; height:48px; min-width:48px;">
+                        <i class="<%= post.content_type == 'event' ? 'fas fa-calendar-check' : 'fas fa-bullhorn' %> fs-5" aria-hidden="true"></i>
+                      </div>
+                      <div>
+                        <h6 class="mb-0 fw-bold text-dark"><%= post.content_type == 'event' ? 'Upcoming Event' : 'Featured Story' %></h6>
+                        <span class="text-muted small"><%= post.created_at.strftime("%b %d, %Y") %></span>
+                      </div>
+                    </div>
                   </div>
-                <% end %>
-
-                <p class="text-muted small mb-0 mt-auto">
-                  Official accreditation ensuring rigorous academic standards and national recognition for graduate employability.
-                </p>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-      <% else %>
-        <!-- Default Accreditation Cards -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card card-premium p-4 h-100">
-            <div class="d-flex align-items-center mb-3">
-              <div class="icon-lg bg-warning bg-opacity-10 text-warning rounded-circle me-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:50px; height:50px;">
-                <i class="fas fa-award fs-4"></i>
-              </div>
-              <div>
-                <h5 class="fw-bold text-primary mb-0">Ministry of Education</h5>
-                <span class="badge bg-primary bg-opacity-10 text-primary small">Full Licensing</span>
-              </div>
-            </div>
-            <p class="text-muted small mb-0">Officially accredited higher education institution offering recognized graduate degree programs.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card card-premium p-4 h-100">
-            <div class="d-flex align-items-center mb-3">
-              <div class="icon-lg bg-warning bg-opacity-10 text-warning rounded-circle me-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:50px; height:50px;">
-                <i class="fas fa-certificate fs-4"></i>
-              </div>
-              <div>
-                <h5 class="fw-bold text-primary mb-0">HERQA Approved</h5>
-                <span class="badge bg-primary bg-opacity-10 text-primary small">Quality Assured</span>
-              </div>
-            </div>
-            <p class="text-muted small mb-0">Adhering to rigorous Higher Education Relevance and Quality Agency standards across all curricula.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="card card-premium p-4 h-100">
-            <div class="d-flex align-items-center mb-3">
-              <div class="icon-lg bg-warning bg-opacity-10 text-warning rounded-circle me-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width:50px; height:50px;">
-                <i class="fas fa-shield-alt fs-4"></i>
-              </div>
-              <div>
-                <h5 class="fw-bold text-primary mb-0">Distance & E-Learning</h5>
-                <span class="badge bg-primary bg-opacity-10 text-primary small">100% Online</span>
-              </div>
-            </div>
-            <p class="text-muted small mb-0">Certified online learning infrastructure designed for self-paced and interactive graduate education.</p>
           </div>
         </div>
       <% end %>
     </div>
-  </div>
-</section>
-<!-- SECTION 4.5: DYNAMIC ACCREDITATIONS END -->
 
+    <!-- Carousel Controls & Indicators (Only when multiple slides exist) -->
+    <% if @featured_news.any? %>
+      <!-- Side Arrow Navigation -->
+      <button type="button" class="home-carousel-arrow home-carousel-prev" data-hero-previous aria-label="Previous slide">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="home-carousel-arrow home-carousel-next" data-hero-next aria-label="Next slide">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
 
-<!-- SECTION 5: HOW ONLINE LEARNING WORKS START -->
-<section class="py-10 bg-tint">
-  <div class="container">
-    <div class="row mb-5 text-center" data-aos="fade-up">
-      <div class="col-lg-8 mx-auto">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Simple Journey</span>
-        <h2 class="display-5 fw-bold text-primary mt-2">How Online Learning Works</h2>
-        <p class="lead text-muted">A streamlined, support-driven path designed around your daily schedule.</p>
-      </div>
-    </div>
-
-    <!-- 3 Step Flow -->
-    <div class="row g-4 text-center justify-content-center">
-      <!-- Step 1 -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card card-premium p-5 h-100 position-relative">
-          <div class="bg-primary text-white fw-bold rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px; font-size: 1.5rem;">
-            1
-          </div>
-          <h4 class="fw-bold mb-3">Apply Online</h4>
-          <p class="text-muted mb-0">Submit your application documents through our online portal and receive fast entry verification.</p>
-        </div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card card-premium p-5 h-100 position-relative">
-          <div class="bg-secondary text-white fw-bold rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px; font-size: 1.5rem;">
-            2
-          </div>
-          <h4 class="fw-bold mb-3">Study Flexibly</h4>
-          <p class="text-muted mb-0">Access course materials, interactive forums, and live sessions on your PC or mobile device.</p>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card card-premium p-5 h-100 position-relative">
-          <div class="bg-warning text-dark fw-bold rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center" style="width:60px; height:60px; font-size: 1.5rem;">
-            3
-          </div>
-          <h4 class="fw-bold mb-3">Graduate with Confidence</h4>
-          <p class="text-muted mb-0">Earn your accredited Master's degree and unlock new leadership opportunities in your field.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- SECTION 5: HOW ONLINE LEARNING WORKS END -->
-
-
-<!-- SECTION 6: REGISTRATION CTA START -->
-<section class="py-10 hero-gradient text-white position-relative overflow-hidden rounded-4 mx-2 mx-md-4 my-5 shadow-2xl">
-  <div class="container position-relative z-index-9 text-center py-4">
-    <div class="row justify-content-center" data-aos="zoom-in">
-      <div class="col-lg-9">
-        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase mb-3">Next Intake Opening</span>
-        <h2 class="display-4 fw-extrabold text-white mb-4">Registration Is Now Open</h2>
-        <p class="lead text-white-50 mb-5 mx-auto" style="max-width: 700px;">
-          Take the next step in your professional development. Secure your spot in our upcoming graduate cohort today.
-        </p>
-        <a href="https://portal.premiercollege.edu.et" class="btn btn-lg btn-warning btn-pill fw-bold shadow-lg px-5 py-3 fs-5">
-          Apply Now <i class="fas fa-arrow-right ms-2"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- SECTION 6: REGISTRATION CTA END -->
-
-
-<!-- SECTION 7: TESTIMONIALS & SUCCESS STORIES START -->
-<section class="py-10 bg-white">
-  <div class="container">
-    <div class="row mb-5 text-center" data-aos="fade-up">
-      <div class="col-lg-8 mx-auto">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Student Impact</span>
-        <h2 class="display-5 fw-bold text-primary mt-2">Graduate Success Stories</h2>
-        <p class="lead text-muted">See how Premier College empowers professionals across diverse industries.</p>
-      </div>
-    </div>
-
-    <div class="row g-4">
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card card-premium p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <div class="text-warning me-2">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-          <p class="text-muted fst-italic mb-4">
-            "Studying online at Premier College allowed me to complete my MBA while managing full-time work commitments. The practical curriculum was immediately applicable."
-          </p>
-          <div class="mt-auto d-flex align-items-center">
-            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width:45px; height:45px;">
-              MBA
-            </div>
-            <div>
-              <h6 class="fw-bold mb-0">Graduate Alumni</h6>
-              <span class="text-muted small">MBA Graduate</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card card-premium p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <div class="text-warning me-2">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-          <p class="text-muted fst-italic mb-4">
-            "The Project Management master's program gave me structured methodologies that helped me earn a senior promotion within 6 months of starting."
-          </p>
-          <div class="mt-auto d-flex align-items-center">
-            <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width:45px; height:45px;">
-              MPM
-            </div>
-            <div>
-              <h6 class="fw-bold mb-0">Project Leader</h6>
-              <span class="text-muted small">MPM Student</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card card-premium p-4 h-100">
-          <div class="d-flex align-items-center mb-3">
-            <div class="text-warning me-2">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-          </div>
-          <p class="text-muted fst-italic mb-4">
-            "Flexibility and responsive faculty support made online learning smooth. Highly recommended for any working professional in Ethiopia."
-          </p>
-          <div class="mt-auto d-flex align-items-center">
-            <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width:45px; height:45px;">
-              MOL
-            </div>
-            <div>
-              <h6 class="fw-bold mb-0">Executive Manager</h6>
-              <span class="text-muted small">MOL Graduate</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- SECTION 7: TESTIMONIALS & SUCCESS STORIES END -->
-
-
-<!-- SECTION 8: CONTACT & FOOTER AREA START -->
-<section id="contact-form" class="py-10 bg-tint">
-  <div class="container">
-    <div class="row g-5">
-      <div class="col-lg-5" data-aos="fade-right">
-        <span class="text-secondary fw-bold text-uppercase tracking-wider small">Reach Out</span>
-        <h2 class="display-6 fw-bold text-primary mt-2 mb-3">Contact Us</h2>
-        <p class="text-muted mb-5">Have questions regarding admission, study modality, or tuition? Contact our team in Addis Ababa.</p>
-
-        <div class="d-flex align-items-center mb-4 p-3 card-premium">
-          <div class="icon-lg bg-primary bg-opacity-10 text-primary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-            <i class="fas fa-envelope fs-5"></i>
-          </div>
-          <div>
-            <h6 class="mb-1 fw-bold">Email</h6>
-            <a href="mailto:<%= College.first.email %>" class="text-muted text-decoration-none"><%= College.first.email %></a>
-          </div>
-        </div>
-
-        <div class="d-flex align-items-center mb-4 p-3 card-premium">
-          <div class="icon-lg bg-secondary bg-opacity-10 text-secondary rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-            <i class="fas fa-map-marker-alt fs-5"></i>
-          </div>
-          <div>
-            <h6 class="mb-1 fw-bold">Address</h6>
-            <span class="text-muted"><%= College.first.headquarter_address %></span>
-          </div>
-        </div>
-
-        <div class="d-flex align-items-center p-3 card-premium">
-          <div class="icon-lg bg-success bg-opacity-10 text-success rounded-circle d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px;">
-            <i class="fas fa-phone-alt fs-5"></i>
-          </div>
-          <div>
-            <h6 class="mb-1 fw-bold">Phone Number</h6>
-            <a href="tel:<%= College.first.phone_number %>" class="text-muted text-decoration-none"><%= College.first.phone_number %></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-7" data-aos="fade-left">
-        <div class="card card-premium p-4 p-md-5">
-          <h4 class="fw-bold mb-4 text-primary">Send Us a Message</h4>
-          <%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'row g-3'}) do |f| %>
-            <div class="col-md-6">
-              <%= f.input :fullname, label: "Full Name", class: "form-control form-control-modern", placeholder: "Your full name" %>
-            </div>
-            <div class="col-md-6">
-              <%= f.input :category, collection: ["Graduate Programs", "Admission Inquiry", "General Question"], label: "Inquiry Type", class: "form-select form-control-modern" %>
-            </div>
-            <div class="col-12">
-              <%= f.input :subject, label: "Subject", class: "form-control form-control-modern", placeholder: "How can we help you?" %>
-            </div>
-            <div class="col-12">
-              <%= f.input :message, as: :text, label: "Message", class: "form-control form-control-modern", input_html: { rows: 4 }, placeholder: "Write your message or question here..." %>
-            </div>
-            <div class="col-12 mt-4">
-              <%= f.submit 'Send Message', class: 'btn btn-primary btn-pill shadow w-100 py-3 fw-bold' %>
-            </div>
+      <!-- Bottom Dots Navigation -->
+      <div class="home-carousel-controls container pb-4 position-relative z-index-9" data-hero-controls>
+        <div class="home-carousel-dots" aria-label="Choose a slide">
+          <button type="button" class="home-carousel-dot active" data-hero-index="0" aria-label="Main Introduction: Online Graduate Education" aria-current="true">
+            <span class="dot-bar"></span>
+          </button>
+          <% @featured_news.each_with_index do |post, index| %>
+            <button type="button" class="home-carousel-dot" data-hero-index="<%= index + 1 %>" aria-label="Slide <%= index + 2 %>: <%= post.news_title %>" aria-current="false">
+              <span class="dot-bar"></span>
+            </button>
           <% end %>
         </div>
+        <span class="visually-hidden" data-hero-status aria-live="polite" aria-atomic="true">Slide 1 of <%= @featured_news.size + 1 %></span>
+      </div>
+    <% end %>
+  </section>
+  <!-- SECTION 1: HERO END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 2: WHY CHOOSE PREMIER COLLEGE START                               -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-light position-relative" id="main-content-start">
+    <div class="container">
+      <div class="row mb-5 text-center" data-animate="fade-up">
+        <div class="col-lg-8 mx-auto">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Why Premier College</span>
+          <h2 class="display-5 fw-bold text-primary mt-3">Designed for Working Professionals</h2>
+          <p class="lead text-contrast-muted">Empowering ambitious leaders through modern, flexible, and accredited higher education.</p>
+        </div>
+      </div>
+
+      <div class="row g-4" data-animate-stagger="true">
+        <!-- Feature 1 -->
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="icon-squircle bg-primary bg-opacity-10 text-primary mb-4">
+              <i class="fas fa-laptop-house" aria-hidden="true"></i>
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">100% Online Learning</h4>
+            <p class="text-contrast-muted mb-0">Study anywhere, anytime without interrupting your career or personal commitments.</p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="icon-squircle bg-secondary bg-opacity-10 text-secondary mb-4">
+              <i class="far fa-clock" aria-hidden="true"></i>
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Flexible Schedules</h4>
+            <p class="text-contrast-muted mb-0">Balance work, life, and academic goals with self-paced coursework and continuous access.</p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="icon-squircle bg-success bg-opacity-10 text-success mb-4">
+              <i class="fas fa-shield-alt" aria-hidden="true"></i>
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Accredited Programs</h4>
+            <p class="text-contrast-muted mb-0">Fully accredited degrees ensuring global credibility, quality standards, and industry recognition.</p>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="icon-squircle bg-warning bg-opacity-10 text-warning mb-4">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Affordable Education</h4>
+            <p class="text-contrast-muted mb-0">High-quality graduate education at transparent, competitive tuition rates with payment plans.</p>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="icon-squircle bg-info bg-opacity-10 text-info mb-4">
+              <i class="fas fa-user-tie" aria-hidden="true"></i>
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Expert Instructors</h4>
+            <p class="text-contrast-muted mb-0">Learn directly from seasoned academics and industry leaders dedicated to your growth.</p>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="icon-squircle bg-danger bg-opacity-10 text-danger mb-4">
+              <i class="fas fa-chart-line" aria-hidden="true"></i>
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Career-Focused Learning</h4>
+            <p class="text-contrast-muted mb-0">Curriculum structured around practical real-world skills to accelerate your professional promotion.</p>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
+  <!-- SECTION 2: WHY CHOOSE PREMIER COLLEGE END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3: GRADUATE PROGRAMS START                                        -->
+  <!-- ========================================================================= -->
+  <section id="programs-section" class="py-8 py-lg-10 section-surface-tint position-relative">
+    <div class="container">
+      <div class="row mb-5 text-center" data-animate="fade-up">
+        <div class="col-lg-8 mx-auto">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Explore Offerings</span>
+          <h2 class="display-5 fw-bold text-primary mt-3">Accredited Graduate Programs</h2>
+          <p class="lead text-contrast-muted">Specialized Master's degrees crafted to transform your leadership and management expertise.</p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center" data-animate-stagger="true">
+        <% active_programs = (@programs.present? && @programs.any?) ? @programs : Program.all %>
+        <% active_programs.each_with_index do |pro, index|%>
+          <div class="col-md-6 col-lg-4" data-animate="fade-up">
+            <div class="card card-future h-100 d-flex flex-column">
+              <%= safe_photo_tag(pro, "ac.jpg", class: "card-img-top", alt: "#{pro.program_name}", style: "height: 220px; object-fit: cover;") %>
+              <div class="card-body p-4 d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-2 rounded-pill fw-bold"><%= pro.try(:modality) || "100% Online" %></span>
+                  <span class="text-contrast-muted small fw-semibold"><i class="fas fa-graduation-cap me-1 text-primary" aria-hidden="true"></i> <%= pro.try(:study_level)&.capitalize || "Master Degree" %></span>
+                </div>
+                
+                <h4 class="card-title fw-bold mb-3">
+                  <%= link_to pro.program_name, program_path(pro), class: "stretched-link text-primary text-decoration-none"%>
+                </h4>
+                
+                <p class="text-contrast-muted small mb-4">
+                  <%= pro.try(:overview)&.truncate(120) || "Gain advanced strategic capabilities and leadership skills designed for immediate impact in your industry." %>
+                </p>
+
+                <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                  <span class="text-primary fw-bold small">View Program <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i></span>
+                  <span class="btn btn-sm btn-outline-primary btn-pill">Details</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 3: GRADUATE PROGRAMS END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3.2: COLLEGE EVENT GALLERY START (AFTER GRADUATE PROGRAMS)        -->
+  <!-- ========================================================================= -->
+  <%= render "event_gallery" %>
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3.5: SHORT TERM TRAINING START                                    -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-light position-relative">
+    <div class="container">
+      <div class="row g-5 align-items-center justify-content-between">
+        <div class="col-lg-6" data-animate="fade-right">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Professional Upskilling</span>
+          <h2 class="display-5 fw-bold text-primary mt-3 mb-3">Short-Term Training Programs</h2>
+          <p class="lead text-contrast-muted mb-4" style="line-height: 1.8;">
+            Enhance your practical expertise with Premier College's short-term professional development courses. Designed for immediate workplace impact, career transitions, and organizational growth.
+          </p>
+
+          <!-- Feature List -->
+          <div class="row g-3 mb-5">
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center p-3 card-future">
+                <div class="icon-squircle bg-primary bg-opacity-10 text-primary me-3" style="width:48px; height:48px; min-width:48px; font-size: 1.15rem;">
+                  <i class="fas fa-certificate" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0 text-primary">Certifications</h6>
+                  <span class="text-contrast-muted small">Industry-Ready Skills</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center p-3 card-future">
+                <div class="icon-squircle bg-secondary bg-opacity-10 text-secondary me-3" style="width:48px; height:48px; min-width:48px; font-size: 1.15rem;">
+                  <i class="fas fa-briefcase" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h6 class="fw-bold mb-0 text-primary">Executive Workshops</h6>
+                  <span class="text-contrast-muted small">Leadership &amp; Tech</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://training.premiercollege.edu.et/" target="_blank" rel="noopener noreferrer" class="btn btn-lg btn-primary btn-pill shadow-lg">
+            Visit Training Portal <i class="fas fa-external-link-alt ms-2" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="col-lg-5" data-animate="fade-left">
+          <div class="position-relative">
+            <%= image_tag("training.jpg", class: "rounded-4 shadow-xl w-100 object-fit-cover", alt: "Short term professional training at Premier College", style: "min-height: 380px;")%>
+            <div class="position-absolute bottom-0 end-0 m-4 glass-capsule-float p-3" style="max-width: 250px;">
+              <div class="d-flex align-items-center gap-3">
+                <i class="fas fa-check-circle text-success fs-3" aria-hidden="true"></i>
+                <div>
+                  <h6 class="mb-0 fw-bold text-dark">Flexible Schedules</h6>
+                  <span class="text-muted small">Weekend &amp; Evening</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 3.5: SHORT TERM TRAINING END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 4: ABOUT & ACCREDITATION TRUST START                              -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-light position-relative border-top">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6" data-animate="fade-right">
+          <%= image_tag("Congratulations Graduates.png", class: "rounded-4 shadow-lg w-100 object-fit-cover", alt: "About Premier College Graduates celebrating commencement")%>
+        </div>
+
+        <div class="col-lg-6" data-animate="fade-left">
+          <span class="badge-capsule badge-capsule-cyan mb-2">About Us</span>
+          <h2 class="display-5 fw-bold text-primary mt-3 mb-4">Leading Flexible Higher Education in Ethiopia</h2>
+          <div class="lead text-contrast-muted mb-4" style="line-height: 1.8;">
+            <%= College.first.overview.html_safe %>
+          </div>
+
+          <!-- Trust & Accreditation badges -->
+          <div class="p-4 rounded-4 mb-4 card-future">
+            <h6 class="fw-bold mb-2 text-primary"><i class="fas fa-award text-warning me-2 fs-5" aria-hidden="true"></i> Licensing &amp; Accreditation</h6>
+            <p class="text-contrast-muted small mb-0">Premier College operates under full licensing and accreditation, committed to academic excellence, ethical standards, and high graduate employability in Ethiopia and beyond.</p>
+          </div>
+
+          <div class="d-flex flex-wrap align-items-center gap-3">
+            <%= link_to "Learn More About Us", about_path, class: "btn btn-primary btn-pill shadow-sm" %>
+            <div class="text-contrast-muted small fw-semibold"><i class="fas fa-map-marker-alt text-danger me-1" aria-hidden="true"></i> Headquartered in Addis Ababa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 4: ABOUT & ACCREDITATION TRUST END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 4.5: DYNAMIC ACCREDITATIONS START                                 -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-tint position-relative">
+    <div class="container">
+      <div class="row mb-5 text-center" data-animate="fade-up">
+        <div class="col-lg-8 mx-auto">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Institutional Credibility</span>
+          <h2 class="display-5 fw-bold text-primary mt-3">Licensing &amp; Accreditations</h2>
+          <p class="lead text-contrast-muted">Fully accredited by national education regulatory bodies for global recognition and graduate confidence.</p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center" data-animate-stagger="true">
+        <% accs = (@accreditations.present? && @accreditations.any?) ? @accreditations : Accreditation.all %>
+        <% if accs.present? && accs.any? %>
+          <% accs.each_with_index do |acc, index| %>
+            <div class="col-md-6 col-lg-4" data-animate="fade-up">
+              <div class="card card-future h-100 d-flex flex-column">
+                <!-- Accreditation Photo / Document -->
+                <%= safe_photo_tag(acc, "ac.jpg", class: "card-img-top", alt: acc.try(:accreditation_title) || "Accreditation Certificate", style: "height: 200px; object-fit: cover;") %>
+
+                <div class="card-body p-4 d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="badge bg-warning text-dark fw-bold px-3 py-1 rounded-pill small"><%= acc.try(:modality)&.capitalize || "100% Online" %></span>
+                    <span class="badge bg-primary bg-opacity-10 text-primary fw-bold small"><%= acc.try(:study_level)&.capitalize || "Graduate" %></span>
+                  </div>
+
+                  <h4 class="fw-bold text-primary mb-2 mt-1"><%= acc.try(:accreditation_title) %></h4>
+
+                  <% if acc.program.present? %>
+                    <div class="p-2 rounded bg-tint border mb-3">
+                      <span class="text-secondary small fw-bold d-block"><i class="fas fa-graduation-cap me-1" aria-hidden="true"></i> Program:</span>
+                      <span class="fw-bold text-dark small"><%= acc.program.program_name %></span>
+                    </div>
+                  <% end %>
+
+                  <p class="text-contrast-muted small mb-0 mt-auto">
+                    Official accreditation ensuring rigorous academic standards and national recognition for graduate employability.
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <!-- Default Accreditation Cards -->
+          <div class="col-md-6 col-lg-4" data-animate="fade-up">
+            <div class="card card-future p-4 h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-squircle bg-warning bg-opacity-10 text-warning me-3" style="width:52px; height:52px; min-width:52px;">
+                  <i class="fas fa-award fs-4" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h5 class="fw-bold text-primary mb-0">Ministry of Education</h5>
+                  <span class="badge bg-primary bg-opacity-10 text-primary small">Full Licensing</span>
+                </div>
+              </div>
+              <p class="text-contrast-muted small mb-0">Officially accredited higher education institution offering recognized graduate degree programs.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4" data-animate="fade-up">
+            <div class="card card-future p-4 h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-squircle bg-warning bg-opacity-10 text-warning me-3" style="width:52px; height:52px; min-width:52px;">
+                  <i class="fas fa-certificate fs-4" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h5 class="fw-bold text-primary mb-0">HERQA Approved</h5>
+                  <span class="badge bg-primary bg-opacity-10 text-primary small">Quality Assured</span>
+                </div>
+              </div>
+              <p class="text-contrast-muted small mb-0">Adhering to rigorous Higher Education Relevance and Quality Agency standards across all curricula.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4" data-animate="fade-up">
+            <div class="card card-future p-4 h-100">
+              <div class="d-flex align-items-center mb-3">
+                <div class="icon-squircle bg-warning bg-opacity-10 text-warning me-3" style="width:52px; height:52px; min-width:52px;">
+                  <i class="fas fa-shield-alt fs-4" aria-hidden="true"></i>
+                </div>
+                <div>
+                  <h5 class="fw-bold text-primary mb-0">Distance &amp; E-Learning</h5>
+                  <span class="badge bg-primary bg-opacity-10 text-primary small">100% Online</span>
+                </div>
+              </div>
+              <p class="text-contrast-muted small mb-0">Certified online learning infrastructure designed for self-paced and interactive graduate education.</p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 4.5: DYNAMIC ACCREDITATIONS END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 5: HOW ONLINE LEARNING WORKS START                                -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-light position-relative border-top">
+    <div class="container">
+      <div class="row mb-5 text-center" data-animate="fade-up">
+        <div class="col-lg-8 mx-auto">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Simple Journey</span>
+          <h2 class="display-5 fw-bold text-primary mt-3">How Online Learning Works</h2>
+          <p class="lead text-contrast-muted">A streamlined, support-driven path designed around your daily schedule.</p>
+        </div>
+      </div>
+
+      <!-- 3 Step Flow -->
+      <div class="row g-4 text-center justify-content-center" data-animate-stagger="true">
+        <!-- Step 1 -->
+        <div class="col-md-4" data-animate="fade-up">
+          <div class="card card-future p-5 h-100 position-relative">
+            <div class="bg-primary text-white fw-bold rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width:64px; height:64px; font-size: 1.5rem;">
+              1
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Apply Online</h4>
+            <p class="text-contrast-muted mb-0">Submit your application documents through our online portal and receive fast entry verification.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="col-md-4" data-animate="fade-up">
+          <div class="card card-future p-5 h-100 position-relative">
+            <div class="bg-secondary text-white fw-bold rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width:64px; height:64px; font-size: 1.5rem;">
+              2
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Study Flexibly</h4>
+            <p class="text-contrast-muted mb-0">Access course materials, interactive forums, and live sessions on your PC or mobile device.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="col-md-4" data-animate="fade-up">
+          <div class="card card-future p-5 h-100 position-relative">
+            <div class="bg-warning text-dark fw-bold rounded-circle mx-auto mb-4 d-flex align-items-center justify-content-center shadow-sm" style="width:64px; height:64px; font-size: 1.5rem;">
+              3
+            </div>
+            <h4 class="fw-bold mb-3 text-primary">Graduate with Confidence</h4>
+            <p class="text-contrast-muted mb-0">Earn your accredited Master's degree and unlock new leadership opportunities in your field.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 5: HOW ONLINE LEARNING WORKS END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 5.5: LATEST NEWS & EVENTS START                                   -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-tint position-relative border-top" id="news-events-section" data-animate-section="true">
+    <div class="container">
+      <div class="row mb-5 text-center" data-animate="fade-up">
+        <div class="col-lg-8 mx-auto">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Campus Dispatch</span>
+          <h2 class="display-5 fw-bold text-primary mt-3">Latest News &amp; Events</h2>
+          <p class="lead text-contrast-muted">Stay informed with the latest updates, academic milestones, and upcoming campus events at Premier College.</p>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center" data-animate-stagger="true">
+        <% active_news = (@news.present? && @news.any?) ? @news.first(3) : News.where(publish: true).order(created_at: :desc).first(3) %>
+        <% if active_news.present? && active_news.any? %>
+          <% active_news.each do |post| %>
+            <div class="col-md-6 col-lg-4" data-animate="fade-up">
+              <div class="card card-future h-100 d-flex flex-column">
+                <%= safe_photo_tag(post, "pic1.jpg", class: "card-img-top", alt: post.news_title, style: "height: 220px; object-fit: cover;") %>
+                
+                <div class="card-body p-4 d-flex flex-column">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <% if post.content_type == 'event' %>
+                      <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-bold small"><i class="fas fa-calendar-alt me-1" aria-hidden="true"></i> Event</span>
+                    <% else %>
+                      <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill fw-bold small"><i class="fas fa-newspaper me-1" aria-hidden="true"></i> News</span>
+                    <% end %>
+
+                    <% if post.created_at.present? %>
+                      <span class="text-contrast-muted small fw-semibold">
+                        <i class="far fa-clock me-1 text-primary" aria-hidden="true"></i> <%= post.created_at.strftime("%b %d, %Y") %>
+                      </span>
+                    <% end %>
+                  </div>
+
+                  <h4 class="card-title fw-bold mb-3">
+                    <%= link_to post.news_title, news_path(post), class: "stretched-link text-primary text-decoration-none" %>
+                  </h4>
+
+                  <p class="text-contrast-muted small mb-4">
+                    <%= truncate(strip_tags(post.overview), length: 120) %>
+                  </p>
+
+                  <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                    <span class="text-primary fw-bold small">
+                      <%= post.content_type == 'event' ? 'Event Details' : 'Read Article' %> <i class="fas fa-arrow-right ms-1" aria-hidden="true"></i>
+                    </span>
+                    <span class="btn btn-sm btn-outline-primary btn-pill">Read More</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="col-12 text-center text-contrast-muted py-4">
+            <p>Check back soon for the latest campus news and upcoming events.</p>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- View All Button -->
+      <div class="text-center mt-5" data-animate="fade-up">
+        <%= link_to news_index_path, class: "btn btn-lg btn-outline-primary btn-pill fw-bold shadow-sm" do %>
+          View All News &amp; Events <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 5.5: LATEST NEWS & EVENTS END -->
+  <!-- SECTION 6: REGISTRATION CTA START                                         -->
+  <!-- ========================================================================= -->
+  <div class="container my-5" data-animate="zoom-in">
+    <section class="py-8 py-lg-10 cta-banner-future text-white position-relative overflow-hidden" aria-label="Registration announcement">
+      <div class="container position-relative z-index-9 text-center py-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <span class="badge-capsule badge-capsule-gold mb-3">
+              <span class="led-indicator" aria-hidden="true"></span>
+              <span>Next Intake Opening</span>
+            </span>
+            <h2 class="display-4 fw-extrabold text-white mb-4">Registration Is Now Open</h2>
+            <p class="lead text-contrast-light-muted mb-5 mx-auto" style="max-width: 700px; line-height: 1.8;">
+              Take the next step in your professional development. Secure your spot in our upcoming graduate cohort today.
+            </p>
+            <a href="https://portal.premiercollege.edu.et" class="btn btn-lg btn-warning btn-pill fw-bold shadow-lg px-5 py-3 fs-5" aria-label="Apply Now to Premier College">
+              Apply Now <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-<!-- SECTION 8: CONTACT & FOOTER AREA END -->
+  <!-- SECTION 6: REGISTRATION CTA END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 7: TESTIMONIALS & SUCCESS STORIES START                           -->
+  <!-- ========================================================================= -->
+  <section class="py-8 py-lg-10 section-surface-light position-relative">
+    <div class="container">
+      <div class="row mb-5 text-center" data-animate="fade-up">
+        <div class="col-lg-8 mx-auto">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Student Impact</span>
+          <h2 class="display-5 fw-bold text-primary mt-3">Graduate Success Stories</h2>
+          <p class="lead text-contrast-muted">See how Premier College empowers professionals across diverse industries.</p>
+        </div>
+      </div>
+
+      <div class="row g-4" data-animate-stagger="true">
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-warning me-2" aria-label="5 stars rating">
+                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+            <p class="text-contrast-muted fst-italic mb-4">
+              "Studying online at Premier College allowed me to complete my MBA while managing full-time work commitments. The practical curriculum was immediately applicable."
+            </p>
+            <div class="mt-auto d-flex align-items-center">
+              <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold shadow-sm" style="width:48px; height:48px; min-width:48px;">
+                MBA
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0 text-primary">Graduate Alumni</h6>
+                <span class="text-contrast-muted small">MBA Graduate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-warning me-2" aria-label="5 stars rating">
+                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+            <p class="text-contrast-muted fst-italic mb-4">
+              "The Project Management master's program gave me structured methodologies that helped me earn a senior promotion within 6 months of starting."
+            </p>
+            <div class="mt-auto d-flex align-items-center">
+              <div class="bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold shadow-sm" style="width:48px; height:48px; min-width:48px;">
+                MPM
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0 text-primary">Project Leader</h6>
+                <span class="text-contrast-muted small">MPM Student</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4" data-animate="fade-up">
+          <div class="card card-future p-4 h-100">
+            <div class="d-flex align-items-center mb-3">
+              <div class="text-warning me-2" aria-label="5 stars rating">
+                <i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i><i class="fas fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+            <p class="text-contrast-muted fst-italic mb-4">
+              "Flexibility and responsive faculty support made online learning smooth. Highly recommended for any working professional in Ethiopia."
+            </p>
+            <div class="mt-auto d-flex align-items-center">
+              <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold shadow-sm" style="width:48px; height:48px; min-width:48px;">
+                MOL
+              </div>
+              <div>
+                <h6 class="fw-bold mb-0 text-primary">Executive Manager</h6>
+                <span class="text-contrast-muted small">MOL Graduate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 7: TESTIMONIALS & SUCCESS STORIES END -->
+
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 8: CONTACT & INQUIRIES START                                      -->
+  <!-- ========================================================================= -->
+  <section id="contact-form" class="py-8 py-lg-10 section-surface-tint position-relative">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-5" data-animate="fade-right">
+          <span class="badge-capsule badge-capsule-cyan mb-2">Reach Out</span>
+          <h2 class="display-6 fw-bold text-primary mt-3 mb-3">Contact Us</h2>
+          <p class="text-contrast-muted mb-5">Have questions regarding admission, study modality, or tuition? Contact our team in Addis Ababa.</p>
+
+          <div class="d-flex align-items-center mb-4 p-3 card-future">
+            <div class="icon-squircle bg-primary bg-opacity-10 text-primary me-3" style="width: 52px; height: 52px; min-width: 52px;">
+              <i class="fas fa-envelope fs-5" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h6 class="mb-1 fw-bold text-primary">Email</h6>
+              <a href="mailto:<%= College.first.email %>" class="text-contrast-muted text-decoration-none fw-semibold"><%= College.first.email %></a>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center mb-4 p-3 card-future">
+            <div class="icon-squircle bg-secondary bg-opacity-10 text-secondary me-3" style="width: 52px; height: 52px; min-width: 52px;">
+              <i class="fas fa-map-marker-alt fs-5" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h6 class="mb-1 fw-bold text-primary">Address</h6>
+              <span class="text-contrast-muted fw-semibold"><%= College.first.headquarter_address %></span>
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center p-3 card-future">
+            <div class="icon-squircle bg-success bg-opacity-10 text-success me-3" style="width: 52px; height: 52px; min-width: 52px;">
+              <i class="fas fa-phone-alt fs-5" aria-hidden="true"></i>
+            </div>
+            <div>
+              <h6 class="mb-1 fw-bold text-primary">Phone Number</h6>
+              <a href="tel:<%= College.first.phone_number %>" class="text-contrast-muted text-decoration-none fw-semibold"><%= College.first.phone_number %></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7" data-animate="fade-left">
+          <div class="card card-future p-4 p-md-5">
+            <h4 class="fw-bold mb-4 text-primary">Send Us a Message</h4>
+            <%= simple_form_for(VisitorComment.new, url: visitor_comments_path, html: { class: 'row g-3'}) do |f| %>
+              <div class="col-md-6">
+                <%= f.input :fullname, label: "Full Name", class: "form-control form-control-modern", placeholder: "Your full name" %>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :category, collection: ["Graduate Programs", "Admission Inquiry", "General Question"], label: "Inquiry Type", class: "form-select form-control-modern" %>
+              </div>
+              <div class="col-12">
+                <%= f.input :subject, label: "Subject", class: "form-control form-control-modern", placeholder: "How can we help you?" %>
+              </div>
+              <div class="col-12">
+                <%= f.input :message, as: :text, label: "Message", class: "form-control form-control-modern", input_html: { rows: 4 }, placeholder: "Write your message or question here..." %>
+              </div>
+              <div class="col-12 mt-4">
+                <%= f.submit 'Send Message', class: 'btn btn-primary btn-pill shadow w-100 py-3 fw-bold fs-6' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 8: CONTACT & FOOTER AREA END -->
 
 </main>
+<!-- **************** MAIN CONTENT END **************** -->

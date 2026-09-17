@@ -1,0 +1,109 @@
+<!-- ========================================================================= -->
+<!-- SECTION: THROUGH OUR LENS - COMMUNITY EVENT GALLERY                       -->
+<!-- ========================================================================= -->
+<% if @event_galleries.present? && @event_galleries.any? %>
+  <section id="college-events-gallery" class="py-7 py-lg-9 bg-white position-relative overflow-hidden" role="region" aria-label="College Event Gallery">
+    <div class="container position-relative z-index-2">
+      <!-- Section Header -->
+      <div class="row align-items-end justify-content-between mb-5 g-4" data-animate="fade-up">
+        <div class="col-lg-7">
+          <div class="gallery-eyebrow">THROUGH OUR LENS</div>
+          <h2 class="gallery-main-title mb-0">Our community, in pictures.</h2>
+        </div>
+        <div class="col-lg-5 text-lg-end">
+          <p class="gallery-lead-text mb-3">
+            Moments of pride, connection and possibility.<br class="d-none d-md-inline" />
+            Select a photograph to take a closer look.
+          </p>
+          <%= link_to gallery_path, class: "btn btn-sm btn-outline-dark btn-pill px-3 py-2 fw-semibold" do %>
+            View Full Gallery <i class="fas fa-arrow-right ms-1"></i>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Signature Bento Grid (Limited to 7 curated highlights) -->
+      <div class="gallery-bento-grid" data-animate-stagger="true">
+        <% @event_galleries.first(7).each_with_index do |gallery, idx| %>
+          <% pos_class = "gallery-tile-pos-#{idx}" %>
+          <div class="gallery-tile <%= pos_class %>" data-gallery-trigger="<%= idx %>" tabindex="0" role="button" aria-label="View <%= gallery.title %>" data-animate="fade-up">
+            <div class="gallery-tile-inner">
+              <%= safe_photo_tag(gallery, "gallery/img1.jpg", class: "gallery-tile-img", alt: gallery.title, loading: "lazy") %>
+              
+              <!-- Expand Icon Badge in Top-Right Corner -->
+              <span class="gallery-tile-expand" aria-hidden="true">
+                <i class="bi bi-arrows-fullscreen"></i>
+              </span>
+
+              <!-- Bottom Dark Vignette & Information -->
+              <div class="gallery-tile-overlay">
+                <span class="gallery-tile-tag" style="color: #fbbf24 !important;"><%= gallery.category.presence || "MOMENT" %></span>
+                <h3 class="gallery-tile-title" style="color: #ffffff !important;"><%= gallery.title %></h3>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Action Button to Dedicated Gallery Page -->
+      <div class="text-center mt-5 pt-3" data-animate="fade-up">
+        <%= link_to gallery_path, class: "btn btn-hero-gold px-5 py-3 shadow-lg fs-6 fw-bold text-dark" do %>
+          Explore Full Campus Gallery (<%= @total_gallery_count || EventGallery.count %> Moments) <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Fullscreen Interactive Lightbox Modal -->
+    <div id="gallery-lightbox-modal" class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photograph preview viewer" tabindex="-1">
+      <div class="gallery-modal-backdrop" data-modal-close></div>
+      
+      <div class="gallery-modal-content">
+        <!-- Close Button -->
+        <button type="button" class="gallery-modal-close" data-modal-close aria-label="Close photo preview">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+
+        <!-- Navigation Arrows -->
+        <button type="button" class="gallery-modal-arrow gallery-modal-prev" data-modal-prev aria-label="Previous photo">
+          <i class="fas fa-chevron-left" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="gallery-modal-arrow gallery-modal-next" data-modal-next aria-label="Next photo">
+          <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        </button>
+
+        <!-- Modal Body: Image & Caption -->
+        <div class="gallery-modal-card">
+          <div class="gallery-modal-image-wrap">
+            <img id="gallery-modal-img" src="" alt="" class="gallery-modal-image" />
+          </div>
+          <div class="gallery-modal-details">
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+              <span id="gallery-modal-category" class="gallery-modal-tag"></span>
+              <span id="gallery-modal-date" class="gallery-modal-date"></span>
+            </div>
+            <h3 id="gallery-modal-title" class="gallery-modal-title"></h3>
+            <p id="gallery-modal-caption" class="gallery-modal-caption"></p>
+            <div class="gallery-modal-footer">
+              <span id="gallery-modal-counter" class="gallery-modal-counter"></span>
+              <span><i class="fas fa-keyboard me-1" aria-hidden="true"></i> Use &larr; &rarr; arrows to navigate &bullet; Esc to close</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JSON Data Payload for Modal Engine -->
+    <script type="application/json" id="gallery-items-data">
+      <%= raw @event_galleries.map.with_index { |g, i|
+        {
+          index: i,
+          title: g.title,
+          caption: g.caption.presence || "",
+          category: g.category.presence || "MOMENT",
+          date: g.event_date ? g.event_date.strftime("%B %d, %Y") : "",
+          url: safe_photo_url(g, "gallery/img1.jpg")
+        }
+      }.to_json %>
+    </script>
+  </section>
+<% end %>
+<!-- SECTION: COMMUNITY EVENT GALLERY END -->

@@ -1,0 +1,382 @@
+// ==========================================================================
+// PREMIER COLLEGE - SITE SPLASH SCREEN & CAROUSEL LOADER STYLES
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// 1. Site Splash Screen
+// --------------------------------------------------------------------------
+.site-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 35%, #1f1a55 0%, #15123d 50%, #0d0b25 100%);
+  color: #ffffff;
+  padding: 24px;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  filter: blur(0);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.55s step-end;
+
+  // Ambient glowing backdrop lights
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      animation: splash-ambient-pulse 4s ease-in-out infinite alternate;
+    }
+
+    &::before {
+      top: 20%;
+      left: 30%;
+      width: 320px;
+      height: 320px;
+      background: #8c181b; // College burgundy
+    }
+
+    &::after {
+      bottom: 25%;
+      right: 28%;
+      width: 280px;
+      height: 280px;
+      background: #ffc107; // College gold
+      animation-delay: -2s;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    animation: splash-content-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  // Logo Badge
+  &__logo-wrapper {
+    position: relative;
+    padding: 16px 20px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45),
+                0 0 30px rgba(255, 193, 7, 0.3);
+    border: 2px solid rgba(255, 193, 7, 0.5);
+    margin-bottom: 24px;
+  }
+
+  &__logo {
+    display: block;
+    max-width: 340px;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__logo-glow {
+    position: absolute;
+    inset: -4px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.4), rgba(140, 24, 27, 0.4));
+    z-index: -1;
+    filter: blur(12px);
+    opacity: 0.6;
+    animation: splash-glow-pulse 2.5s ease-in-out infinite alternate;
+  }
+
+  // Typography
+  &__text-group {
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  &__subtitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffc107;
+    margin: 0;
+    opacity: 0.95;
+    text-shadow: 0 0 12px rgba(255, 193, 7, 0.4);
+  }
+
+  // Spinner & Progress
+  &__spinner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__spinner {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+
+    .spinner-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid transparent;
+
+      &.outer {
+        border-top-color: #ffc107;
+        border-right-color: rgba(255, 193, 7, 0.3);
+        animation: splash-spin-clockwise 1s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+      }
+
+      &.inner {
+        inset: 6px;
+        border-bottom-color: #e63946;
+        border-left-color: rgba(230, 57, 70, 0.3);
+        animation: splash-spin-counter 0.8s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+      }
+    }
+
+    .spinner-core {
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      background: #ffc107;
+      box-shadow: 0 0 10px #ffc107;
+      animation: splash-core-pulse 1.2s ease-in-out infinite alternate;
+    }
+  }
+
+  &__progress-track {
+    width: 180px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  &__progress-bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #8c181b, #ffc107, #3b82f6, #ffc107);
+    background-size: 300% 100%;
+    border-radius: 4px;
+    animation: splash-progress-slide 1.8s ease-in-out infinite;
+  }
+
+  &__status {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+  }
+
+  // Dismissed state
+  &.is-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: scale(1.03) !important;
+    filter: blur(8px) !important;
+  }
+}
+
+// Keep page scroll locked only while splash is truly visible
+html.is-splash-active {
+  overflow: hidden;
+}
+
+// --------------------------------------------------------------------------
+// 2. Carousel Loader Overlay
+// --------------------------------------------------------------------------
+.carousel-loader-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: linear-gradient(135deg, rgba(21, 18, 56, 0.95) 0%, rgba(39, 35, 102, 0.92) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: inherit;
+  color: #ffffff;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.45s ease, visibility 0.45s step-end;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 32px 40px;
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    max-width: 380px;
+    width: 100%;
+  }
+
+  &__spinner {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 18px;
+
+    .spinner-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      border-top-color: #ffc107;
+      border-right-color: #ffc107;
+      animation: splash-spin-clockwise 0.85s linear infinite;
+    }
+
+    .spinner-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffc107;
+      font-size: 0.95rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+  }
+
+  &__caption {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  // Shimmer placeholder skeleton lines for carousel
+  &__shimmer {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+
+    span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffc107;
+      opacity: 0.3;
+      animation: carousel-dot-bounce 1.2s infinite ease-in-out both;
+
+      &:nth-child(1) { animation-delay: -0.32s; }
+      &:nth-child(2) { animation-delay: -0.16s; }
+      &:nth-child(3) { animation-delay: 0s; }
+    }
+  }
+
+  &.is-hidden {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
+// --------------------------------------------------------------------------
+// 3. Keyframe Animations
+// --------------------------------------------------------------------------
+@keyframes splash-ambient-pulse {
+  0% { transform: scale(0.9) translate(0, 0); opacity: 0.25; }
+  100% { transform: scale(1.15) translate(15px, -15px); opacity: 0.45; }
+}
+
+@keyframes splash-content-appear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes splash-glow-pulse {
+  0% { opacity: 0.4; transform: scale(0.98); }
+  100% { opacity: 0.85; transform: scale(1.02); }
+}
+
+@keyframes splash-spin-clockwise {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes splash-spin-counter {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes splash-core-pulse {
+  0% { transform: scale(0.75); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes splash-progress-slide {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes carousel-dot-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Accessibility: prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  .site-splash,
+  .carousel-loader-overlay,
+  .site-splash__backdrop::before,
+  .site-splash__backdrop::after,
+  .spinner-ring,
+  .site-splash__progress-bar {
+    animation: none !important;
+    transition: none !important;
+  }
+}

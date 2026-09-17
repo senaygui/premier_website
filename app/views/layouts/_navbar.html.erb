@@ -1,5 +1,19 @@
 <!-- Header START -->
 <header class="navbar-light navbar-sticky header-static navbar-glass">
+  <% if ethiopian_new_year_active? %>
+    <!-- Ethiopian New Year (Enkutatash) Festive Banner Strip (Sep 01 - Sep 28) -->
+    <div class="festive-new-year-strip py-1 px-3 text-center" role="region" aria-label="Ethiopian New Year Announcement">
+      <div class="container d-flex align-items-center justify-content-center gap-2 flex-wrap">
+        <span class="festive-flower" aria-hidden="true">🌼</span>
+        <strong class="festive-amharic">መልካም አዲስ ዓመት!</strong>
+        <span class="d-none d-md-inline text-white">Happy Ethiopian New Year <%= Time.now.year - 7 %> E.C. from Premier College!</span>
+        <button type="button" class="btn btn-sm btn-outline-warning text-white rounded-pill px-2 py-0 border-warning small fw-bold" onclick="if(window.toggleEthiopianNewYearBanner){window.toggleEthiopianNewYearBanner();}else{alert('መልካም አዲስ ዓመት!');}" style="font-size:0.75rem;" aria-label="Toggle festive celebration message">
+          🌼 Celebration
+        </button>
+      </div>
+    </div>
+  <% end %>
+
   <div class="navbar-top navbar-dark bg-light d-none d-xl-block py-2 mx-2 mx-md-4 rounded-bottom-4">
     <div class="container">
       <div class="d-lg-flex justify-content-lg-between align-items-center">
@@ -54,6 +68,7 @@
           <li class="nav-item"><%= link_to "Online Learning", how_to_learn_path, class: "nav-link"%></li>
           <li class="nav-item"><%= link_to "How to Apply", how_to_apply_path, class: "nav-link"%></li>
           <li class="nav-item"><%= link_to "News & Events", news_index_path, class: "nav-link"%></li>
+          <li class="nav-item"><%= link_to "Gallery", gallery_path, class: "nav-link"%></li>
           <li class="nav-item"><a href="https://training.premiercollege.edu.et/" target="_blank" class="nav-link">Trainings Portal</a></li>
           <li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link"%></li>
           <li class="nav-item ms-lg-2 mt-2 mt-lg-0 d-lg-none">

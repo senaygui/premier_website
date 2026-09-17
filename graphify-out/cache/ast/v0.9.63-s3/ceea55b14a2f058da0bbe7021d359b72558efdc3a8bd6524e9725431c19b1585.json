@@ -1,0 +1,1 @@
+{"nodes": [{"id": "$graphify-root$_bin_yarn", "label": "yarn", "file_type": "code", "source_file": "bin/yarn", "source_location": "L1", "metadata": {"ruby_resolution_schema": 1, "ruby_external_method_owners": ["APP_ROOT::*"]}}], "edges": [], "raw_calls": []}

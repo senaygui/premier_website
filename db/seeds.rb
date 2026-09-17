@@ -12,3 +12,7 @@ AdminUser.create!(first_name: "#{Rails.application.credentials.production[:first
 									email: "#{Rails.application.credentials.production[:admin_email]}", 
 									password: "#{Rails.application.credentials.production[:seed_password]}",password_confirmation: "#{Rails.application.credentials.production[:seed_password]}",  
 									role: "#{Rails.application.credentials.production[:role]}") if Rails.env.production?
+
+# Seed Event Galleries (works in both development and production)
+gallery_seed_file = Rails.root.join("lib", "tasks", "seed_gallery.rb")
+load gallery_seed_file if File.exist?(gallery_seed_file)

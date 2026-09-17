@@ -33,6 +33,7 @@ class Ability
         can :manage, VisitorComment
         can :manage, FrequentlyAskedQuestion
         can :manage, Training
+        can :manage, EventGallery
     when "finance"
         can :manage, ActiveAdmin::Page, name: "Dashboard", namespace_name: "admin"
         can :manage, Program

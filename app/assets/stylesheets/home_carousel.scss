@@ -1,0 +1,288 @@
+// Home Hero Multi-Slide Carousel Styles
+.home-carousel {
+  position: relative;
+  overflow: hidden;
+  min-height: 460px;
+
+  @media (min-width: 992px) {
+    min-height: 520px;
+  }
+
+  // Full-section background image layers
+  .home-carousel-bg-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .home-carousel-bg-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.03);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s ease-out;
+    will-change: opacity, transform;
+
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 1;
+    }
+  }
+
+  // While carousel is loading, keep controls and arrows hidden
+  &.is-loading-carousel {
+
+    .home-carousel-arrow,
+    .home-carousel-controls {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .home-carousel-arrow,
+  .home-carousel-controls {
+    opacity: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  .home-carousel-track {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 1fr;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+  }
+
+  .home-carousel-slide {
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100%;
+    max-width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: opacity, transform;
+
+    &.hero-slide-bg {
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    &.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+      z-index: 2;
+    }
+
+    &.slide-from-right {
+      opacity: 0;
+      transform: translateX(30px);
+      z-index: 2;
+    }
+
+    &.slide-from-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      z-index: 2;
+    }
+
+    &.slide-to-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      z-index: 1;
+    }
+
+    &.slide-to-right {
+      opacity: 0;
+      transform: translateX(30px);
+      z-index: 1;
+    }
+  }
+
+  .hero-title {
+    overflow-wrap: anywhere;
+    font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-carousel-photo {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 4px solid rgba(255, 255, 255, 0.18);
+    transition: transform 0.4s ease;
+
+    @media (max-width: 991.98px) {
+      height: 270px;
+    }
+  }
+
+  .hero-image-wrapper:hover .home-carousel-photo {
+    transform: scale(1.02);
+  }
+
+  // Navigation Arrows
+  .home-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      background: #ffc107;
+      color: #111827;
+      border-color: #ffc107;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 24px rgba(255, 193, 7, 0.4);
+    }
+
+    &:focus-visible {
+      outline: 3px solid #ffc107;
+      outline-offset: 3px;
+    }
+  }
+
+  .home-carousel-prev {
+    left: 20px;
+  }
+
+  .home-carousel-next {
+    right: 20px;
+  }
+
+  // Navigation Indicators / Dots
+  .home-carousel-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .home-carousel-dot {
+    position: relative;
+    display: inline-block;
+    height: 8px;
+    width: 28px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.35);
+    border: none;
+    padding: 0;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.3s ease, background 0.3s ease;
+
+    .dot-bar {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: #ffc107;
+      border-radius: 4px;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    &.active,
+    &[aria-current="true"] {
+      width: 52px;
+      background: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+
+      .dot-bar {
+        width: 100%;
+        transition: width 4.5s linear;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 2px;
+    }
+  }
+
+  // Mobile & Tablet adjustments
+  @media (max-width: 991.98px) {
+    .home-carousel-photo {
+      height: 320px;
+    }
+
+    .home-carousel-arrow {
+      width: 38px;
+      height: 38px;
+      font-size: 0.95rem;
+    }
+
+    .home-carousel-prev {
+      left: 10px;
+    }
+
+    .home-carousel-next {
+      right: 10px;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .home-carousel-photo {
+      height: 250px;
+    }
+
+    .home-carousel-arrow {
+      display: none; // Rely on touch swipe and bottom indicators on small screens
+    }
+  }
+}

@@ -19,6 +19,31 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.3/font/bootstrap-icons.min.css" integrity="sha512-YFENbnqHbCRmJt5d+9lHimyEMt8LKSNTMLSaHjvsclnZGICeY/0KYEeiHwD1Ux4Tcao0h60tdcMv+0GljvWyHg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
+    <!-- Global Site Splash Screen -->
+    <div class="site-splash" id="site-splash" role="status" aria-live="polite" aria-label="Loading Premier College">
+      <div class="site-splash__backdrop"></div>
+      <div class="site-splash__content">
+        <div class="site-splash__logo-wrapper">
+          <%= image_tag "logo-main2.jpg", class: "site-splash__logo", alt: "Premier College Logo", width: 140 %>
+          <div class="site-splash__logo-glow"></div>
+        </div>
+        <div class="site-splash__text-group">
+          <h2 class="site-splash__title">Premier College</h2>
+          <p class="site-splash__subtitle">Advance Your Career with Flexible Online Learning &bullet;</p>
+        </div>
+        <div class="site-splash__spinner-wrapper">
+          <div class="site-splash__spinner" aria-hidden="true">
+            <div class="spinner-ring outer"></div>
+            <div class="spinner-ring inner"></div>
+            <div class="spinner-core"></div>
+          </div>
+          <div class="site-splash__progress-track">
+            <div class="site-splash__progress-bar"></div>
+          </div>
+          <p class="site-splash__status">Preparing your experience&hellip;</p>
+        </div>
+      </div>
+    </div>
     <%= render 'layouts/navbar'%>
     <%= yield %>
     <%= render 'layouts/footer'%>
@@ -80,7 +105,6 @@ var ThemeColor = function () {
 
 var e = {
     init: function () {
-        e.preLoader(),
         e.megaMenu(),
         e.stickyHeader(),
         e.tinySlider(),
@@ -236,20 +260,6 @@ var e = {
 
     
 
-    // START: 01 Preloader
-    preLoader: function () {
-        window.onload = function () {
-            var preloader = e.select('.preloader');
-            if (e.isVariableDefined(preloader)) {
-                preloader.className += ' animate__animated animate__fadeOut';
-                setTimeout(function(){
-                    preloader.style.display = 'none';
-                }, 200);
-            }
-        };
-    },
-    // END: Preloader
-
     // START: 02 Mega Menu
     megaMenu: function () {
         e.onAll('.dropdown-menu a.dropdown-item.dropdown-toggle', 'click', function (event) {
@@ -277,26 +287,44 @@ var e = {
     },
     // END: Mega Menu
 
-    // START: 03 Sticky Header
+    // START: 03 Sticky Header (Smooth Hysteresis without layout thrashing)
     stickyHeader: function () {
         var stickyNav = e.select('.navbar-sticky');
         if (e.isVariableDefined(stickyNav)) {
-            var stickyHeight = stickyNav.offsetHeight;
-            stickyNav.insertAdjacentHTML('afterend', '<div id="sticky-space"></div>');
-            var stickySpace = e.select('#sticky-space');
-            if (e.isVariableDefined(stickySpace)) {
-                document.addEventListener('scroll', function (event) {
+            var stickySpace = document.getElementById('sticky-space');
+            if (!stickySpace) {
+                stickyNav.insertAdjacentHTML('afterend', '<div id="sticky-space"></div>');
+                stickySpace = document.getElementById('sticky-space');
+            }
+            if (stickySpace) {
+                var isSticky = false;
+                var ticking = false;
+
+                function updateSticky() {
                     var scTop = window.pageYOffset || document.documentElement.scrollTop;
-                    if (scTop >= 400) {
-                        stickySpace.addClass('active');
-                        e.select("#sticky-space.active").style.height = stickyHeight + 'px';
-                        stickyNav.addClass('navbar-sticky-on');
-                    } else {
-                        stickySpace.removeClass('active');
+                    var stickyHeight = stickyNav.offsetHeight || 90;
+                    // Hysteresis: activate at 380px, deactivate smoothly only near the top (<= 50px)
+                    if (!isSticky && scTop >= 380) {
+                        isSticky = true;
+                        stickySpace.classList.add('active');
+                        stickySpace.style.height = stickyHeight + 'px';
+                        stickyNav.classList.add('navbar-sticky-on');
+                    } else if (isSticky && scTop <= 50) {
+                        isSticky = false;
+                        stickySpace.classList.remove('active');
                         stickySpace.style.height = '0px';
-                        stickyNav.removeClass("navbar-sticky-on");
+                        stickyNav.classList.remove('navbar-sticky-on');
                     }
-                });
+                    ticking = false;
+                }
+
+                window.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        window.requestAnimationFrame(updateSticky);
+                        ticking = true;
+                    }
+                }, { passive: true });
+                updateSticky();
             }
         }
     },
@@ -347,6 +375,10 @@ var e = {
 
               var tnsSlider = tns({
                   container: slider,
+                  onInit: function () {
+                      slider.setAttribute('data-slider-ready', 'true');
+                      slider.dispatchEvent(new Event('premier:slider-ready'));
+                  },
                   mode: sliderMode,
                   axis: sliderAxis,
                   gutter: sliderSpace,
@@ -431,25 +463,31 @@ var e = {
 
     // START: 08 Back to Top
     backTotop: function () {
-        var scrollpos = window.scrollY;
         var backBtn = e.select('.back-top');
         if (e.isVariableDefined(backBtn)) {
-            var add_class_on_scroll = () => backBtn.addClass("back-top-show");
-            var remove_class_on_scroll = () => backBtn.removeClass("back-top-show");
-
+            var ticking = false;
             window.addEventListener('scroll', function () {
-                scrollpos = window.scrollY;
-                if (scrollpos >= 800) {
-                    add_class_on_scroll()
-                } else {
-                    remove_class_on_scroll()
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        var scrollpos = window.pageYOffset || document.documentElement.scrollTop;
+                        if (scrollpos >= 350) {
+                            backBtn.addClass("back-top-show");
+                        } else {
+                            backBtn.removeClass("back-top-show");
+                        }
+                        ticking = false;
+                    });
+                    ticking = true;
                 }
-            });
+            }, { passive: true });
 
-            backBtn.addEventListener('click', () => window.scrollTo({
-                top: 0,
-                behavior: 'smooth',
-            }));
+            backBtn.addEventListener('click', function (event) {
+                event.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         }
     },
     // END: Back to Top
